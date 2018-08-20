@@ -76,3 +76,4 @@ new HtmlWebpackPlugin({
     template: './my-page.html',
 }),
 ```
+webpack如何实现多页面独立输出？https://segmentfault.com/q/1010000004523908

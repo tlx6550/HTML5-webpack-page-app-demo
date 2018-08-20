@@ -67,7 +67,7 @@ console.log('NODE_ENV:', process.env.NODE_ENV);
 
 const config = {
     context: projectDir + '/src',
-    // 左边是buid对应的开头文件名称，右边是入口地址
+    // 左边是chuncks名称，右边是入口地址
     entry: {
         'index': './index.js',
         'contact-us': './contact-us.js',
