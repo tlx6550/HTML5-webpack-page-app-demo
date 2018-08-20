@@ -24,7 +24,7 @@ const additionalPlugins = [];
  * UglifyJS only in prod mode
  */
 if (prod) {
-    /*additionalPlugins.push(
+    additionalPlugins.push(
         new UglifyJSPlugin({
             test: /\.js($|\?)/i,
             parallel: true,
@@ -32,7 +32,7 @@ if (prod) {
             uglifyOptions: {
                 mangle: true
             }
-        }));*/
+        }));
 }
 
 // Set a random Public URL to share your website with anyone
