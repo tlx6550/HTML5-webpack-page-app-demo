@@ -1,5 +1,6 @@
 /**
  * Created by issuser on 2018/8/20 0020.
+ * 现网发现 有可能在低版本的安卓机型下无法获得根的大小，此时可能需要通过是否可获得来写死根节点字体大小
  */
 (function(win, designW) {
     var doc = win.document;

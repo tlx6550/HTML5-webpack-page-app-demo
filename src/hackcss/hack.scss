@@ -45,3 +45,7 @@
   -webkit-box-flex: 1.0; /*Safari,Opera,Chrome*/
   box-flex: 1.0;
 }
+
+h5内嵌安卓 按钮文字当字体小于12px的时候 会出现偏上
+解决方案：
+在页面的html根属性 添加 lang=zh-CN 属性
