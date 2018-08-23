@@ -1,5 +1,7 @@
 /* global process, __dirname, module */
 const postcssConfig = './config/postcss/postcss.config.js';
+/*const px2rem = require('postcss-px2rem');
+const postcss = require('postcss')*/
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -125,14 +127,17 @@ const config = {
                                 config: {
                                     path: postcssConfig,
                                 },
-                                sourceMap: isDev ? 'inline' : false,
+                                sourceMap: isDev ? 'inline' : false
+                               
                             }
                         },
                         {
                             loader: 'sass-loader',
                             options: {
                                 sourceMap: isDev
-                            }
+                               
+                            },
+
                         }
                     ],
                 })
@@ -199,7 +204,8 @@ const config = {
             'debug': 'warning'
         }),
         ...additionalPlugins
-    ]
+    ],
+
 };
 
 module.exports = config;
