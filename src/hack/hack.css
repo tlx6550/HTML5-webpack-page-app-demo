@@ -1,0 +1,71 @@
+/*在使用弹性布局中，发现安卓4.3下并不能友好支持；现只针对safari的写法*/
+.card-row{
+  flex:1;
+  [;position: relative;]/
+[;display: inline-block;]/只支持通过内联块的方式换行
+}
+/*safari hack*/
+.common-btn{
+  [;position: absolute;
+  right: 0;
+  top:50%;
+  -moz-transform:translateY(-0.25rem);
+  -webkit-transform:translateY(-0.25rem);
+  -ms-transform:translateY(-0.25rem);
+  transform:translateY(-0.25rem);]
+}
+/*弹性布局声明需要特别注意兼容低版本的!*/
+/*https://segmentfault.com/a/1190000003978624*/
+/*由于旧版语法并没有列入 W3C 标准，所以这里不用写 display:box ，下面的语法也是一样的*/
+.box{
+  display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+  display: -moz-box; /* 老版本语法: Firefox (buggy) */
+  display: -ms-flexbox; /* 混合版本语法: IE 10 */
+  display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+  display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+}
+这里还要注意的是，如果子元素是行内元素，
+在很多情况下都要使用 display: block 或 display: inline-block
+把行内子元素变成块元素（例如使用 box-flex 属性），
+这也是旧版语法和新版语法的区别之一。
+
+  /*旧语法*/
+.box{
+  display: -moz-box; /*Firefox*/
+  display: -webkit-box; /*Safari,Opera,Chrome*/
+  display: box;
+}
+
+
+
+/*旧语法*/
+/*box-flex 定义是否允许当前子元素伸缩。*/
+.item{
+  -moz-box-flex: 1.0; /*Firefox*/
+  -webkit-box-flex: 1.0; /*Safari,Opera,Chrome*/
+  box-flex: 1.0;
+}
+
+h5内嵌安卓 按钮文字当字体小于12px的时候 会出现偏上
+解决方案：
+在页面的html根属性 添加 lang=zh-CN 属性
+
+当使用flex布局 无法换行的时候,可以尝试对div使用 display:inline-block;同时 对div设置百分比宽度!
+ 
+三星noet3
+发现图片列表 图片img宽度异常
+hack方案
+设置图片盒模型宽度:box-size:border-box;同时原有img padding 清除
+
+下载按钮样式
+
+速度数字样式
+.js-item .speed{
+	color:#fff;
+}
+按钮文本样式
+.js-item  .btn-text{
+	color: #fff
+}
+
+

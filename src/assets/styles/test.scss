@@ -1,15 +1,10 @@
-.mallb-div{
-        margin: 0 0.3rem 0.26rem 0;
-    moz-box-shadow:0 .04rem .28rem rgba(153, 153, 153, .34); 
-    -webkit-box-shadow:0 .04rem .28rem rgba(153, 153, 153, .34); 
-    box-shadow:0 .04rem .28rem rgba(153, 153, 153, .34);
-  }
-    .mallb-div p {
-        margin-top: .3rem;
-    }
-    .mallb-div span {
-        margin-top: .23rem;
-    }
-    .mallb-div button {
-        margin-top: .24rem;
-    }
+.flex-box{
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex-item{
+    flex: 1;
+}
+.swiper-slide {
+    padding: 0.2rem 0 0.2rem 0;
+}
