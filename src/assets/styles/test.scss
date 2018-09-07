@@ -8,3 +8,25 @@
 .swiper-slide {
     padding: 0.2rem 0 0.2rem 0;
 }
+
+.clear{
+    clear:both;
+}
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: " ";
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}
+
+.list-img-left{
+    flex:0 0 .8rem
+}
+.list-sub-right-item{
+    flex: 1;
+}
