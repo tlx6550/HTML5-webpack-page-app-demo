@@ -66,14 +66,15 @@ if (isBrowserSync) {
 }
 
 console.log('NODE_ENV:', process.env.NODE_ENV);
-
 const config = {
     context: projectDir + '/src',
     // 左边是chuncks名称，右边是入口地址
     entry: {
         'index': './index.js',
         'contact-us': './contact-us.js',
-        'test2': './js/test.js',
+        'feedbackCenter': './js/fkzxIndex.js',
+        'feedbackDetails': './js/fkzxIndex.js',
+        'feedbackList': './js/fkzxIndex.js',
         // 'about-us': './about-us.js'
     },
     output: {
@@ -157,7 +158,15 @@ const config = {
     devServer: {
         contentBase: path.resolve(__dirname, 'build'),
         compress: true,
-        port: 3000
+        port: 3000,
+        // 开发环境跨域问题https://blog.csdn.net/qq_39083004/article/details/80860675
+        proxy: {
+            '**': {
+                target:'https://api.douban.com',
+                changeOrigin: true,
+                secure: false,
+            }
+        },
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -175,17 +184,28 @@ const config = {
             chunks: ['index'],
             template: './index.html',
         }),
-        new HtmlWebpackPlugin({
-            chunks: ['test2'],
-            template: './pages/test2.html',
-            filename: 'test2.html'
-        }),
 
         new HtmlWebpackPlugin({
             chunks: ['contact-us'],
             template: './pages/contact-us.html',
             filename: 'contact-us.html'
         }
+        ),
+        new HtmlWebpackPlugin({
+            chunks: ['feedbackCenter'],
+            template: './feedbackCenter.html',
+            filename: 'feedbackCenter.html'
+        }
+        ),
+        new HtmlWebpackPlugin({
+            chunks: ['feedbackDetails'],
+            template: './feedbackDetails.html',
+            filename: 'feedbackDetails.html'}
+        ),
+        new HtmlWebpackPlugin({
+            chunks: ['feedbackList'],
+            template: './feedbackList.html',
+            filename: 'feedbackList.html'}
         ),
         new LodashModuleReplacementPlugin,
         new CopyWebpackPlugin([
