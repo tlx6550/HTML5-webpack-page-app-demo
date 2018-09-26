@@ -1,8 +1,10 @@
 import '../css/all.css';
 import '../assets/styles/fkzx.scss';
 import $ from '../js/jquery.min.js';
+import lrz from  './lrz.bundle';
 import {flexible} from '../assets/js/flexible.js';
 import request from './request';
+import { api } from './api';
 
 request.get('/v2/movie/in_theaters?city=广州&start=0&count=10')
     .then(function (response) {
@@ -11,197 +13,125 @@ request.get('/v2/movie/in_theaters?city=广州&start=0&count=10')
     .catch(function (error) {
         console.log(error);
     });
-/*request({
-    method: 'get',
-    url: '/v2/movie/in_theaters',
-    data: {
-        city: '广州',
-        start: 0,
-        count:10
-    }
-}).then((res)=>{
-    console.log(res);
-});*/
-// 全局对象，不同function使用传递数据
-//https://segmentfault.com/a/1190000010034177#articleHeader9
 
-//备选方案http://www.jq22.com/demo/jqueryUpys201808211007/
-const imgFile = {};
 
-function handleInputChange (event) {
-    // 获取当前选中的文件
-    const file = event.target.files[0];
-    const imgMasSize = 1024 * 1024 * 10; // 10MB
+// 配合http://www.jq22.com/jquery-info19864 其中生成图片预览
 
-    // 检查文件类型
-    if(['jpeg', 'png', 'gif', 'jpg'].indexOf(file.type.split("/")[1]) < 0){
-        // 自定义报错方式
-        // Toast.error("文件类型仅支持 jpeg/png/gif！", 2000, undefined, false);
-        return;
-    }
-
-    // 文件大小限制
-    if(file.size > imgMasSize ) {
-        // 文件大小自定义限制
-        // Toast.error("文件大小不能超过10MB！", 2000, undefined, false);
-        return;
-    }
-
-    // 判断是否是ios
-    if(!!window.navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)){
-        // iOS
-        transformFileToFormData(file);
-        return;
-    }
-
-    // 图片压缩之旅
-    transformFileToDataUrl(file);
+// 指定大小https://blog.csdn.net/xyphf/article/details/70841319
+let picArr = new Array(); // 存储图片
+const config = {
+    allowType:[ 'jpeg', 'jpg', 'png'],
+    maxSize:5,
+    maxWidth:3000
 }
-// 将File append进 FormData
-function transformFileToFormData (file) {
-    const formData = new FormData();
-    // 自定义formData中的内容
-    // type
-    formData.append('type', file.type);
-    // size
-    formData.append('size', file.size || "image/jpeg");
-    // name
-    formData.append('name', file.name);
-    // lastModifiedDate
-    formData.append('lastModifiedDate', file.lastModifiedDate);
-    // append 文件
-    formData.append('file', file);
-    // 上传图片
-    uploadImg(formData);
-}
-// 将file转成dataUrl
-function transformFileToDataUrl (file) {
-    const imgCompassMaxSize = 200 * 1024; // 超过 200k 就压缩
-
-    // 存储文件相关信息
-    imgFile.type = file.type || 'image/jpeg'; // 部分安卓出现获取不到type的情况
-    imgFile.size = file.size;
-    imgFile.name = file.name;
-    imgFile.lastModifiedDate = file.lastModifiedDate;
-
-    // 封装好的函数
-    const reader = new FileReader();
-
-    // file转dataUrl是个异步函数，要将代码写在回调里
-    reader.onload = function(e) {
-        const result = e.target.result;
-
-        if(result.length < imgCompassMaxSize) {
-            compress(result, processData, false );    // 图片不压缩
-        } else {
-            compress(result, processData);            // 图片压缩
-        }
-    };
-
-    reader.readAsDataURL(file);
-}
-// 使用canvas绘制图片并压缩
-function compress (dataURL, callback, shouldCompress = true) {
-    const img = new window.Image();
-
-    img.src = dataURL;
-
-    img.onload = function () {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = img.width;
-        canvas.height = img.height;
-
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        let compressedDataUrl;
-
-        if(shouldCompress){
-            compressedDataUrl = canvas.toDataURL(imgFile.type, 0.2);
-        } else {
-            compressedDataUrl = canvas.toDataURL(imgFile.type, 1);
-        }
-
-        callback(compressedDataUrl);
-    }
-}
-
-function processData (dataURL) {
-    // 这里使用二进制方式处理dataUrl
-    const binaryString = window.atob(dataUrl.split(',')[1]);
-    const arrayBuffer = new ArrayBuffer(binaryString.length);
-    const intArray = new Uint8Array(arrayBuffer);
-    const imgFile = this.imgFile;
-
-    for (let i = 0, j = binaryString.length; i < j; i++) {
-        intArray[i] = binaryString.charCodeAt(i);
-    }
-
-    const data = [intArray];
-
-    let blob;
-
-    try {
-        blob = new Blob(data, { type: imgFile.type });
-    } catch (error) {
-        window.BlobBuilder = window.BlobBuilder ||
-            window.WebKitBlobBuilder ||
-            window.MozBlobBuilder ||
-            window.MSBlobBuilder;
-        if (error.name === 'TypeError' && window.BlobBuilder){
-            const builder = new BlobBuilder();
-            builder.append(arrayBuffer);
-            blob = builder.getBlob(imgFile.type);
-        } else {
-            // Toast.error("版本过低，不支持上传图片", 2000, undefined, false);
-            throw new Error('版本过低，不支持上传图片');
-        }
-    }
-
-    // blob 转file
-    const fileOfBlob = new File([blob], imgFile.name);
-    const formData = new FormData();
-
-    // type
-    formData.append('type', imgFile.type);
-    // size
-    formData.append('size', fileOfBlob.size);
-    // name
-    formData.append('name', imgFile.name);
-    // lastModifiedDate
-    formData.append('lastModifiedDate', imgFile.lastModifiedDate);
-    // append 文件
-    formData.append('file', fileOfBlob);
-
-    uploadImg(formData);
-}
-
-// 上传图片
-function uploadImg (formData) {
-    const xhr = new XMLHttpRequest();
-
-    // 进度监听
-    xhr.upload.addEventListener('progress', (e)=>{console.log(e.loaded / e.total)}, false);
-    // 加载监听
-    // xhr.addEventListener('load', ()=>{console.log("加载中");}, false);
-    // 错误监听
-    xhr.addEventListener('error', ()=>{Toast.error("上传失败！", 2000, undefined, false);}, false);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            const result = JSON.parse(xhr.responseText);
-            if (xhr.status === 200) {
-                // 上传成功
-
-
-            } else {
-                // 上传失败
+const allowType = [ 'jpeg', 'jpg', 'png'];
+document.querySelector('#file').addEventListener('change', function () {
+    if (this.files.length === 0) return;
+    lrz(this.files[0],{
+        width: 800,
+        quality  : 0.8
+    })
+        .then(function (rst) {
+            // 检查大小
+            const maxSize = config.maxSize * 1024 * 1024 ;
+            if(rst.origin.size >= maxSize){
+                alert('上传图片超出允许上传大小');
+                return false;
             }
-        }
-    };
-    xhr.open('POST', '/uploadUrl' , true);
-    xhr.send(formData);
-}
-$('.uploadDom').change(function(e) {
-    handleInputChange(e)
+            // 文件类型检查
+            if(!isAllowFile(origin.name,config.allowType)){
+                // 处理成功会执行
+                console.log(rst);
+                createImg(rst);
+                removeImg();
+                upDateLoadNum(picArr.length);
+            }else{
+                alert('请上传 jpeg, jpg, png 格式的图片！');
+            }
+        })
+        .catch(function (err) {
+            // 处理失败会执行
+        })
+        .always(function () {
+            // 不管是成功失败，都会执行
+        });
 });
+
+function createImg(result) {
+    let img = new Image();
+    img.src = result.base64;
+    let _str = "<span class='pic_look' style='background-image: url(" + img.src + ")'><em class='delete_pic'>-</em></span>"
+    $('#chose_pic_btn').before(_str);
+    let _i = picArr.length
+    picArr[_i] = result.base64;
+    console.log(picArr);
+    removeImg();
+}
+function removeImg() {
+    const imgList = document.getElementsByClassName('delete_pic');
+    // 元素生成后动态绑定事件
+    for (let j = 0; j < imgList.length; j++) {
+        imgList[j].onclick = function() {
+            const that = this;
+            const removeIndex = $(that).parent().index();
+            removeDom(removeIndex);
+        };
+    }
+}
+function removeDom(index) {
+    $('.up_pic').children('.pic_look').eq(index).remove();
+    picArr.splice(index,1);
+    console.log(picArr)
+    upDateLoadNum(picArr.length);
+}
+function upDateLoadNum(num) {
+    $('.up_pic').find('.amount-per').text(num);
+    if(num >= 4){
+        $('#chose_pic_btn').hide();
+    }else{
+        $('#chose_pic_btn').show();
+    }
+}
+// 获取上传文件的后缀名
+function getFileExt(fileName){
+    if (!fileName) {
+        return '';
+    }
+
+    var _index = fileName.lastIndexOf('.');
+    if (_index < 1) {
+        return '';
+    }
+
+    return fileName.substr(_index+1);
+}
+
+function isAllowFile(fileName, allowType){
+
+    var fileExt = getFileExt(fileName).toLowerCase();
+    if (!allowType) {
+        allowType = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
+    }
+
+    if ($.inArray(fileExt, allowType) != -1) {
+        return true;
+    }
+    return false;
+
+}
+function submit() {
+    $('.submit').click(function (e) {
+        e.stopPropagation();
+        const description =  $('#description').val();
+        if(description.length <10 || description.length >300){
+            $('.pop-desc').show()
+            setTimeout(()=>{
+                $('.pop-a').hide();
+            },4000);
+        }
+        const checkValue = $("input[type='radio']:checked").val();
+        console.log(checkValue);
+        console.log(description);
+    });
+}
+submit();

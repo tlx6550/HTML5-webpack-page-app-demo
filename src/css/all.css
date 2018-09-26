@@ -277,13 +277,13 @@ img {
           color: #b1bdca; }
 
 .feedbackCenter .footer {
-  position: fixed;
-  bottom: 0;
+/*  position: fixed;
+  bottom: 0;*/
   padding: 0.13rem 0;
   background: #fff;
   width: 100%;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(178, 190, 203, 0.3);
-          box-shadow: 0px 0px 30px 0px rgba(178, 190, 203, 0.3); }
+/*  -webkit-box-shadow: 0px 0px 30px 0px rgba(178, 190, 203, 0.3);
+          box-shadow: 0px 0px 30px 0px rgba(178, 190, 203, 0.3);*/ }
   .feedbackCenter .footer .submit {
     margin: 0 auto;
     display: block;

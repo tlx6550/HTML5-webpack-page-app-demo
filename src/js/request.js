@@ -5,7 +5,8 @@ import axios from './axios.min.js';
 
 
 // 创建axios实例
-
+const baseUrl = process.env.NODE_ENV === 'production'? 'www.pro' : 'www.dev'
+console.log(baseUrl)
 const service = axios.create({
     /* baseURL: process.env.BASE_API, */
     timeout: 5000, // 请求超时时间
