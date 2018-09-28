@@ -24,7 +24,6 @@ const config = {
     maxSize:5,
     maxWidth:3000
 }
-const allowType = [ 'jpeg', 'jpg', 'png'];
 document.querySelector('#file').addEventListener('change', function () {
     if (this.files.length === 0) return;
     lrz(this.files[0],{
