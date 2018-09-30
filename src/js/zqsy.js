@@ -5,7 +5,13 @@ import '../assets/styles/zqsy.scss';
 import $ from '../js/jquery.min.js';
 /*import {yd} from '../assets/js/ydui.js';*/
 import {flexible} from '../assets/js/flexible.js';
-
+const appName = {
+    '001': 'aiqiyi',
+    '002': 'wangyi',
+    '003': 'toutiao',
+    '004': 'youku'
+}
+let appId = ''
 $(".inner-tab-nav-item").click(function(){
     var index = $(this).index();
     $('.inner-tab-nav-item').removeClass("on");
@@ -28,6 +34,7 @@ $('div.pop-wrap').find('.content').on('touchstart', function(e) {
 // 马上开通
 $('div.card').find('.mskt-btn').on('click', function(e) {
     e.stopPropagation();
+    appId = $(this).data('id')
     $('.pop-big').show();
 })
 $('div.xiangqingye-wrap').find('.comfirm').on('click', function(e) {
@@ -39,17 +46,30 @@ $('div.xiangqingye-wrap').find('.comfirm').on('click', function(e) {
 })
 $('div.pop-big').find('.comfirm').on('click', function(e) {
     e.stopPropagation();
+    const val = $(this).parent().parent().children('.xieyi').find('input[type=checkbox]').is(':checked')
+    if(!val)return
     $('.toast').show();
     setTimeout(()=>{
         $('.toast').hide();
         $('.pop-com').hide();
     },2000);
+    /* 开通了的按钮变灰 */
+    $('div.card').find('.mskt-btn').each(function () {
+        if( $(this).data('id') == appId){
+            $(this).addClass('active');
+        }
+    });
 })
 // 取消
 $('div.pop-big').find('.cancle').on('click', function(e) {
     e.stopPropagation();
     $('.pop-com').hide();
 })
+// 点击阴影区域弹窗消失
+/* $('.pop-b').click(function (e) {
+    e.stopPropagation();
+    $('.pop-com').hide();
+}) */
 /**
  * ydui main
  */

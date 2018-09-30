@@ -21,9 +21,13 @@ ol, ul {
     opacity: 0;
     transform: scale3d(.3, .3, .3);
   }
-  50% {
+  60% {
     opacity: 1;
   }
+}
+.flex-box{
+  display: flex;
+  align-items: center;
 }
 .flex-box-bet{
   display: flex;
@@ -241,6 +245,11 @@ ol, ul {
       text-align: center;
       vertical-align: middle;
       border-radius:0.288rem;
+      &.active{
+        border:0.0576rem solid  #ccc;
+        background-color: #ccc;
+        color:#fff;
+      }
     }
   }
 }
@@ -363,6 +372,7 @@ ol, ul {
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     animation: zoomIn .15s ease forwards;
+    transform-origin:left;
     background: url(../img/card-bg.png)no-repeat;
     background-size: 100%;
     box-sizing: border-box;
@@ -381,6 +391,7 @@ ol, ul {
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   animation: zoomIn .15s ease forwards;
+  transform-origin:left;
   font-size: .48rem;
   color:#fff;
   padding:.4rem .8rem;
@@ -401,7 +412,8 @@ ol, ul {
       font-size: .36rem;
       color:$text3;
       margin:.48rem 0 0 0;
-      .title{
+      .tilte{
+        display: inline-block;
         margin-left: .2rem;
       }
 
