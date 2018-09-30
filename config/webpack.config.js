@@ -71,11 +71,8 @@ const config = {
     // 左边是chuncks名称，右边是入口地址
     entry: {
         'index': './index.js',
-        'contact-us': './contact-us.js',
-        'feedbackCenter': './js/fkzxIndex.js',
-        'feedbackDetails': './js/fkzxIndex.js',
-        'feedbackList': './js/fkzxIndex.js',
-        // 'about-us': './about-us.js'
+        'zqsy': './js/zqsy.js',
+        'xiangqingye': './js/zqsy.js',
     },
     output: {
         filename: isDev ? '[name].js' : '[name].[chunkhash].js',
@@ -186,26 +183,16 @@ const config = {
         }),
 
         new HtmlWebpackPlugin({
-            chunks: ['contact-us'],
-            template: './pages/contact-us.html',
-            filename: 'contact-us.html'
+            chunks: ['zqsy'],
+            template: './zqsy.html',
+            filename: 'zqsy.html'
         }
         ),
         new HtmlWebpackPlugin({
-            chunks: ['feedbackCenter'],
-            template: './feedbackCenter.html',
-            filename: 'feedbackCenter.html'
+            chunks: ['xiangqingye'],
+            template: './xiangqingye.html',
+            filename: 'xiangqingye.html'
         }
-        ),
-        new HtmlWebpackPlugin({
-            chunks: ['feedbackDetails'],
-            template: './feedbackDetails.html',
-            filename: 'feedbackDetails.html'}
-        ),
-        new HtmlWebpackPlugin({
-            chunks: ['feedbackList'],
-            template: './feedbackList.html',
-            filename: 'feedbackList.html'}
         ),
         new LodashModuleReplacementPlugin,
         new CopyWebpackPlugin([

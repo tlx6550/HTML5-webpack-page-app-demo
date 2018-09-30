@@ -36,4 +36,4 @@
 		console.log('clientW='+clientW)
         console.log('根大小=' + docEle.style.fontSize)
 	};
-})(window, 720);//750为设计稿宽度px值,根据实际设计稿大小对应设置
+})(window, 1080);//750为设计稿宽度px值,根据实际设计稿大小对应设置

@@ -1,0 +1,424 @@
+@import 'variables';
+@import 'normalize';
+@import 'ydui.css';
+@import 'app-list.scss';
+@import 'btn.css';
+$line:#ececec;
+$blue:#139fef;
+$text6:#666666;
+$text3:#333333;
+$fontWeight:550;
+$orange:#ff6c00;
+@function rem($args) {//iphone 678
+  $remSize: $args / 34.7222;
+  @return $remSize * 1rem;
+}
+ol, ul {
+  list-style: none;
+}
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.flex-box-bet{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+}
+.flex-center{
+  align-items:center;
+}
+.flex-item{
+  flex: 1;
+}
+.yjxz-btn{
+  color:$blue;
+}
+.text-ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.zqsy-wrap{
+  .top-header{
+    height: 2.24rem;
+    background: url(../img/header-bg.png)no-repeat;
+    background-size: 100% 100%;
+  }
+  .avart{
+    font-size: 0;
+    align-items: center;
+    position: relative;
+    margin-left: .3rem;
+    .avart-img{
+      display: inline-block;
+      width: 1.43rem;
+      height: 1.43rem;
+      border-radius: 50%;
+    }
+    .yunyingshang{
+      position: absolute;
+      width:2.84rem;
+      height: .51rem;
+      top: 0.0675rem;
+      left: 3.1725rem;
+      background: url(../img/yidong-biaoshi.png)no-repeat;
+      background-size: 100% 100%;
+      .info{
+        position: relative;
+        top: 0.0864rem;
+        left: 0.5184rem;
+        z-index: 10;
+        font-size: .3rem;
+        color:#fff;
+      }
+    }
+  }
+  .user-info{
+    margin-left: .25rem;
+    .user-name,.user-tel{
+      margin:.32rem 0 0 0;
+      color:$text3;
+      font-weight: 400;
+      font-size: .36rem;
+    }
+    .user-name{
+      margin-top: 0;
+    }
+  }
+  .zone-user{
+    color:#666;
+    font-size: .16rem;
+  }
+  .nva-tab-wrap{
+    .tab-nav{
+       margin:0;
+      padding:0;
+    }
+    .tab-nav-item{
+      .title{
+        color:$text6;
+        font-weight: bold;
+        font-size: .42rem;
+      }
+      &.tab-active .title{
+        color:$blue;
+      }
+    }
+    .tab-panel .tab-panel-item{
+      padding:0;
+    }
+    .application-commander{
+      .categray-title{
+        font-size: .16rem;
+      }
+    }
+  }
+  .progress{
+    font-size: .14rem;
+    color:#666;
+  }
+}
+.conten-wrap{
+  padding:.35rem;
+  background-color: #f2f2f2;
+  .card-pannel{
+    .header{
+      width: 100%;
+      height:2.46rem;
+      background: url(../img/alixi-done.png)no-repeat;
+      background-size: 100% 100%;
+    }
+    .descr{
+      padding: rem(18);
+      font-size: .48rem;
+      color:#fff;
+      .info{
+        margin-top: rem(25);
+        font-size:.3rem;
+      }
+    }
+    .ding-xiang-header{
+      background-color:#fff;
+      padding:0 rem(18);
+      height: 1.2rem;
+      font-size: .4rem;
+    }
+  }
+}
+.zbtj-wrap{
+  padding:.35rem;
+  background-color: #f2f2f2;
+  .card{
+    margin-top: .35rem;
+    padding:.5rem 0 0 0;
+/*    padding:.5rem .6rem 0;*/
+    border-radius:.1rem;
+    background: url(../img/card-bg.png)no-repeat;
+    background-size: 100% 100%;
+    box-shadow:0 0.0576rem 0.1152rem #dcdcdc;;
+  }
+  .first-card{
+    margin-top: 0;
+  }
+  .header{
+    padding:0 .6rem;
+  }
+  .descr{
+    .title{
+      font-size: .48rem;
+      font-weight: bold;
+      color: $text3;
+    }
+    .info{
+      margin-top: .35rem;
+      line-height: 0.576rem;
+      font-size: .3rem;
+      color: $text6;
+
+
+    }
+    .sub-info{
+      color:$blue;
+    }
+  }
+  .fold-pannel{
+    margin-top: .35rem;
+    padding:0 .6rem;
+    .text{
+      position: relative;
+      padding-right:0.288rem;
+      color:$text6;
+      font-size: .3rem;
+      line-height: 0.576rem;
+      margin-bottom: .4rem;
+    }
+    .fold-btn{
+      position: absolute;
+      z-index: 999;
+      bottom:0.0576rem;
+      right: 0rem;
+      font-size: 0;
+      width:.36rem;
+      height: .2rem;
+      background: url(../img/down-arrow.png) no-repeat;
+      background-size: 100% 100%;
+    }
+    .show-up-arrow{
+      background: url(../img/up-arrow.png) no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .footer{
+    height: 1.5rem;
+    border-top:1px solid $line;
+    padding:0 .6rem;
+    .item{
+      font-size: .36rem;
+      color:$text3;
+    }
+    .price{
+      text-decoration:line-through;
+      margin:0 .02rem;
+    }
+    .realy-price{
+      color:$orange;
+    }
+    .mskt-btn{
+      color:$blue;
+      font-size: .4rem;
+      height: .74rem;
+      line-height: .74rem;
+      width: 1.98rem;
+      border:0.0576rem solid $blue;
+      text-align: center;
+      vertical-align: middle;
+      border-radius:0.288rem;
+    }
+  }
+}
+.xieyi{
+  margin-top: .8rem;
+  text-align: center;
+  font-size: .36rem;
+  color:$blue;
+  .checkbox{
+    label {
+      position: relative;
+      display: block;
+      vertical-align: middle;
+      height: .45rem;
+      line-height: .45rem;
+    }
+    input[type="checkbox"] {
+      position: relative;
+      display: inline-block;
+      width: 0.45rem;
+      height: 0.45rem;
+      opacity: 0;
+    }
+    input[type="checkbox"]:checked + div {
+      background: url(../img/checkbox-img.png) no-repeat;
+      background-size: cover;
+    }
+    .option {
+      display: inline-block;
+      background: url(../img/no-checkbox-img.png) no-repeat;
+      background-size: 100% 100%;
+      width: 14px;
+      height: 14px;
+    }
+    .opt-text {
+      position: relative;
+      font-size: 0.24rem;
+      color:$blue;
+      top: -0.05rem;
+    }
+  }
+}
+.price-wrap{
+  text-align: center;
+  font-size: .48rem;
+  margin:.48rem 0;
+  .price{
+    text-decoration: line-through;
+  }
+  .real-price{
+    color:$orange;
+  }
+}
+.btn-group{
+  text-align: center;
+  margin-bottom: .6rem;
+  .item{
+    box-sizing: border-box;
+    font-size: .48rem;
+    display: inline-block;
+    height: 1.2rem;
+    width: 3.84rem;
+    border-radius: .3rem;
+    line-height: 1.2rem;
+  }
+  .cancle{
+    border:.03rem solid #ccc;
+  }
+  .comfirm{
+    margin-left: .5rem;
+    background-color: $blue;
+    color: #fff;
+  }
+}
+/*
+弹窗*/
+.pop-wrap{
+  .pop-b {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    .header{
+      text-align: center;
+      font-size: 0;
+      p{
+        font-size: .48rem;
+      }
+    }
+    .content{
+      position: relative;
+      color: $text6;
+      font-size: .36rem;
+      line-height: 0.7rem;
+      height: 3.97rem;
+      overflow-y:auto ;
+      .app-name{
+        color:$blue;
+        margin-left: .15rem;
+      }
+      .zhezhao{
+        position: absolute;
+        bottom: -0.72rem;
+        width: 100%;
+        height: 1.3rem;
+        background: url(../img/zhezhao.png)no-repeat;
+        background-size: 100%;
+      }
+    }
+  }
+  .pop-b .pop {
+    position: absolute;
+    z-index: 100;
+    border-radius: .1rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    animation: zoomIn .15s ease forwards;
+    background: url(../img/card-bg.png)no-repeat;
+    background-size: 100%;
+    box-sizing: border-box;
+    width: 90%;
+    background-color: #fff;
+    padding:.75rem .5rem 0 .5rem;
+  }
+}
+
+.toast{
+  position: fixed;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  animation: zoomIn .15s ease forwards;
+  font-size: .48rem;
+  color:#fff;
+  padding:.4rem .8rem;
+  border-radius: .3rem;
+}
+.xiangqingye-wrap{
+  .banner{
+    img{
+      display: inline-block;
+      height:3.69rem;
+      width: 100%;
+    }
+  }
+  .content{
+    .herder{
+      height: .48rem;
+      line-height: .48rem;
+      font-size: .36rem;
+      color:$text3;
+      margin:.48rem 0 0 0;
+      .title{
+        margin-left: .2rem;
+      }
+
+    }
+    .icon{
+      width: .1rem;
+      height: .36rem;
+    }
+    .desc{
+      color:$text6;
+      font-size: .36rem;
+      line-height:0.576rem;
+      padding:.2rem;
+    }
+  }
+  .main{
+    padding:0 .3rem;
+  }
+}
+
