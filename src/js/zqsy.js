@@ -3,7 +3,7 @@
  */
 import '../assets/styles/zqsy.scss';
 import $ from '../js/jquery.min.js';
-/*import {yd} from '../assets/js/ydui.js';*/
+import '../assets/js/swiper.min.js';
 import {flexible} from '../assets/js/flexible.js';
 const appName = {
     '001': 'aiqiyi',
@@ -19,6 +19,19 @@ $(".inner-tab-nav-item").click(function(){
     $(this).addClass("on");
     $(".inner-tab-panel").eq(index).addClass("on");
 })
+
+// 滑动
+// ww: swiper
+let swiper = new Swiper('.swiper-container', {
+    autoHeight: true,
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    paginationBulletRender: function (swiper, index, className) {
+        var tabs = ['应用管理', '重磅推荐'];
+        return '<div class="' + className + '">' + tabs[index] + '</div>';
+    }
+});
+
 
 // 折叠
 $('div.card').find('.fold-btn').on('click', function(e) {
@@ -51,7 +64,7 @@ $('div.pop-big').find('.comfirm').on('click', function(e) {
     $('.toast').show();
     setTimeout(()=>{
         $('.toast').hide();
-        $('.pop-com').hide();
+        hidePop()
     },2000);
     /* 开通了的按钮变灰 */
     $('div.card').find('.mskt-btn').each(function () {
@@ -63,8 +76,23 @@ $('div.pop-big').find('.comfirm').on('click', function(e) {
 // 取消
 $('div.pop-big').find('.cancle').on('click', function(e) {
     e.stopPropagation();
-    $('.pop-com').hide();
+    hidePop();
 })
+
+// 弹窗加载内容
+function addContent(){
+    const content = $('<div class="desc">
+    + '2、免流范围不包括优酷视频APP中的以下内容：客户端' +
+    + '<br>' +
+       '启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下 载、缓存第三方视频所产生的流量、下载、缓存视频。'+
+    + '<br>'+ ' 3、本活动各种的流量当月清零、不能分享、不能转赠。'+ '<br>' +'4、更多业务规则详询10086。'+ '</div>')
+    $('div.pop-big').find('.desc')
+}
+// 弹窗消失
+function hidePop(){
+    $('.pop-com').hide();
+    $('div.pop-wrap').find('.zhezhao').show();
+}
 // 点击阴影区域弹窗消失
 /* $('.pop-b').click(function (e) {
     e.stopPropagation();

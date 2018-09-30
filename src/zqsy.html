@@ -7,34 +7,28 @@
     <title>专区首页-主推</title>
 </head>
 <body>
-    <div class="zqsy-wrap">
-        <div class="top-header flex-box-bet flex-center">
-            <div class="avart flex-box-bet">
-                <div class="yunyingshang">
-                    <span class="info">广东移动用户</span>
-                </div>
-                <img class="avart-img" src="./assets/img/touxiang.png" alt="">
-                <div class="user-info">
-                    <p class="user-name">
-                        王同学
-                    </p>
-                    <p class="user-tel">
-                        139****9527
-                    </p>
-                </div>
+<div class="zqsy-wrap">
+    <div class="top-header flex-box-bet flex-center">
+        <div class="avart flex-box-bet">
+            <div class="yunyingshang">
+                <span class="info">广东移动用户</span>
             </div>
-<!--            <div class="set-meal zone-user">
-                <span class="ybtc tile">广东移动用户</span>
-               &lt;!&ndash; <span class="ybtc">×2</span>&ndash;&gt;
-            </div>-->
+            <img class="avart-img" src="./assets/img/touxiang.png" alt="">
+            <div class="user-info">
+                <p class="user-name">
+                    王同学
+                </p>
+                <p class="user-tel">
+                    139****9527
+                </p>
+            </div>
         </div>
-        <div class="nva-tab-wrap " data-ydui-tab>
-            <ul class="tab-nav">
-                <li class="tab-nav-item "><span class="title">应用管理</span></li>
-                <li class="tab-nav-item tab-active"><span class="title">重磅推荐</span></li>
-            </ul>
-            <div class="tab-panel">
-                <div class="tab-panel-item ">
+    </div>
+    <!--tabs-->
+    <div class="nva-tab-wrap " >
+        <div class="swiper-container tab-panel tabs">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide tab-panel-item tab-active">
                     <div class="inner-tab-box">
                         <div class="inner-tab-nav">
                             <!--
@@ -621,9 +615,9 @@
                     </div>
 
                 </div>
-                <div class="tab-panel-item tab-active">
+                <div class="swiper-slide tab-panel-item ">
                     <div class="zbtj-wrap">
-                         <!--爱奇艺-->
+                        <!--爱奇艺-->
                         <div class="card first-card">
                             <div class="header">
                                 <div class="descr">
@@ -634,11 +628,11 @@
                                 </div>
                             </div>
                             <div class="fold-pannel">
-                               <div class="text text-ellipsis">
-                                   客户端启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下载、缓存第三方视频所产生的流量。
-                                   <div class="fold-btn">
-                                   </div>
-                               </div>
+                                <div class="text text-ellipsis">
+                                    客户端启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下载、缓存第三方视频所产生的流量。
+                                    <div class="fold-btn">
+                                    </div>
+                                </div>
 
                             </div>
                             <div class="footer flex-box-bet flex-center">
@@ -647,7 +641,7 @@
                                     <span class="realy-price">18元/月</span>
                                 </div>
                                 <div class="item mskt-btn" data-id="001">
-                                     马上开通
+                                    马上开通
                                 </div>
                             </div>
                         </div>
@@ -740,19 +734,735 @@
                     </div>
                 </div>
             </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
         </div>
     </div>
-    <!--弹窗-->
-    <div class="pop-com  pop-wrap pop-big"  style="display: none" >
-        <div class="pop-b">
-            <div class="pop">
-                <div class="header">
-                    <p>畅享“优酷”30G流量套餐</p>
+<!--    <div class="nva-tab-wrap " data-ydui-tab>
+        <ul class="tab-nav">
+            <li class="tab-nav-item "><span class="title">应用管理</span></li>
+            <li class="tab-nav-item tab-active"><span class="title">重磅推荐</span></li>
+        </ul>
+        <div class="tab-panel">
+            <div class="tab-panel-item ">
+                <div class="inner-tab-box">
+                    <div class="inner-tab-nav">
+                        &lt;!&ndash;
+                         描述：显示的tab,加上类名on
+                         &ndash;&gt;
+                        <div class="inner-tab-nav-item on">全部</div>
+                        <div class="inner-tab-nav-item">阿里系</div>
+                        <div class="inner-tab-nav-item">腾讯</div>
+                    </div>
+
+                    &lt;!&ndash;
+                         描述：显示的tab面板，加上类名on
+                         &ndash;&gt;
+                    <div class="inner-tab-panel on">
+                        &lt;!&ndash;
+                            描述：用完的流量套餐需要在类名为taocan的div加上类名 on , 同时更改"剩余"的百分比
+                            &ndash;&gt;
+                        <div class="taocan">
+                            <div class="application-commander">
+                                <div class="xiname">
+                                    <span>腾讯系</span>
+                                    <div class="angle"></div>
+                                </div>
+                                <div class="exhaust">
+                                    <img src="assets/img/exhaust.png" alt="" />
+                                </div>
+
+                                <div class="categray-title">畅享“腾讯系”30G流量套餐</div>
+                                <div class="progress-wrap">
+                                    <div class="progress-bar" data-ydui-progressbar="{type: 'line', strokeWidth: 1, progress: .4, trailColor: '#30c104'}">
+                                    </div>
+                                    <div class="progress flex-box-bet">
+                                        <div class="remainder"><span>剩余63%</span><em>/</em><span>18.8G</span></div>
+                                        <div class="tolal">套餐总流量:<span>30</span>G</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="app-list-box">
+                                <div class="app-list-title">
+                                    <h2>定向流量APP列表</h2>
+                                    <button>一键下载</button>
+                                </div>
+                                <div class="app-list">
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">腾讯系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">腾讯系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">腾讯系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="taocan on">
+                            <div class="application-commander">
+                                <div class="xiname">
+                                    <span>阿里系</span>
+                                    <div class="angle"></div>
+                                </div>
+                                <div class="exhaust">
+                                    <img src="assets/img/exhaust.png" alt="" />
+                                </div>
+
+                                <div class="categray-title">畅享“阿里系”30G流量套餐</div>
+                                <div class="progress-wrap">
+                                    <div class="progress-bar" data-ydui-progressbar="{type: 'line', strokeWidth: 1, progress: .4, trailColor: '#30c104'}">
+                                    </div>
+                                    <div class="progress flex-box-bet">
+                                        <div class="remainder"><span>剩余63%</span><em>/</em><span>18.8G</span></div>
+                                        <div class="tolal">套餐总流量:<span>30</span>G</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="app-list-box">
+                                <div class="app-list-title">
+                                    <h2>定向流量APP列表</h2>
+                                    <button>一键下载</button>
+                                </div>
+                                <div class="app-list">
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">阿里系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">阿里系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">阿里系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="inner-tab-panel">
+                        &lt;!&ndash;
+                            描述：用完的流量套餐需要在类名为taocan的div加上类名 on , 同时更改"剩余"的百分比
+                            &ndash;&gt;
+                        <div class="taocan">
+                            <div class="application-commander">
+                                <div class="xiname">
+                                    <span>阿里系</span>
+                                    <div class="angle"></div>
+                                </div>
+                                <div class="exhaust">
+                                    <img src="assets/img/exhaust.png" alt="" />
+                                </div>
+
+                                <div class="categray-title">畅享“阿里系”30G流量套餐</div>
+                                <div class="progress-wrap">
+                                    <div class="progress-bar" data-ydui-progressbar="{type: 'line', strokeWidth: 1, progress: .4, trailColor: '#30c104'}">
+                                    </div>
+                                    <div class="progress flex-box-bet">
+                                        <div class="remainder"><span>剩余63%</span><em>/</em><span>18.8G</span></div>
+                                        <div class="tolal">套餐总流量:<span>30</span>G</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="app-list-box">
+                                <div class="app-list-title">
+                                    <h2>定向流量APP列表</h2>
+                                    <button>一键下载</button>
+                                </div>
+                                <div class="app-list">
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">阿里系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">阿里系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">阿里系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="taocan on">
+                            <div class="application-commander">
+                                <div class="xiname">
+                                    <span>阿里系</span>
+                                    <div class="angle"></div>
+                                </div>
+                                <div class="exhaust">
+                                    <img src="assets/img/exhaust.png" alt="" />
+                                </div>
+
+                                <div class="categray-title">畅享“阿里系”30G流量套餐</div>
+                                <div class="progress-wrap">
+                                    <div class="progress-bar" data-ydui-progressbar="{type: 'line', strokeWidth: 1, progress: .4, trailColor: '#30c104'}">
+                                    </div>
+                                    <div class="progress flex-box-bet">
+                                        <div class="remainder"><span>剩余63%</span><em>/</em><span>18.8G</span></div>
+                                        <div class="tolal">套餐总流量:<span>30</span>G</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="app-list-box">
+                                <div class="app-list-title">
+                                    <h2>定向流量APP列表</h2>
+                                    <button>一键下载</button>
+                                </div>
+                                <div class="app-list">
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">和飞信</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">和飞信</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">和飞信</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="inner-tab-panel">
+                        &lt;!&ndash;
+                            描述：用完的流量套餐需要在类名为taocan的div加上类名 on , 同时更改"剩余"的百分比
+                            &ndash;&gt;
+                        <div class="taocan">
+                            <div class="application-commander">
+                                <div class="xiname">
+                                    <span>腾讯系</span>
+                                    <div class="angle"></div>
+                                </div>
+                                <div class="exhaust">
+                                    <img src="assets/img/exhaust.png" alt="" />
+                                </div>
+
+                                <div class="categray-title">畅享“腾讯系”30G流量套餐</div>
+                                <div class="progress-wrap">
+                                    <div class="progress-bar" data-ydui-progressbar="{type: 'line', strokeWidth: 1, progress: .4, trailColor: '#30c104'}">
+                                    </div>
+                                    <div class="progress flex-box-bet">
+                                        <div class="remainder"><span>剩余63%</span><em>/</em><span>18.8G</span></div>
+                                        <div class="tolal">套餐总流量:<span>30</span>G</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="app-list-box">
+                                <div class="app-list-title">
+                                    <h2>定向流量APP列表</h2>
+                                    <button>一键下载</button>
+                                </div>
+                                <div class="app-list">
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">腾讯系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">腾讯系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">腾讯系</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="taocan on">
+                            <div class="application-commander">
+                                <div class="xiname">
+                                    <span>阿里系</span>
+                                    <div class="angle"></div>
+                                </div>
+                                <div class="exhaust">
+                                    <img src="assets/img/exhaust.png" alt="" />
+                                </div>
+
+                                <div class="categray-title">畅享“阿里系”30G流量套餐</div>
+                                <div class="progress-wrap">
+                                    <div class="progress-bar" data-ydui-progressbar="{type: 'line', strokeWidth: 1, progress: .4, trailColor: '#30c104'}">
+                                    </div>
+                                    <div class="progress flex-box-bet">
+                                        <div class="remainder"><span>剩余63%</span><em>/</em><span>18.8G</span></div>
+                                        <div class="tolal">套餐总流量:<span>30</span>G</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="app-list-box">
+                                <div class="app-list-title">
+                                    <h2>定向流量APP列表</h2>
+                                    <button>一键下载</button>
+                                </div>
+                                <div class="app-list">
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">和飞信</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">和飞信</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appItem">
+                                        <div class="app-detail">
+                                            <img class="app_icon" src="http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/11/a113/691/51691113/logo120x1206647630441-png8.png" alt="">
+                                            <div class="app_info">
+                                                <p class="app_name">和飞信</p>
+                                                <p class="app_intrest">分类：软件</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-button">
+                                            <div class="btn_c1">
+                                                <div class="js-item">
+                                                    <div class="download-btn js-button ignore-pressed app_download_btn fr">
+                                                        <div class="btn-text js-label button_name" data-contentid="300010148338">下载</div>
+                                                        <div class="btn-wrapper">
+                                                            <div class="btn-percent js-progress"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="content">
-                    1、套餐包免流APP包括:
-                    <span class="app-name">优酷视频</span>
-                    <br>
+
+            </div>
+            <div class="tab-panel-item tab-active">
+                <div class="zbtj-wrap">
+                    &lt;!&ndash;爱奇艺&ndash;&gt;
+                    <div class="card first-card">
+                        <div class="header">
+                            <div class="descr">
+                                <div class="title">畅享“爱奇艺”30G流量套餐</div>
+                                <div class="info">
+                                    套餐包免流APP包括：<span class="sub-info">爱奇艺</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fold-pannel">
+                            <div class="text text-ellipsis">
+                                客户端启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下载、缓存第三方视频所产生的流量。
+                                <div class="fold-btn">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="footer flex-box-bet flex-center">
+                            <div class="item">价格:
+                                <span class="price">40元/月</span>
+                                <span class="realy-price">18元/月</span>
+                            </div>
+                            <div class="item mskt-btn" data-id="001">
+                                马上开通
+                            </div>
+                        </div>
+                    </div>
+                    &lt;!&ndash;网易&ndash;&gt;
+                    <div class="card">
+                        <div class="header">
+                            <div class="descr">
+                                <div class="title">畅享“网易态度包”30G流量套餐</div>
+                                <div class="info">
+                                    套餐包免流APP包括：<span class="sub-info">易云音乐 | 网易新闻 | 终结者2 | 梦幻西游 | 大话
+西游 | 倩女幽魂 | 阴阳师 | 决战平安京 | 楚留香</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fold-pannel">
+                            <div class="text text-ellipsis">
+                                客户端启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下载、缓存第三方视频所产生的流量。
+                                <div class="fold-btn">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="footer flex-box-bet flex-center">
+                            <div class="item">价格:
+                                <span class="price">40元/月</span>
+                                <span class="realy-price">18元/月</span>
+                            </div>
+                            <div class="item mskt-btn" data-id="002" >
+                                马上开通
+                            </div>
+                        </div>
+                    </div>
+                    &lt;!&ndash;头条&ndash;&gt;
+                    <div class="card">
+                        <div class="header">
+                            <div class="descr">
+                                <div class="title">畅享“头条包”30G流量套餐</div>
+                                <div class="info">
+                                    套餐包免流APP包括：<span class="sub-info">进入头条 | 抖音短视频 | 火山小视频 | 优酷视频 | 虾米音乐 | 饿了
+                                        么 | 淘票票</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fold-pannel">
+                            <div class="text text-ellipsis">
+                                客户端启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下载、缓存第三方视频所产生的流量。
+                                <div class="fold-btn">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="footer flex-box-bet flex-center">
+                            <div class="item">价格:
+                                <span class="price">40元/月</span>
+                                <span class="realy-price">18元/月</span>
+                            </div>
+                            <div class="item mskt-btn" data-id="003" >
+                                马上开通
+                            </div>
+                        </div>
+                    </div>
+                    &lt;!&ndash;优酷&ndash;&gt;
+                    <div class="card">
+                        <div class="header">
+                            <div class="descr">
+                                <div class="title">畅享“优酷”15G流量套餐</div>
+                                <div class="info">
+                                    套餐包免流APP包括：<span class="sub-info">优酷</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fold-pannel">
+                            <div class="text text-ellipsis">
+                                客户端启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下载、缓存第三方视频所产生的流量。
+                                <div class="fold-btn">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="footer flex-box-bet flex-center">
+                            <div class="item">价格:
+                                <span class="price">20元/月</span>
+                                <span class="realy-price">9元/月</span>
+                            </div>
+                            <div class="item mskt-btn" data-id="004">
+                                马上开通
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>
+<!--弹窗-->
+<div class="pop-com  pop-wrap pop-big"  style="display: none" >
+    <div class="pop-b">
+        <div class="pop">
+            <div class="header">
+                <p>畅享“优酷”30G流量套餐</p>
+            </div>
+            <div class="content">
+                1、套餐包免流APP包括:
+                <span class="app-name">优酷视频</span>
+                <div class="desc">
                     2、免流范围不包括优酷视频APP中的以下内容：客户端
                     <br>
                     启动、登录及客户端内的图片、文字、视频内插播广
@@ -762,33 +1472,35 @@
                     3、本活动各种的流量当月清零、不能分享、不能转赠。
                     <br>
                     4、更多业务规则详询10086。
-                    <div class="zhezhao"></div>
                 </div>
-                <div class="xieyi">
-                    <div class="checkbox">
-                        <label class="flex-box-bet flex-center">
-                            <input type="checkbox" checked="checked"  value="checked" name="checkbox">
-                            <div class="option"></div>
-                            <span class="opt-text">我同意畅享优酷30G流量套餐用户协议</span>
-                        </label>
-                    </div>
+                <br>
+                <div class="zhezhao"></div>
+            </div>
+            <div class="xieyi">
+                <div class="checkbox">
+                    <label class="flex-box-bet flex-center">
+                        <input type="checkbox" checked="checked"  value="checked" name="checkbox">
+                        <div class="option"></div>
+                        <span class="opt-text">我同意畅享优酷30G流量套餐用户协议</span>
+                    </label>
                 </div>
-                <div class="price-wrap">
-                    价格: <span class="price">20元/月</span>
-                    <span class="real-price">9元/月</span>
+            </div>
+            <div class="price-wrap">
+                价格: <span class="price">20元/月</span>
+                <span class="real-price">9元/月</span>
+            </div>
+            <div class="btn-group">
+                <div class="item cancle">
+                    取消
                 </div>
-                <div class="btn-group">
-                    <div class="item cancle">
-                        取消
-                    </div>
-                    <div class="item comfirm">
-                        马上开通
-                    </div>
+                <div class="item comfirm">
+                    马上开通
                 </div>
             </div>
         </div>
     </div>
-    <div class="pop-com toast" style="display: none">开通成功</div>
+</div>
+<div class="pop-com toast" style="display: none">开通成功</div>
 </body>
 
 </html>

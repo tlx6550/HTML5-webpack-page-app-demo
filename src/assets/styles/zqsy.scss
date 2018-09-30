@@ -1,6 +1,9 @@
 @import 'variables';
 @import 'normalize';
-@import 'ydui.css';
+
+/*@import 'ydui.css';*/
+@import '../../css/swiper.min.css';  //ww
+@import 'swiper.scss';//swiper
 @import 'app-list.scss';
 @import 'btn.css';
 $line:#ececec;
@@ -101,7 +104,7 @@ ol, ul {
     color:#666;
     font-size: .16rem;
   }
-  .nva-tab-wrap{
+ /* .nva-tab-wrap{
     .tab-nav{
        margin:0;
       padding:0;
@@ -124,7 +127,7 @@ ol, ul {
         font-size: .16rem;
       }
     }
-  }
+  }*/
   .progress{
     font-size: .14rem;
     color:#666;
