@@ -4,8 +4,9 @@
 /*@import 'ydui.css';*/
 @import '../../css/swiper.min.css';  //ww
 @import 'swiper.scss';//swiper
-@import 'app-list.scss';
 @import 'btn.css';
+@import 'mmapp.css';
+@import 'app-list.scss';
 $line:#ececec;
 $blue:#139fef;
 $text6:#666666;
@@ -19,12 +20,13 @@ $orange:#ff6c00;
 ol, ul {
   list-style: none;
 }
+
 @keyframes zoomIn {
   from {
     opacity: 0;
     transform: scale3d(.3, .3, .3);
   }
-  60% {
+  100% {
     opacity: 1;
   }
 }
@@ -42,6 +44,9 @@ ol, ul {
 }
 .flex-item{
   flex: 1;
+}
+.swiper-slide{
+  text-align: inherit;
 }
 .yjxz-btn{
   color:$blue;
@@ -372,14 +377,12 @@ ol, ul {
     border-radius: .1rem;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%,0);
     animation: zoomIn .15s ease forwards;
     transform-origin:left;
     background: url(../img/card-bg.png)no-repeat;
     background-size: 100%;
     box-sizing: border-box;
-    width: 90%;
     background-color: #fff;
     padding:.75rem .5rem 0 .5rem;
   }
@@ -436,4 +439,15 @@ ol, ul {
     padding:0 .3rem;
   }
 }
-
+.swiper-pagination-bullet-active:before {
+  content: '';
+  width: 70%;
+  height: .08rem;
+  border-radius: .04rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  margin-left: -35%;
+  z-index: 4;
+  background-color: $blue;
+}

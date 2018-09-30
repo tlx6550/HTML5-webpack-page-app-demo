@@ -4,7 +4,13 @@
 import '../assets/styles/zqsy.scss';
 import $ from '../js/jquery.min.js';
 import '../assets/js/swiper.min.js';
-import {flexible} from '../assets/js/flexible.js';
+import  '../assets/js/flexible.js';
+
+// app download
+import '../js/mmdl.js';
+import '../js/mmapp.js';
+import initAllApp from '../js/tab_control.js';
+
 const appName = {
     '001': 'aiqiyi',
     '002': 'wangyi',
@@ -20,19 +26,48 @@ $(".inner-tab-nav-item").click(function(){
     $(".inner-tab-panel").eq(index).addClass("on");
 })
 
+
+initAllApp();
+
+
 // 滑动
 // ww: swiper
-let swiper = new Swiper('.swiper-container', {
-    autoHeight: true,
-    pagination: '.swiper-pagination',
-    paginationClickable: true,
-    paginationBulletRender: function (swiper, index, className) {
-        var tabs = ['应用管理', '重磅推荐'];
-        return '<div class="' + className + '">' + tabs[index] + '</div>';
+function initSwiper() {
+    new Swiper('.swiper-container', {
+        autoHeight: true,
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        observer:true,//修改swiper自己或子元素时，自动初始化swiper
+        observeParents:false,//修改swiper的父元素时，自动初始化swiper
+        paginationBulletRender: function (swiper, index, className) {
+            var tabs = ['应用管理', '重磅推荐'];
+            return '<div class="' + className + '">' + tabs[index] + '</div>';
+        }
+    });
+}
+setTimeout(()=>{
+    initSwiper();
+},300)
+$(document).on("click", ".inner-tab-nav-item", function() {
+    initSwiper();
+})
+// 解决弹窗弹窗字体模糊问题,宽度一定要是偶数
+window.onload = function () {
+    const doc = window.document;
+    const win  = window
+    const or = 'orientationchange' in win ? 'orientationchange' : 'resize'
+    function _refreshRem() {
+        const docEle = doc.documentElement;
+        const s = docEle.style.fontSize
+        const fontSize =Math.round( parseInt(s) * 10.08/ 2) * 2
+        $('.pop').css('width',fontSize + 'px');
     }
-});
-
-
+    if(doc.addEventListener){
+        win.addEventListener(or, _refreshRem, false);
+        doc.addEventListener("DOMContentLoaded", _refreshRem, false);
+    }
+    _refreshRem();
+}
 // 折叠
 $('div.card').find('.fold-btn').on('click', function(e) {
     e.stopPropagation();
@@ -40,7 +75,7 @@ $('div.card').find('.fold-btn').on('click', function(e) {
     $(this).parent().toggleClass('text-ellipsis');
 })
 // 去除遮罩
-$('div.pop-wrap').find('.content').on('touchstart', function(e) {
+$('div.pop-wrap').on('touchstart','.content', function(e) {
     e.stopPropagation();
     $(this).children('.zhezhao').hide();
 })
@@ -48,6 +83,7 @@ $('div.pop-wrap').find('.content').on('touchstart', function(e) {
 $('div.card').find('.mskt-btn').on('click', function(e) {
     e.stopPropagation();
     appId = $(this).data('id')
+    addContent();
     $('.pop-big').show();
 })
 $('div.xiangqingye-wrap').find('.comfirm').on('click', function(e) {
@@ -55,17 +91,45 @@ $('div.xiangqingye-wrap').find('.comfirm').on('click', function(e) {
     $('.toast').show();
     setTimeout(()=>{
         $('.toast').hide();
-    },2000);
+    },1000);
 })
+
+function appendData(name){
+    var storage = window.sessionStorage;
+    var val = storage['allApp'];
+    val = JSON.parse(val);
+    val.push(name);
+    val = JSON.stringify(val);
+    storage['allApp'] = val;
+}
+
 $('div.pop-big').find('.comfirm').on('click', function(e) {
     e.stopPropagation();
     const val = $(this).parent().parent().children('.xieyi').find('input[type=checkbox]').is(':checked')
     if(!val)return
+    switch(appId)
+    {
+        case '001':
+            appendData(aiqiyi)
+            break;
+        case '002':
+            appendData(wangyi)
+            break;
+        case '003':
+            appendData(youku)
+            break;
+        case '004':
+            appendData(toutiao)
+            break;
+        default:
+
+    }
+    initAllApp();
     $('.toast').show();
     setTimeout(()=>{
         $('.toast').hide();
-        hidePop()
-    },2000);
+        hidePop();
+    },1000);
     /* 开通了的按钮变灰 */
     $('div.card').find('.mskt-btn').each(function () {
         if( $(this).data('id') == appId){
@@ -81,17 +145,21 @@ $('div.pop-big').find('.cancle').on('click', function(e) {
 
 // 弹窗加载内容
 function addContent(){
-    const content = $('<div class="desc">
-    + '2、免流范围不包括优酷视频APP中的以下内容：客户端' +
-    + '<br>' +
-       '启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下 载、缓存第三方视频所产生的流量、下载、缓存视频。'+
-    + '<br>'+ ' 3、本活动各种的流量当月清零、不能分享、不能转赠。'+ '<br>' +'4、更多业务规则详询10086。'+ '</div>')
-    $('div.pop-big').find('.desc')
+    var html = '<div class="content ">'
+        + '1、套餐包免流APP包括:'
+        + '<span class="app-name">优酷视频</span> <br>'
+        + '2、免流范围不包括优酷视频APP中的以下内容：客户端'
+        + '<br>'
+        +   '启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下 载、缓存第三方视频所产生的流量、下载、缓存视频。'
+        + '<br>'+ ' 3、本活动各种的流量当月清零、不能分享、不能转赠。'+ '<br>' +'4、更多业务规则详询10086。'
+        + '<div class="zhezhao"></div>'
+        + '</div>'
+    $('div.pop-big .header').after(html);
 }
 // 弹窗消失
 function hidePop(){
+    $('div.pop-big .header').next().remove()
     $('.pop-com').hide();
-    $('div.pop-wrap').find('.zhezhao').show();
 }
 // 点击阴影区域弹窗消失
 /* $('.pop-b').click(function (e) {
@@ -620,3 +688,164 @@ function hidePop(){
     $.fn.progressBar = Plugin;
 
 }(window);
+
+
+let aiqiyi = {
+    name: '爱奇艺',
+    data: [{
+        name: "爱奇艺",
+        category: "软件",
+        packagename: "com.qiyi.video",
+        ver: "81160",
+        contentId: "300002478830",
+        iconUrl: "../assets/img/image013.png",
+        url: "http://a.10086.cn/pams2/l/s.do?gId=300002478830&c=1528&p=72&j=l&ver=2&src=5210519579",
+    }]
+}
+let wangyi = {
+    name: '网易态度包',
+    data: [{
+        name: "网易云音乐",
+        category: "软件",
+        packagename: "com.netease.cloudmusic",
+        ver: "125",
+        contentId: "300009212575",
+        iconUrl: "../assets/img/image017.png",
+        url: "http://a.10086.cn/pams2/l/s.do?gId=300009212575&c=1528&p=72&j=l&ver=2&src=5210519579",
+    },
+        {
+            name: "网易新闻",
+            category: "软件",
+            packagename: "com.netease.newsreader.activity",
+            ver: "906",
+            contentId: "300008402837",
+            iconUrl: "../assets/img/image009.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=300008402837&c=1528&p=72&j=l&ver=2&src=5210519579",
+        },
+        {
+            name: "终结者2",
+            category: "软件",
+            packagename: "com.netease.zjz",
+            ver: "244268",
+            contentId: "300011494396",
+            iconUrl: "../assets/img/image019.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=300011494396&c=1528&p=72&j=l&ver=2&src=5210519579",
+        },
+        {
+            name: "梦幻西游",
+            category: "软件",
+            packagename: "com.netease.my",
+            ver: "11860",
+            contentId: "300009508195",
+            iconUrl: "../assets/img/image021.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=300009508195&c=1528&p=72&j=l&ver=2&src=5210519579",
+        },
+        {
+            name: "大话西游",
+            category: "软件",
+            packagename: "com.netease.dhxy",
+            ver: "",
+            contentId: "300009486307",
+            iconUrl: "../assets/img/image023.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=300009486307&c=1528&p=72&j=l&ver=2&src=5210519579",
+        },
+        {
+            name: "倩女幽魂",
+            category: "软件",
+            packagename: "com.netease.l10",
+            ver: "48",
+            contentId: "300009670205",
+            iconUrl: "../assets/img/image025.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=300009670205&c=1528&p=72&j=l&ver=2&src=5210519579",
+        },
+        {
+            name: "阴阳师 ",
+            category: "软件",
+            packagename: "com.netease.onmyoji",
+            ver: "",
+            contentId: "300009968304",
+            iconUrl: "../assets/img/image027.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=300009968304&c=1528&p=72&j=l&ver=2&src=5210519579",
+        },
+        {
+            name: "决战平安京",
+            category: "软件",
+            packagename: "com.netease.moba",
+            ver: "125",
+            contentId: "300011869498",
+            iconUrl: "../assets/img/image029.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=300011869498&c=1528&p=72&j=l&ver=2&src=5210519579",
+        },
+        {
+            name: "楚留香",
+            category: "软件",
+            packagename: "com.netease.wyclx",
+            ver: "3",
+            contentId: "300011494396",
+            iconUrl: "../assets/img/image031.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=300011853831&c=1528&p=72&j=l&ver=2&src=5210519579",
+        }
+    ]
+}
+let youku = {
+    name: '优酷',
+    data: [{
+        name: "优酷",
+        category: "看动漫",
+        packagename: "com.youku.phone",
+        ver: "169",
+        contentId: "330000003368",
+        iconUrl: "../assets/img/image011.png",
+        url: "http://a.10086.cn/pams2/l/s.do?gId=330000003368&c=1528&p=72&j=l&ver=2&src=5210519579",
+    }]
+}
+let toutiaobao = {
+    name: '头条包',
+    exhaust: false,
+    data: [{
+        name: "今日头条",
+        category: "软件",
+        packagename: "com.ss.android.article.news",
+        ver: "692",
+        contentId: "300011857013",
+        iconUrl: "../assets/img/image001.png",
+        url: "http://a.10086.cn/pams2/l/s.do?gId=300011857013&c=1528&p=72&j=l&ver=2&src=5210519579",
+    },
+        {
+            name: "抖音短视频",
+            category: "短视频",
+            packagename: "com.ss.android.ugc.aweme",
+            ver: "280",
+            contentId: "300011010385",
+            iconUrl: "../assets/img/image003.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=300011010385&c=1528&p=72&j=l&ver=2&src=5210519579 ",
+        },
+        {
+            name: "火山小视频",
+            category: "",
+            packagename: "com.ss.android.ugc.live",
+            ver: "480",
+            contentId: "300011853723",
+            iconUrl: "../assets/img/image005.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=300011853723&c=1528&p=72&j=l&ver=2&src=5210519579",
+        },
+        {
+            name: "懂车帝",
+            category: "",
+            packagename: "com.ss.android.auto",
+            ver: "402",
+            contentId: "330000005508",
+            iconUrl: "../assets/img/image007.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=330000005508&c=1528&p=72&j=l&ver=2&src=5210519579",
+        },
+        {
+            name: "悟空问答",
+            category: "",
+            packagename: "com.ss.android.article.wenda",
+            ver: "263",
+            contentId: "330000005508",
+            iconUrl: "../assets/img/image005.png",
+            url: "http://a.10086.cn/pams2/l/s.do?gId=330000005508&c=1528&p=72&j=l&ver=2&src=5210519579",
+        }
+    ]
+}
