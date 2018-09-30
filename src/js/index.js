@@ -95,7 +95,7 @@ $('div.card').find('.mskt-btn').on('click', function(e) {
 })
 $('div.xiangqingye-wrap').find('.comfirm').on('click', function(e) {
     e.stopPropagation();
-    $('.toast').show();
+    $('#toastS').show();
     setTimeout(()=>{
         $('.toast').hide();
     },1000);
@@ -126,13 +126,13 @@ $('div.pop-big').find('.comfirm').on('click', function(e) {
             appendData(youku)
             break;
         case '004':
-            appendData(toutiao)
+            appendData(toutiaobao)
             break;
         default:
 
     }
     initAllApp();
-    $('.toast').show();
+    $('#toastS').show();
     setTimeout(()=>{
         $('.toast').hide();
         hidePop();

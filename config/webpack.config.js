@@ -70,9 +70,8 @@ const config = {
     context: projectDir + '/src',
     // 左边是chuncks名称，右边是入口地址
     entry: {
-        'index': './index.js',
-        'zqsy': './js/zqsy.js',
-        'xiangqingye': './js/zqsy.js',
+        'index': './js/index.js',
+        'xiangqingye': './js/index.js',
     },
     output: {
         filename: isDev ? '[name].js' : '[name].[chunkhash].js',
@@ -180,14 +179,8 @@ const config = {
         new HtmlWebpackPlugin({
             chunks: ['index'],
             template: './index.html',
+            filename: 'index.html'
         }),
-
-        new HtmlWebpackPlugin({
-            chunks: ['zqsy'],
-            template: './zqsy.html',
-            filename: 'zqsy.html'
-        }
-        ),
         new HtmlWebpackPlugin({
             chunks: ['xiangqingye'],
             template: './xiangqingye.html',
