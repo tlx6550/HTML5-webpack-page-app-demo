@@ -82,6 +82,13 @@ $('div.pop-wrap').on('touchstart','.content', function(e) {
 // 马上开通
 $('div.card').find('.mskt-btn').on('click', function(e) {
     e.stopPropagation();
+    if($(this).hasClass('active')){
+        $('.had-kai').show()
+        setTimeout(()=>{
+            $('.had-kai').hide()
+        },1000)
+        return
+    }
     appId = $(this).data('id')
     addContent();
     $('.pop-big').show();
