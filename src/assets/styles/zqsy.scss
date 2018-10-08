@@ -262,7 +262,7 @@ ol, ul {
   }
 }
 .xieyi{
-  margin-top: .8rem;
+  margin: .8rem 0;
   text-align: center;
   font-size: .36rem;
   color:$blue;
@@ -331,6 +331,42 @@ ol, ul {
     background-color: $blue;
     color: #fff;
   }
+  .default{
+    background-color: #fff;
+    color:  $line;
+    border:.03rem solid $line;
+  }
+}
+//可选服务
+.option-service{
+  .item{
+    margin:.1rem 0;
+    .title{
+      display: inline-block;
+      flex: 0 0 2rem;
+      width: 2rem;
+      color:$text6;
+      font-size: .36rem;
+    }
+    .select-btn,.price,.pay-way{
+      display: inline-block;
+      box-sizing: border-box;
+      font-size: .36rem;
+      color:$text3;
+      padding:.2rem;
+      margin-right: .3rem;
+      border:.03rem solid $line;
+      border-radius: 0.15rem;
+    }
+
+    .price{
+      border:none;
+      color:$orange;
+    }
+    .active{
+      border:.03rem solid $orange;
+    }
+  }
 }
 /*
 弹窗*/
@@ -352,6 +388,7 @@ ol, ul {
     }
     .content{
       position: relative;
+      margin-bottom: .4rem;
       color: $text6;
       font-size: .36rem;
       line-height: 0.7rem;

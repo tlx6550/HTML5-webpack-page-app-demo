@@ -10,169 +10,6 @@ import  '../assets/js/flexible.js';
 import '../js/mmdl.js';
 import '../js/mmapp.js';
 import initAllApp from '../js/tab_control.js';
-
-const appName = {
-    '001': 'aiqiyi',
-    '002': 'wangyi',
-    '003': 'toutiao',
-    '004': 'youku'
-}
-let appId = ''
-$(".inner-tab-nav-item").click(function(){
-    var index = $(this).index();
-    $('.inner-tab-nav-item').removeClass("on");
-    $(".inner-tab-panel").removeClass("on");
-    $(this).addClass("on");
-    $(".inner-tab-panel").eq(index).addClass("on");
-})
-
-
-initAllApp();
-
-
-// 滑动
-// ww: swiper
-function initSwiper() {
-    new Swiper('.swiper-container', {
-        autoHeight: true,
-        pagination: '.swiper-pagination',
-        paginationClickable: true,
-        observer:true,//修改swiper自己或子元素时，自动初始化swiper
-        observeParents:false,//修改swiper的父元素时，自动初始化swiper
-        paginationBulletRender: function (swiper, index, className) {
-            var tabs = ['应用管理', '重磅推荐'];
-            return '<div class="' + className + '">' + tabs[index] + '</div>';
-        }
-    });
-}
-setTimeout(()=>{
-    initSwiper();
-},300)
-$(document).on("click", ".inner-tab-nav-item", function() {
-    initSwiper();
-})
-// 解决弹窗弹窗字体模糊问题,宽度一定要是偶数
-window.onload = function () {
-    const doc = window.document;
-    const win  = window
-    const or = 'orientationchange' in win ? 'orientationchange' : 'resize'
-    function _refreshRem() {
-        const docEle = doc.documentElement;
-        const s = docEle.style.fontSize
-        const fontSize =Math.round( parseInt(s) * 10.08/ 2) * 2
-        $('.pop').css('width',fontSize + 'px');
-    }
-    if(doc.addEventListener){
-        win.addEventListener(or, _refreshRem, false);
-        doc.addEventListener("DOMContentLoaded", _refreshRem, false);
-    }
-    _refreshRem();
-}
-// 折叠
-$('div.card').find('.fold-btn').on('click', function(e) {
-    e.stopPropagation();
-    $(this).toggleClass('show-up-arrow')
-    $(this).parent().toggleClass('text-ellipsis');
-})
-// 去除遮罩
-$('div.pop-wrap').on('touchstart','.content', function(e) {
-    e.stopPropagation();
-    $(this).children('.zhezhao').hide();
-})
-// 马上开通
-$('div.card').find('.mskt-btn').on('click', function(e) {
-    e.stopPropagation();
-    if($(this).hasClass('active')){
-        $('.had-kai').show()
-        setTimeout(()=>{
-            $('.had-kai').hide()
-        },1000)
-        return
-    }
-    appId = $(this).data('id')
-    addContent();
-    $('.pop-big').show();
-})
-$('div.xiangqingye-wrap').find('.comfirm').on('click', function(e) {
-    e.stopPropagation();
-    $('#toastS').show();
-    setTimeout(()=>{
-        $('.toast').hide();
-    },1000);
-})
-
-function appendData(name){
-    var storage = window.sessionStorage;
-    var val = storage['allApp'];
-    val = JSON.parse(val);
-    val.push(name);
-    val = JSON.stringify(val);
-    storage['allApp'] = val;
-}
-
-$('div.pop-big').find('.comfirm').on('click', function(e) {
-    e.stopPropagation();
-    const val = $(this).parent().parent().children('.xieyi').find('input[type=checkbox]').is(':checked')
-    if(!val)return
-    switch(appId)
-    {
-        case '001':
-            appendData(aiqiyi)
-            break;
-        case '002':
-            appendData(wangyi)
-            break;
-        case '003':
-            appendData(youku)
-            break;
-        case '004':
-            appendData(toutiaobao)
-            break;
-        default:
-
-    }
-    initAllApp();
-    $('#toastS').show();
-    setTimeout(()=>{
-        $('.toast').hide();
-        hidePop();
-    },1000);
-    /* 开通了的按钮变灰 */
-    $('div.card').find('.mskt-btn').each(function () {
-        if( $(this).data('id') == appId){
-            $(this).addClass('active');
-        }
-    });
-})
-// 取消
-$('div.pop-big').find('.cancle').on('click', function(e) {
-    e.stopPropagation();
-    hidePop();
-})
-
-// 弹窗加载内容
-function addContent(){
-    var html = '<div class="content ">'
-        + '1、套餐包免流APP包括:'
-        + '<span class="app-name">优酷视频</span> <br>'
-        + '2、免流范围不包括优酷视频APP中的以下内容：客户端'
-        + '<br>'
-        +   '启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下 载、缓存第三方视频所产生的流量、下载、缓存视频。'
-        + '<br>'+ ' 3、本活动各种的流量当月清零、不能分享、不能转赠。'+ '<br>' +'4、更多业务规则详询10086。'
-        + '<div class="zhezhao"></div>'
-        + '</div>'
-    $('div.pop-big .header').after(html);
-}
-// 弹窗消失
-function hidePop(){
-    $('div.pop-big .header').next().remove()
-    $('.pop-com').hide();
-}
-// 点击阴影区域弹窗消失
-/* $('.pop-b').click(function (e) {
-    e.stopPropagation();
-    $('.pop-com').hide();
-}) */
 /**
  * ydui main
  */
@@ -696,6 +533,221 @@ function hidePop(){
 
 }(window);
 
+const appName = {
+    '001': 'aiqiyi',
+    '002': 'wangyi',
+    '003': 'toutiao',
+    '004': 'youku'
+}
+let appId = ''
+
+
+
+initAllApp();
+
+
+// 滑动
+// ww: swiper
+function initSwiper() {
+    new Swiper('.swiper-container', {
+        autoHeight: true,
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        observer:true,//修改swiper自己或子元素时，自动初始化swiper
+        observeParents:false,//修改swiper的父元素时，自动初始化swiper
+        paginationBulletRender: function (swiper, index, className) {
+            var tabs = ['我的流量应用', '重磅推荐'];
+            return '<div class="' + className + '">' + tabs[index] + '</div>';
+        },
+        onSlideChangeEnd:function(swiper){
+            swiperChangeIndexActive(swiper.activeIndex)
+        },
+    });
+}
+setTimeout(()=>{
+    initSwiper();
+},500)
+//当点击开通包某个标签后切换状态不对的bug
+function swiperChangeIndexActive(index){
+    $('.swiper-pagination').children('.swiper-pagination-bullet')
+        .removeClass('swiper-pagination-bullet-active').eq(index)
+        .addClass('swiper-pagination-bullet-active')
+}
+$(document).on("click", ".inner-tab-nav-item", function() {
+    initSwiper();
+})
+// 解决弹窗弹窗字体模糊问题,宽度一定要是偶数
+window.onload = function () {
+    const doc = window.document;
+    const win  = window
+    const or = 'orientationchange' in win ? 'orientationchange' : 'resize'
+    function _refreshRem() {
+        const docEle = doc.documentElement;
+        const s = docEle.style.fontSize
+        const fontSize =Math.round( parseInt(s) * 10.08/ 2) * 2
+        $('.pop').css('width',fontSize + 'px');
+    }
+    if(doc.addEventListener){
+        win.addEventListener(or, _refreshRem, false);
+        doc.addEventListener("DOMContentLoaded", _refreshRem, false);
+    }
+    _refreshRem();
+}
+// 折叠
+$('div.card').find('.fold-btn').on('click', function(e) {
+    e.stopPropagation();
+    $(this).toggleClass('show-up-arrow')
+    $(this).parent().toggleClass('text-ellipsis');
+})
+// 去除遮罩
+$('div.pop-wrap').on('touchstart','.content', function(e) {
+    e.stopPropagation();
+    $(this).children('.zhezhao').hide();
+})
+// 马上开通
+$('div.card').find('.mskt-btn').on('click', function(e) {
+    e.stopPropagation();
+    if($(this).hasClass('active')){
+        $('.had-kai').show()
+        setTimeout(()=>{
+            $('.had-kai').hide()
+        },1000)
+        return
+    }
+    appId = $(this).data('id')
+    addContent();
+    $('.pop-big').show();
+})
+$('div.xiangqingye-wrap .main').find('.comfirm').on('click', function(e) {
+    e.stopPropagation();
+    $('#toastS').show();
+    setTimeout(()=>{
+        $('.toast').hide();
+    },1000);
+})
+
+function appendData(name){
+    var storage = window.sessionStorage;
+    var val = storage['allApp'];
+    val = JSON.parse(val);
+    val.push(name);
+    val = JSON.stringify(val);
+    storage['allApp'] = val;
+}
+
+$('div.pop-big').find('.comfirm').on('click', function(e) {
+    e.stopPropagation();
+    const val = $(this).parent().parent().children('.xieyi').find('input[type=checkbox]').is(':checked')
+    if(!val)return
+    switch(appId)
+    {
+        case '001':
+            appendData(aiqiyi)
+            break;
+        case '002':
+            appendData(wangyi)
+            break;
+        case '003':
+            appendData(youku)
+            break;
+        case '004':
+            appendData(toutiaobao)
+            break;
+        default:
+
+    }
+    initAllApp();
+    $('#toastS').show();
+    setTimeout(()=>{
+        $('.toast').hide();
+        hidePop();
+    },1000);
+    /* 开通了的按钮变灰 */
+    $('div.card').find('.mskt-btn').each(function () {
+        if( $(this).data('id') == appId){
+            $(this).addClass('active');
+            //已开通的显示已开通
+            $(this).text('已开通')
+        }
+    });
+})
+// 取消
+$('div.pop-big').find('.cancle').on('click', function(e) {
+    e.stopPropagation();
+    hidePop();
+})
+
+// 弹窗加载内容
+function addContent(){
+    var html = '<div class="content ">'
+        + '1、套餐包免流APP包括:'
+        + '<span class="app-name">优酷视频</span> <br>'
+        + '2、免流范围不包括优酷视频APP中的以下内容：客户端'
+        + '<br>'
+        +   '启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下 载、缓存第三方视频所产生的流量、下载、缓存视频。'
+        + '<br>'+ ' 3、本活动各种的流量当月清零、不能分享、不能转赠。'+ '<br>' +'4、更多业务规则详询10086。'
+        + '<div class="zhezhao"></div>'
+        + '</div>'
+    $('div.pop-big .header').after(html);
+}
+// 弹窗消失
+function hidePop(){
+    $('div.pop-big .header').next().remove()
+    $('.pop-com').hide();
+}
+// 可选服务功能
+!function () {
+    //马上支付状态改变
+    function checkPayBtnState() {
+        const tag = $('div.pop-big').find('.pay-way').hasClass('active')
+        const btn = $('div.pop-big .btn-group').find('.comfirm');
+        if(tag){
+            btn.removeClass('default')
+        }else{
+            btn.addClass('default')
+        }
+    }
+    // 价格变动
+    function checkPayPriceState(initPice) {
+        var price =  new Array()
+        price.push(initPice)
+        $('div.option-service').find('.select').each(function () {
+            let optionPrice = 0
+            const id = $(this).data('id')
+            if($(this).hasClass('active')){
+               if( id=='aiqiyi-month-vip'){
+                   optionPrice = 10
+               }else if( id =='tv-box'){
+                   optionPrice = 100
+               }
+            }
+            price.push(optionPrice)
+        })
+        function getSum(total, num) {
+            return total + num;
+        }
+        const P =  price.reduce(getSum)
+        console.log(P)
+        $('div.pop-big').find('.price').text(P+'元')
+    }
+    // 套餐选择
+    $('div.pop-big').find('.select-btn').on('click', function(e) {
+        $(this).toggleClass('active');
+        //套餐传一个默认价格
+        setTimeout(()=>{
+            checkPayPriceState(18)
+        },200)
+
+    })
+    //支付方式
+    $('div.pop-big').find('.pay-way').on('click', function(e) {
+        $(this).toggleClass('active');
+        checkPayBtnState()
+    })
+}();
+
+
+
 
 let aiqiyi = {
     name: '爱奇艺',
@@ -706,7 +758,7 @@ let aiqiyi = {
         ver: "81160",
         contentId: "300002478830",
         iconUrl: "../assets/img/image013.png",
-        url: "http://a.10086.cn/pams2/l/s.do?gId=300002478830&c=1528&p=72&j=l&ver=2&src=5210519579",
+        url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519196833100001755288300002478830&MD5=fa948d381568d8e662ef2d7eb267770b&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
     }]
 }
 let wangyi = {
@@ -718,7 +770,7 @@ let wangyi = {
         ver: "125",
         contentId: "300009212575",
         iconUrl: "../assets/img/image017.png",
-        url: "http://a.10086.cn/pams2/l/s.do?gId=300009212575&c=1528&p=72&j=l&ver=2&src=5210519579",
+        url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519374031100010486288300009212575&MD5=1e61f52071a126b1183975a34b41528b&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
     },
         {
             name: "网易新闻",
@@ -727,7 +779,7 @@ let wangyi = {
             ver: "906",
             contentId: "300008402837",
             iconUrl: "../assets/img/image009.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=300008402837&c=1528&p=72&j=l&ver=2&src=5210519579",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519374031100007351775300008402837&MD5=5493ef32d21441a57fdea575c149bf81&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         },
         {
             name: "终结者2",
@@ -736,7 +788,7 @@ let wangyi = {
             ver: "244268",
             contentId: "300011494396",
             iconUrl: "../assets/img/image019.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=300011494396&c=1528&p=72&j=l&ver=2&src=5210519579",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519313096100011542071300011494396&MD5=337582ecf82465f57cb9828b32718597&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         },
         {
             name: "梦幻西游",
@@ -745,7 +797,7 @@ let wangyi = {
             ver: "11860",
             contentId: "300009508195",
             iconUrl: "../assets/img/image021.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=300009508195&c=1528&p=72&j=l&ver=2&src=5210519579",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519313096100010886739300009508195&MD5=cb2f95c87eed12307a7b1cf3267af6f8&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         },
         {
             name: "大话西游",
@@ -754,7 +806,7 @@ let wangyi = {
             ver: "",
             contentId: "300009486307",
             iconUrl: "../assets/img/image023.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=300009486307&c=1528&p=72&j=l&ver=2&src=5210519579",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519313096100010762630300009486307&MD5=7c8a06deeb6cb52890e616f427aedaff&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         },
         {
             name: "倩女幽魂",
@@ -762,35 +814,35 @@ let wangyi = {
             packagename: "com.netease.l10",
             ver: "48",
             contentId: "300009670205",
-            iconUrl: "../assets/img/image025.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=300009670205&c=1528&p=72&j=l&ver=2&src=5210519579",
+            iconUrl: "http://u5.fr18.mmarket.com:80/rs/res2/21/2018/08/29/a103/660/51660103/logo120x1205532773133-png8.png",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519313096100011030624300009670205&MD5=95eaeef29c982667a3c849a63708c41f&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         },
         {
             name: "阴阳师 ",
             category: "软件",
             packagename: "com.netease.onmyoji",
-            ver: "",
+            ver: "48",
             contentId: "300009968304",
-            iconUrl: "../assets/img/image027.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=300009968304&c=1528&p=72&j=l&ver=2&src=5210519579",
+            iconUrl: "http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/19/a604/709/51709604/logo120x1207345546481-png8.png",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519313096100011051448300009968304&MD5=999d6db0c6397f944a44f6bbd335962c&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         },
         {
             name: "决战平安京",
             category: "软件",
             packagename: "com.netease.moba",
             ver: "125",
-            contentId: "300011869498",
+            contentId: "300011853240",
             iconUrl: "../assets/img/image029.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=300011869498&c=1528&p=72&j=l&ver=2&src=5210519579",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519432187100011549817300011853240&MD5=ceaef16bd207fe008b9a8f23d120e29c&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         },
         {
             name: "楚留香",
             category: "软件",
             packagename: "com.netease.wyclx",
             ver: "3",
-            contentId: "300011494396",
-            iconUrl: "../assets/img/image031.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=300011853831&c=1528&p=72&j=l&ver=2&src=5210519579",
+            contentId: "300011853831",
+            iconUrl: "http://u5.fr18.mmarket.com:80/rs/res2/21/2018/02/02/a816/223/51223816/logo120x1207536462000-png8.png",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519313096100011553259300011853831&MD5=cb4c6c12d03cddd7edad83a6edd77ede&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         }
     ]
 }
@@ -802,13 +854,13 @@ let youku = {
         packagename: "com.youku.phone",
         ver: "169",
         contentId: "330000003368",
-        iconUrl: "../assets/img/image011.png",
-        url: "http://a.10086.cn/pams2/l/s.do?gId=330000003368&c=1528&p=72&j=l&ver=2&src=5210519579",
+        iconUrl: "http://u5.fr18.mmarket.com:80/rs/res2/21/2018/09/27/a219/731/51731219/logo120x1208039870786-png8.png",
+        url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519111899100000575958300000033601&MD5=28aa6cc589a423dbb593e9568e782d15&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
     }]
 }
 let toutiaobao = {
     name: '头条包',
-    exhaust: false,
+    present: '63%',
     data: [{
         name: "今日头条",
         category: "软件",
@@ -816,7 +868,7 @@ let toutiaobao = {
         ver: "692",
         contentId: "300011857013",
         iconUrl: "../assets/img/image001.png",
-        url: "http://a.10086.cn/pams2/l/s.do?gId=300011857013&c=1528&p=72&j=l&ver=2&src=5210519579",
+        url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519380247100011554055300011857013&MD5=c2bcf21af21d9dc50d0a35e141e3723e&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
     },
         {
             name: "抖音短视频",
@@ -825,7 +877,7 @@ let toutiaobao = {
             ver: "280",
             contentId: "300011010385",
             iconUrl: "../assets/img/image003.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=300011010385&c=1528&p=72&j=l&ver=2&src=5210519579 ",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519380247100011539010300011010385&MD5=440ff9b9b7c8c556de225889fa88aa29&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         },
         {
             name: "火山小视频",
@@ -834,7 +886,7 @@ let toutiaobao = {
             ver: "480",
             contentId: "300011853723",
             iconUrl: "../assets/img/image005.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=300011853723&c=1528&p=72&j=l&ver=2&src=5210519579",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519430508100011553213300011853723&MD5=9449902d2c875bc0a250e2f3f75d1f4e&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         },
         {
             name: "懂车帝",
@@ -843,7 +895,7 @@ let toutiaobao = {
             ver: "402",
             contentId: "330000005508",
             iconUrl: "../assets/img/image007.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=330000005508&c=1528&p=72&j=l&ver=2&src=5210519579",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519380247100011555008300011859083&MD5=27f2af26a168cee8c12979ad5def3f2d&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         },
         {
             name: "悟空问答",
@@ -852,7 +904,7 @@ let toutiaobao = {
             ver: "263",
             contentId: "330000005508",
             iconUrl: "../assets/img/image005.png",
-            url: "http://a.10086.cn/pams2/l/s.do?gId=330000005508&c=1528&p=72&j=l&ver=2&src=5210519579",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519330000100033003300330000005508&MD5=&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
         }
     ]
 }
