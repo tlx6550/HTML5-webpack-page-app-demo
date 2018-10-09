@@ -171,6 +171,7 @@ function addTabPanel(option) {
 
 //选项卡，“全部”的更改。
 function addAll(option) {
+
     tabName = ['全部'];
     $(".inner-tab-nav").empty();
     $(".inner-tab-action").empty();
@@ -180,7 +181,7 @@ function addAll(option) {
     $(".inner-tab-action").css("width", len * 100 + "%");
     //添加全部页面
     var newPanel = '<div class="inner-tab-panel" style="width:' + cardWidth + '">';
-    for(let i = 0; i < option.length; i++) {
+    for(let i = (option.length-1); i >0; i--) {
         tabName.push(option[i].name);
 
 

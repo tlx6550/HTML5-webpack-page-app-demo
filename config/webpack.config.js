@@ -72,9 +72,11 @@ const config = {
     entry: {
         'index': './js/index.js',
         'xiangqingye': './js/index.js',
+        'weixinpay': './js/weixinpay.js',
+        'weixincg': './js/weixinpay.js',
     },
     output: {
-        filename: isDev ? '[name].js' : '[name].[chunkhash].js',
+        filename: isDev ? '[name].js' : '[name].js',
         path: path.resolve(projectDir, 'build'),
     },
     module: {
@@ -170,7 +172,7 @@ const config = {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production') // default value if not specified
             }
         }),
-        new ExtractTextPlugin('[name].[contenthash:base64:5].css'),
+        new ExtractTextPlugin('[name].css'),
         new CleanWebpackPlugin(['build/'], {
             root: projectDir
         }), // avoid Duplicated CSS files with different hash
@@ -185,6 +187,18 @@ const config = {
             chunks: ['xiangqingye'],
             template: './xiangqingye.html',
             filename: 'xiangqingye.html'
+        }
+        ),
+        new HtmlWebpackPlugin({
+            chunks: ['weixinpay'],
+            template: './weixinpay.html',
+            filename: 'weixinpay.html'
+        }
+        ),
+        new HtmlWebpackPlugin({
+            chunks: ['weixincg'],
+            template: './weixincg.html',
+            filename: 'weixincg.html'
         }
         ),
         new LodashModuleReplacementPlugin,

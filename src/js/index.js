@@ -615,7 +615,11 @@ $('div.card').find('.mskt-btn').on('click', function(e) {
         return
     }
     appId = $(this).data('id')
-
+    //模拟数据需要
+    //临时选中的id，以防用户取消按钮不选了
+    YDUI.util.sessionStorage.set('tempId',appId)
+    // 支付环节需要知道选了那个套餐
+    YDUI.util.sessionStorage.set('selectAppId',appId)
     addContent();
     $('.pop-big').show();
 })
@@ -631,29 +635,48 @@ function appendData(name){
     var storage = window.sessionStorage;
     var val = storage['allApp'];
     val = JSON.parse(val);
+
     val.push(name);
+    console.log(val)
     val = JSON.stringify(val);
     storage['allApp'] = val;
 }
 
 $('div.pop-big').find('.comfirm').on('click', function(e) {
     e.stopPropagation();
-    switch(appId)
-    {
-        case '001':
-            appendData(aiqiyi)
-            break;
-        case '002':
-            appendData(wangyi)
-            break;
-        case '003':
-            appendData(youku)
-            break;
-        case '004':
-            appendData(toutiaobao)
-            break;
-        default:
+   // window.location.href = '/s.do?requestid=weixinpay';
+    window.location.href = 'weixinpay.html';
+})
 
+// 取消
+$('div.pop-big').find('.cancle').on('click', function(e) {
+    e.stopPropagation();
+    hidePop();
+})
+// 添加套餐
+function addOptionServiceApp() {
+   const appId =  YDUI.util.sessionStorage.get('appId')
+    for(let i = 0;i<appId.length;i++){
+        if(appId[i]){
+            switch(appId[i])
+            {
+                case '001':
+                    appendData(aiqiyi)
+                    break;
+                case '002':
+                    appendData(wangyi)
+                    break;
+                case '003':
+                    appendData(youku)
+                    break;
+                case '004':
+                    appendData(toutiaobao)
+                    break;
+                default:
+
+            }
+
+        }
     }
     initAllApp();
     $('#toastS').show();
@@ -662,34 +685,37 @@ $('div.pop-big').find('.comfirm').on('click', function(e) {
         hidePop();
     },1000);
     /* 开通了的按钮变灰 */
+    const selecttArr =  YDUI.util.sessionStorage.get('appId')
     $('div.card').find('.mskt-btn').each(function () {
-        if( $(this).data('id') == appId){
-            $(this).addClass('active');
-            //已开通的显示已开通
-            $(this).text('已开通')
-        }
-    });
-})
-// 取消
-$('div.pop-big').find('.cancle').on('click', function(e) {
-    e.stopPropagation();
-    hidePop();
-})
+       for(let i=0;i<selecttArr.length;i++){
+           if( $(this).data('id') == selecttArr[i]){
+               $(this).addClass('active');
+               //已开通的显示已开通
+               $(this).text('已开通')
+           }
+       }
 
+    });
+
+}
 // 弹窗加载内容
 function addContent(){
-    let title = ''
+    let title = '',subtitle = ''
     if(appId=='001'){
+        subtitle = '优酷视频'
         title = '畅享“爱奇艺”30G流量套餐'
+        $('div.pop-big').find('.aiqiy-vip').show()
     }else if(appId=='002'){
+        subtitle = '优酷视频'
         title = '畅享“网易态度包”30G流量套餐'
+        $('div.pop-big').find('.aiqiy-vip').hide()
     }
 
 
     var html = '<div class="header"><p>'+ title+'</p></div>'
         + '<div class="content ">'
         + '1、套餐包免流APP包括:'
-        + '<span class="app-name">'+ title+'</span> <br>'
+        + '<span class="app-name">'+ subtitle+'</span> <br>'
         + '2、免流范围不包括优酷视频APP中的以下内容：客户端'
         + '<br>'
         +   '启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下 载、缓存第三方视频所产生的流量、下载、缓存视频。'
@@ -702,6 +728,14 @@ function addContent(){
 function hidePop(){
     $('div.pop-big .pop').children('.header').remove()
     $('div.pop-big .pop').children('.content').remove()
+
+    $('div.pop-big .option-service').find('.select').removeClass('active')
+    $('div.pop-big .option-service').find('.pay-way').removeClass('active')
+    $('div.option-service').find('.pay-way-wrap').show()
+    $('div.option-service').find('.address-wrap').hide()
+    YDUI.util.sessionStorage.remove('aiqiyi')
+   //  YDUI.util.sessionStorage.remove('selectAppId')
+    YDUI.util.sessionStorage.remove('wangyi')
     $('.pop-com').hide();
 }
 // 可选服务功能
@@ -741,7 +775,12 @@ function hidePop(){
         const P =  price.reduce(getSum)
         $('div.pop-big').find('.price').text(P+'元')
         //存储价格
-        YDUI.util.sessionStorage.set('aiqiyi',P)
+        if(appId=='001'){
+            YDUI.util.sessionStorage.set('aiqiyi',P)
+        }else if(appId=='002'){
+            YDUI.util.sessionStorage.set('wangyi',P)
+        }
+
     }
     // 套餐选择
     $('div.pop-big').find('.select-btn').on('click', function(e) {
@@ -952,3 +991,5 @@ let toutiaobao = {
         }
     ]
 }
+// 初始化
+addOptionServiceApp()
