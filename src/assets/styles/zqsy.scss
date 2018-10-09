@@ -541,6 +541,11 @@ ol, ul {
   .main{
     padding:0 .3rem;
   }
+  .btn-group{
+    .active{
+      background-color: $bgc;
+    }
+  }
 }
 .swiper-pagination-bullet-active:before {
   content: '';

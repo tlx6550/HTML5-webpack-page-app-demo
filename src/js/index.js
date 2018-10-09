@@ -625,7 +625,10 @@ $('div.card').find('.mskt-btn').on('click', function(e) {
 })
 $('div.xiangqingye-wrap .main').find('.comfirm').on('click', function(e) {
     e.stopPropagation();
+    if($(this).hasClass('active'))return
     $('#toastS').show();
+    $(this).addClass('active')
+    $(this).text('已开通')
     setTimeout(()=>{
         $('.toast').hide();
     },1000);
@@ -657,7 +660,8 @@ $('div.pop-big').find('.cancle').on('click', function(e) {
 // 添加套餐
 function addOptionServiceApp() {
    const appId =  YDUI.util.sessionStorage.get('appId')
-    for(let i = 0;i<appId.length;i++){
+   try{
+ for(let i = 0;i<appId.length;i++){
         if(appId[i]){
             switch(appId[i])
             {
@@ -679,6 +683,10 @@ function addOptionServiceApp() {
 
         }
     }
+   }catch(e){
+
+   }
+   
     initAllApp();
     if(YDUI.util.sessionStorage.get('suceess')){
        $('#toastS').show();
