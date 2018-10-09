@@ -876,10 +876,10 @@
     </div>-->
 </div>
 <!--弹窗-->
-<div class="pop-com  pop-wrap pop-big"  style="" >
+<div class="pop-com  pop-wrap pop-big"  style="display: none" >
     <div class="pop-b">
         <div class="pop">
-            <div class="header">
+     <!--       <div class="header">
                 <p>畅享“优酷”30G流量套餐</p>
             </div>
             <div class="content">
@@ -895,7 +895,7 @@
                     <br>
                     4、更多业务规则详询10086。&ndash;&gt;
                 <div class="zhezhao"></div>
-            </div>
+            </div>-->
             <!--可选服务-->
             <div class="option-service">
                 <div class="item flex-box">
@@ -907,19 +907,40 @@
                     <span class="title">价格:</span>
                     <div class="price">18元</div>
                 </div>
-                <div class="item flex-box">
+                <div class="item flex-box address-wrap" style="display: none">
+                    <span class="title">收货地址:</span>
+                    <div class="address-info">
+                        <div class="save-state">
+                            <div class="people flex-box-bet">
+                                <div class="contact">
+                                    <input type="text" readonly value="刘先生" class="name"/>
+                                    <input readonly type="number" value="13812345678" class="phone"/>
+                                </div>
+                                <div class="edit">编辑</div>
+                            </div>
+                            <textarea readOnly class="address"> 广东省 广州市 天河区 高塘大道中国移动南方基地1.1栋</textarea>
+                        </div>
+                        <div class="edit-state" style="display: none">
+                            <div class="item flex-box-bet">
+                                <input placeholder="收件人" type="text"  class="name">
+                                <div class="edit">保存</div>
+                            </div>
+                            <div class="item">
+                                <input placeholder="手机号码" type="number"  class="item-text phone">
+                            </div>
+                            <div class="item">
+                                <input placeholder="详细地区" type="text"  class="item-text diqu">
+                            </div>
+                            <div class="item">
+                                <textarea placeholder="详细地址(如道路、门牌、小区、楼栋、单元室)" type="text"  class="item-text detail-adress"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item flex-box pay-way-wrap">
                     <span class="title">支付方式:</span>
                     <div class="pay-way ">微信支付</div>
                     <div class="pay-way">支付宝</div>
-                </div>
-            </div>
-            <div class="xieyi">
-                <div class="checkbox">
-                    <label class="flex-box-bet flex-center">
-                        <input type="checkbox" checked="checked"  value="checked" name="checkbox">
-                        <div class="option"></div>
-                        <span class="opt-text">我同意畅享优酷30G流量套餐用户协议</span>
-                    </label>
                 </div>
             </div>
             <div class="btn-group">

@@ -615,6 +615,7 @@ $('div.card').find('.mskt-btn').on('click', function(e) {
         return
     }
     appId = $(this).data('id')
+
     addContent();
     $('.pop-big').show();
 })
@@ -637,8 +638,6 @@ function appendData(name){
 
 $('div.pop-big').find('.comfirm').on('click', function(e) {
     e.stopPropagation();
-    const val = $(this).parent().parent().children('.xieyi').find('input[type=checkbox]').is(':checked')
-    if(!val)return
     switch(appId)
     {
         case '001':
@@ -679,20 +678,30 @@ $('div.pop-big').find('.cancle').on('click', function(e) {
 
 // 弹窗加载内容
 function addContent(){
-    var html = '<div class="content ">'
+    let title = ''
+    if(appId=='001'){
+        title = '畅享“爱奇艺”30G流量套餐'
+    }else if(appId=='002'){
+        title = '畅享“网易态度包”30G流量套餐'
+    }
+
+
+    var html = '<div class="header"><p>'+ title+'</p></div>'
+        + '<div class="content ">'
         + '1、套餐包免流APP包括:'
-        + '<span class="app-name">优酷视频</span> <br>'
+        + '<span class="app-name">'+ title+'</span> <br>'
         + '2、免流范围不包括优酷视频APP中的以下内容：客户端'
         + '<br>'
         +   '启动、登录及客户端内的图片、文字、视频内插播广告、弹幕、第三方广告、直播类视频、在线观看、下 载、缓存第三方视频所产生的流量、下载、缓存视频。'
         + '<br>'+ ' 3、本活动各种的流量当月清零、不能分享、不能转赠。'+ '<br>' +'4、更多业务规则详询10086。'
         + '<div class="zhezhao"></div>'
         + '</div>'
-    $('div.pop-big .header').after(html);
+    $('div.pop').prepend(html);
 }
 // 弹窗消失
 function hidePop(){
-    $('div.pop-big .header').next().remove()
+    $('div.pop-big .pop').children('.header').remove()
+    $('div.pop-big .pop').children('.content').remove()
     $('.pop-com').hide();
 }
 // 可选服务功能
@@ -718,8 +727,11 @@ function hidePop(){
                if( id=='aiqiyi-month-vip'){
                    optionPrice = 10
                }else if( id =='tv-box'){
+                   $('div.option-service').find('.address-wrap').show()
                    optionPrice = 100
                }
+            }else{
+                $('div.option-service').find('.address-wrap').hide()
             }
             price.push(optionPrice)
         })
@@ -727,22 +739,54 @@ function hidePop(){
             return total + num;
         }
         const P =  price.reduce(getSum)
-        console.log(P)
         $('div.pop-big').find('.price').text(P+'元')
+        //存储价格
+        YDUI.util.sessionStorage.set('aiqiyi',P)
     }
     // 套餐选择
     $('div.pop-big').find('.select-btn').on('click', function(e) {
         $(this).toggleClass('active');
         //套餐传一个默认价格
-        setTimeout(()=>{
-            checkPayPriceState(18)
-        },200)
+        checkPayPriceState(18)
 
     })
     //支付方式
     $('div.pop-big').find('.pay-way').on('click', function(e) {
+        $(this).siblings().removeClass('active')
         $(this).toggleClass('active');
+        //套餐传一个默认价格
+        checkPayPriceState(18)
         checkPayBtnState()
+    })
+    //编辑收货地址
+    $('div.pop-big').find('.edit').on('click', function(e) {
+        const text = $(this).text();
+        //text == '编辑' ? $(this).text('保存'):$(this).text('编辑')
+        if(text=='保存'){
+            //一定需要保存了才能支付
+            $('div.pop-big').find('.pay-way').removeClass('active')
+            checkPayBtnState()
+            //取值保存
+            const name =  $('div.edit-state').find('.name').val()
+            $('div.save-state').find('.name').val(name)
+            const phone =  $('div.edit-state').find('.phone').val()
+            $('div.save-state').find('.phone').val(phone)
+            const diqu =  $('div.edit-state').find('.diqu').val()
+            const adress =  $('div.edit-state').find('.detail-adress').val()
+            $('div.save-state').find('.address').val(diqu+adress)
+            if(name&&phone&&diqu&&adress){
+                $('div.pop-big').find('.save-state').show()
+                $('div.pop-big').find('.edit-state').hide()
+                $('div.pop-big').find('.pay-way-wrap').show()
+            } else{
+                alert('收货地址不能为空')
+            }
+        }else{
+
+            $('div.pop-big').find('.edit-state').show()
+            $('div.pop-big').find('.save-state').hide()
+            $('div.pop-big').find('.pay-way-wrap').hide()
+        }
     })
 }();
 
