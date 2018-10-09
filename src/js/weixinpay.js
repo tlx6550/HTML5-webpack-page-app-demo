@@ -200,10 +200,10 @@ $(function(){
                 temp ? temp = temp : temp = []
                 temp.push(tempId)
                 YDUI.util.sessionStorage.set('appId',temp)// app累加
-
+                YDUI.util.sessionStorage.set('suceess',true) //开通成功标识
                // location.href="/s.do?requestid=weixincg.html";
                 location.href="weixincg.html";
-            },500);
+            },300);
             //window.document.location="cg.html"
         }
     });

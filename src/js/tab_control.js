@@ -171,7 +171,7 @@ function addTabPanel(option) {
 
 //选项卡，“全部”的更改。
 function addAll(option) {
-
+var option = option.reverse()
     tabName = ['全部'];
     $(".inner-tab-nav").empty();
     $(".inner-tab-action").empty();
@@ -181,7 +181,7 @@ function addAll(option) {
     $(".inner-tab-action").css("width", len * 100 + "%");
     //添加全部页面
     var newPanel = '<div class="inner-tab-panel" style="width:' + cardWidth + '">';
-    for(let i = (option.length-1); i >0; i--) {
+    for(let i = 0; i <option.length; i++) {
         tabName.push(option[i].name);
 
 
@@ -270,7 +270,21 @@ function addAll(option) {
 var tabName = ["全部"];
 
 var storage = window.sessionStorage;
-var appStr = [{
+var appStr = [
+ {
+        name: '优酷',
+        present: '0%',
+        data: [{
+            name: "优酷",
+            category: "看动漫",
+            packagename: "com.youku.phone",
+            ver: "169",
+            contentId: "330000003368",
+            iconUrl: "../assets/img/image011.png",
+            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519111899100000575958300000033601&MD5=28aa6cc589a423dbb593e9568e782d15&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
+        }]
+    },
+{
     name: '头条包',
     present: '63%',
     data: [{
@@ -320,19 +334,7 @@ var appStr = [{
         }
     ]
 },
-    {
-        name: '优酷',
-        present: '0%',
-        data: [{
-            name: "优酷",
-            category: "看动漫",
-            packagename: "com.youku.phone",
-            ver: "169",
-            contentId: "330000003368",
-            iconUrl: "../assets/img/image011.png",
-            url: "http://221.179.8.170:8080/s.do?requestid=sony_widget_download&payMode=1&goodsid=000x13519111899100000575958300000033601&MD5=28aa6cc589a423dbb593e9568e782d15&channel_id=x13519&appname=MM_FR18&ua=android-26-480x800-GT-I9108",
-        }]
-    }
+   
 
 ]
 var storage = window.sessionStorage;

@@ -644,6 +644,7 @@ function appendData(name){
 
 $('div.pop-big').find('.comfirm').on('click', function(e) {
     e.stopPropagation();
+    if($(this).hasClass('default'))return
    // window.location.href = '/s.do?requestid=weixinpay';
     window.location.href = 'weixinpay.html';
 })
@@ -679,11 +680,14 @@ function addOptionServiceApp() {
         }
     }
     initAllApp();
-    $('#toastS').show();
+    if(YDUI.util.sessionStorage.get('suceess')){
+       $('#toastS').show();
     setTimeout(()=>{
         $('.toast').hide();
+        YDUI.util.sessionStorage.set('suceess',false)
         hidePop();
-    },1000);
+    },1000);  
+    }
     /* 开通了的按钮变灰 */
     const selecttArr =  YDUI.util.sessionStorage.get('appId')
     $('div.card').find('.mskt-btn').each(function () {
@@ -788,6 +792,14 @@ function hidePop(){
         //套餐传一个默认价格
         checkPayPriceState(18)
 
+        //当点击编辑地址后 此时没有输入地址 不选盒子套餐
+        //即只需要爱奇艺会员时候付款方式需要展现的bug
+        let flag2 = $("[data-id=tv-box]").hasClass('active')
+        if(!flag2){
+            $('.edit-state').hide() 
+            $('.save-state').show()
+            $('div.pop-big').find('.pay-way-wrap').show()
+        }
     })
     //支付方式
     $('div.pop-big').find('.pay-way').on('click', function(e) {
@@ -821,7 +833,7 @@ function hidePop(){
                 alert('收货地址不能为空')
             }
         }else{
-
+            console.log('编辑状态')
             $('div.pop-big').find('.edit-state').show()
             $('div.pop-big').find('.save-state').hide()
             $('div.pop-big').find('.pay-way-wrap').hide()
