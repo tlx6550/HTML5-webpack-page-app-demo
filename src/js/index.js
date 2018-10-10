@@ -618,8 +618,10 @@ $('div.card').find('.mskt-btn').on('click', function(e) {
     //模拟数据需要
     //临时选中的id，以防用户取消按钮不选了
     YDUI.util.sessionStorage.set('tempId',appId)
+    Cookie.set('tempId',appId)
     // 支付环节需要知道选了那个套餐
     YDUI.util.sessionStorage.set('selectAppId',appId)
+    Cookie.set('selectAppId',appId)
     addContent();
     $('.pop-big').show();
 })
@@ -658,8 +660,10 @@ $('div.pop-big').find('.cancle').on('click', function(e) {
 })
 // 添加套餐
 function addOptionServiceApp() {
-    const appId =  YDUI.util.sessionStorage.get('appId')
+   // const appId =  YDUI.util.sessionStorage.get('appId')
     try{
+        let appId =  Cookie.get('appId')
+        appId = JSON.parse(appId);
         for(let i = 0;i<appId.length;i++){
             if(appId[i]){
                 switch(appId[i])
@@ -682,34 +686,47 @@ function addOptionServiceApp() {
 
             }
         }
+        initAllApp();
     }catch(e){
 
     }
 
-    initAllApp();
-    if(YDUI.util.sessionStorage.get('suceess')){
-        $('#toastS').show();
-        setTimeout(()=>{
-            $('.toast').hide();
-            YDUI.util.sessionStorage.set('suceess',false)
-            hidePop();
-        },1000);
-    }
-    /* 开通了的按钮变灰 */
-    const selecttArr =  YDUI.util.sessionStorage.get('appId')
-    $('div.card').find('.mskt-btn').each(function () {
-        try{
-            for(let i=0;i<selecttArr.length;i++){
-                if( $(this).data('id') == selecttArr[i]){
-                    $(this).addClass('active');
-                    //已开通的显示已开通
-                    $(this).text('已开通')
-                }
-            }
-        }catch (e){
 
+   try{
+        if(Cookie.get('suceess')=='true'){
+            $('#toastS').show();
+            setTimeout(()=>{
+                $('.toast').hide();
+                Cookie.set('suceess',false)
+                hidePop();
+            },1000);
         }
-    });
+    }catch (e){
+
+    }
+
+    /* 开通了的按钮变灰 */
+    try{
+        let selecttArr =  Cookie.get('appId')
+        selecttArr = JSON.parse(selecttArr);
+        $('div.card').find('.mskt-btn').each(function () {
+            try{
+                for(let i=0;i<selecttArr.length;i++){
+                    if( $(this).data('id') == selecttArr[i]){
+                        console.log('ok')
+                        $(this).addClass('active');
+                        //已开通的显示已开通
+                        $(this).text('已开通')
+                    }
+                }
+            }catch (e){
+
+            }
+        });
+    }catch (e){
+
+    }
+
 }
 // 弹窗加载内容
 function addContent(){
@@ -746,9 +763,11 @@ function hidePop(){
     $('div.pop-big .option-service').find('.pay-way').removeClass('active')
     $('div.option-service').find('.pay-way-wrap').show()
     $('div.option-service').find('.address-wrap').hide()
-    YDUI.util.sessionStorage.remove('aiqiyi')
+    //YDUI.util.sessionStorage.remove('aiqiyi')
+    Cookie.del('aiqiyi')
     //  YDUI.util.sessionStorage.remove('selectAppId')
-    YDUI.util.sessionStorage.remove('wangyi')
+    //YDUI.util.sessionStorage.remove('wangyi')
+    Cookie.del('wangyi')
     $('.pop-com').hide();
 }
 // 可选服务功能
@@ -788,18 +807,13 @@ function hidePop(){
         const P =  price.reduce(getSum)
         $('div.pop-big').find('.price').text(P+'元')
         //存储价格
+
         if(appId=='001'){
             YDUI.util.sessionStorage.set('aiqiyi',P)
-            Cookie.set(aiqiyi,P)
-            setTimeout(function () {
-                Cookie.remove(aiqiyi)
-            },1000*6)
+            Cookie.set('aiqiyi',P,60)
         }else if(appId=='002'){
             YDUI.util.sessionStorage.set('wangyi',P)
-            Cookie.set(wangyi,P)
-            setTimeout(function () {
-                Cookie.remove(wangyi)
-            },1000*6)
+            Cookie.set('wangyi',P,60)
         }
 
     }

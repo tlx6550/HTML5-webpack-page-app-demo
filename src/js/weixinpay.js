@@ -3,7 +3,7 @@
  */
 import '../assets/styles/wxzf.scss';
 import $ from '../js/jquery.min.js';
-
+import Cookie from '../assets/js/cookie.js';
 /**
  * ydui main
  */
@@ -159,13 +159,16 @@ const appName = {
 
 $(function(){
     // money
-    const appId =  YDUI.util.sessionStorage.get('selectAppId')
+    // const appId =  YDUI.util.sessionStorage.get('selectAppId')
+    const appId =  Cookie.get('selectAppId')
     let price = ''
     console.log(appId)
     if(appId=='001'){
-        price =  YDUI.util.sessionStorage.get('aiqiyi');
+        price = Cookie.get('aiqiyi');
+        // price =  YDUI.util.sessionStorage.get('aiqiyi');
     }else if(appId=='002'){
-        price =  YDUI.util.sessionStorage.get('wangyi');
+        price = Cookie.get('wangyi');
+        // price =  YDUI.util.sessionStorage.get('wangyi');
     }
 
     $('.pay-money').text(price)
@@ -195,16 +198,24 @@ $(function(){
             $('.pop-com').show()
             setTimeout(function(){
                 $('.pop-com').hide()
-                let tempId = YDUI.util.sessionStorage.get('tempId')
-                let temp = YDUI.util.sessionStorage.get('appId')
-                temp ? temp = temp : temp = []
-                temp.push(tempId)
-                YDUI.util.sessionStorage.set('appId',temp)// app累加
-                YDUI.util.sessionStorage.set('suceess',true) //开通成功标识
-             //   location.href="/s.do?requestid=weixincg";
+                /*  let tempId = YDUI.util.sessionStorage.get('tempId')
+                let temp = YDUI.util.sessionStorage.get('appId') */
+                let tempId = Cookie.get('tempId')
+                let temp = Cookie.get('appId')
+                if(temp==undefined || temp==null || temp==''){
+                    temp = [];
+                }else{
+                    temp= JSON.parse(temp);
+                }
+                temp.push(tempId);
+                temp =  JSON.stringify(temp)
+                /*  YDUI.util.sessionStorage.set('appId',temp)// app累加
+                YDUI.util.sessionStorage.set('suceess',true) //开通成功标识  */
+                Cookie.set('appId', temp)
+                Cookie.set('suceess',true)
+                 // location.href="/s.do?requestid=weixincg";
                 location.href="weixincg.html";
             },300);
-            //window.document.location="cg.html"
         }
     });
 
