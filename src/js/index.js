@@ -5,7 +5,7 @@ import '../assets/styles/zqsy.scss';
 import $ from '../js/jquery.min.js';
 import '../assets/js/swiper.min.js';
 import  '../assets/js/flexible.js';
-
+import Cookie from '../assets/js/cookie.js';
 // app download
 import '../js/mmdl.js';
 import '../js/mmapp.js';
@@ -640,7 +640,6 @@ function appendData(name){
     val = JSON.parse(val);
 
     val.push(name);
-    console.log(val)
     val = JSON.stringify(val);
     storage['allApp'] = val;
 }
@@ -648,7 +647,7 @@ function appendData(name){
 $('div.pop-big').find('.comfirm').on('click', function(e) {
     e.stopPropagation();
     if($(this).hasClass('default'))return
-   // window.location.href = '/s.do?requestid=weixinpay';
+    //window.location.href = '/s.do?requestid=weixinpay';
     window.location.href = 'weixinpay.html';
 })
 
@@ -659,56 +658,58 @@ $('div.pop-big').find('.cancle').on('click', function(e) {
 })
 // 添加套餐
 function addOptionServiceApp() {
-   const appId =  YDUI.util.sessionStorage.get('appId')
-   try{
- for(let i = 0;i<appId.length;i++){
-        if(appId[i]){
-            switch(appId[i])
-            {
-                case '001':
-                    appendData(aiqiyi)
-                    break;
-                case '002':
-                    appendData(wangyi)
-                    break;
-                case '003':
-                    appendData(youku)
-                    break;
-                case '004':
-                    appendData(toutiaobao)
-                    break;
-                default:
+    const appId =  YDUI.util.sessionStorage.get('appId')
+    try{
+        for(let i = 0;i<appId.length;i++){
+            if(appId[i]){
+                switch(appId[i])
+                {
+                    case '001':
+                        appendData(aiqiyi)
+                        break;
+                    case '002':
+                        appendData(wangyi)
+                        break;
+                    case '003':
+                        appendData(youku)
+                        break;
+                    case '004':
+                        appendData(toutiaobao)
+                        break;
+                    default:
+
+                }
 
             }
-
         }
-    }
-   }catch(e){
+    }catch(e){
 
-   }
-   
+    }
+
     initAllApp();
     if(YDUI.util.sessionStorage.get('suceess')){
-       $('#toastS').show();
-    setTimeout(()=>{
-        $('.toast').hide();
-        YDUI.util.sessionStorage.set('suceess',false)
-        hidePop();
-    },1000);  
+        $('#toastS').show();
+        setTimeout(()=>{
+            $('.toast').hide();
+            YDUI.util.sessionStorage.set('suceess',false)
+            hidePop();
+        },1000);
     }
     /* 开通了的按钮变灰 */
     const selecttArr =  YDUI.util.sessionStorage.get('appId')
     $('div.card').find('.mskt-btn').each(function () {
-       for(let i=0;i<selecttArr.length;i++){
-           if( $(this).data('id') == selecttArr[i]){
-               $(this).addClass('active');
-               //已开通的显示已开通
-               $(this).text('已开通')
-           }
-       }
+        try{
+            for(let i=0;i<selecttArr.length;i++){
+                if( $(this).data('id') == selecttArr[i]){
+                    $(this).addClass('active');
+                    //已开通的显示已开通
+                    $(this).text('已开通')
+                }
+            }
+        }catch (e){
 
+        }
     });
-
 }
 // 弹窗加载内容
 function addContent(){
@@ -746,7 +747,7 @@ function hidePop(){
     $('div.option-service').find('.pay-way-wrap').show()
     $('div.option-service').find('.address-wrap').hide()
     YDUI.util.sessionStorage.remove('aiqiyi')
-   //  YDUI.util.sessionStorage.remove('selectAppId')
+    //  YDUI.util.sessionStorage.remove('selectAppId')
     YDUI.util.sessionStorage.remove('wangyi')
     $('.pop-com').hide();
 }
@@ -770,12 +771,12 @@ function hidePop(){
             let optionPrice = 0
             const id = $(this).data('id')
             if($(this).hasClass('active')){
-               if( id=='aiqiyi-month-vip'){
-                   optionPrice = 10
-               }else if( id =='tv-box'){
-                   $('div.option-service').find('.address-wrap').show()
-                   optionPrice = 100
-               }
+                if( id=='aiqiyi-month-vip'){
+                    optionPrice = 10
+                }else if( id =='tv-box'){
+                    $('div.option-service').find('.address-wrap').show()
+                    optionPrice = 100
+                }
             }else{
                 $('div.option-service').find('.address-wrap').hide()
             }
@@ -789,8 +790,16 @@ function hidePop(){
         //存储价格
         if(appId=='001'){
             YDUI.util.sessionStorage.set('aiqiyi',P)
+            Cookie.set(aiqiyi,P)
+            setTimeout(function () {
+                Cookie.remove(aiqiyi)
+            },1000*6)
         }else if(appId=='002'){
             YDUI.util.sessionStorage.set('wangyi',P)
+            Cookie.set(wangyi,P)
+            setTimeout(function () {
+                Cookie.remove(wangyi)
+            },1000*6)
         }
 
     }
@@ -804,7 +813,7 @@ function hidePop(){
         //即只需要爱奇艺会员时候付款方式需要展现的bug
         let flag2 = $("[data-id=tv-box]").hasClass('active')
         if(!flag2){
-            $('.edit-state').hide() 
+            $('.edit-state').hide()
             $('.save-state').show()
             $('div.pop-big').find('.pay-way-wrap').show()
         }
@@ -838,10 +847,9 @@ function hidePop(){
                 $('div.pop-big').find('.edit-state').hide()
                 $('div.pop-big').find('.pay-way-wrap').show()
             } else{
-                alert('收货地址不能为空')
+                alert('联系方式不能为空')
             }
         }else{
-            console.log('编辑状态')
             $('div.pop-big').find('.edit-state').show()
             $('div.pop-big').find('.save-state').hide()
             $('div.pop-big').find('.pay-way-wrap').hide()

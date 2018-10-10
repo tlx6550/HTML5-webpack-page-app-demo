@@ -109,7 +109,7 @@ function addTabPanel(option) {
         '  <div class="exhaust">' +
         '    <img src="assets/img/exhaust.png" alt="" />' +
         '  </div>' +
-        '  <div class="categray-title">畅享“' + addName + '”30G流量套餐</div>' +
+        '  <div class="categray-title">畅享“' + addName +'”'+total+'流量套餐</div>' +
         '  <div class="progress-wrap">' +
         '    <div class="progress-bar" data-ydui-progressbar="{type: \'line\', strokeWidth: 1, progress: '+parseFloat(present)/100+', trailColor: \'#30c104\'}">' +
         '    </div>' +
@@ -206,7 +206,7 @@ var option = option.reverse()
             '  <div class="exhaust">' +
             '    <img src="assets/img/exhaust.png" alt="" />' +
             '  </div>' +
-            '  <div class="categray-title">畅享“' + name + '”30G流量套餐</div>' +
+            '  <div class="categray-title">畅享“' + name + '”'+total+'流量套餐</div>' +
             '  <div class="progress-wrap">' +
             '    <div class="progress-bar" data-ydui-progressbar="{type: \'line\', strokeWidth: 1, progress: '+parseFloat(present)/100+', trailColor: \'#30c104\'}">' +
             '    </div>' +
@@ -274,9 +274,10 @@ var appStr = [
  {
         name: '优酷',
         present: '0%',
+        total: '15G',
         data: [{
             name: "优酷",
-            category: "看动漫",
+            category: "软件",
             packagename: "com.youku.phone",
             ver: "169",
             contentId: "330000003368",

@@ -112,6 +112,11 @@ ol, ul {
     color:#666;
     font-size: .16rem;
   }
+  .application-commander{
+    background: url(../img/card-bg.png)no-repeat;
+    background-size: 100% 100%;
+  }
+
  /* .nva-tab-wrap{
     .tab-nav{
        margin:0;
@@ -558,4 +563,11 @@ ol, ul {
   margin-left: -35%;
   z-index: 4;
   background-color: $blue;
+}
+.inner-tab-box .inner-tab-panel .taocan.on{
+  .application-commander{
+    background-image: none;
+  }
+
+
 }

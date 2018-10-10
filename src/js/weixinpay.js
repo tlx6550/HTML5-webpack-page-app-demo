@@ -163,9 +163,9 @@ $(function(){
     let price = ''
     console.log(appId)
     if(appId=='001'){
-         price =  YDUI.util.sessionStorage.get('aiqiyi');
+        price =  YDUI.util.sessionStorage.get('aiqiyi');
     }else if(appId=='002'){
-         price =  YDUI.util.sessionStorage.get('wangyi');
+        price =  YDUI.util.sessionStorage.get('wangyi');
     }
 
     $('.pay-money').text(price)
@@ -201,7 +201,7 @@ $(function(){
                 temp.push(tempId)
                 YDUI.util.sessionStorage.set('appId',temp)// app累加
                 YDUI.util.sessionStorage.set('suceess',true) //开通成功标识
-               // location.href="/s.do?requestid=weixincg.html";
+             //   location.href="/s.do?requestid=weixincg";
                 location.href="weixincg.html";
             },300);
             //window.document.location="cg.html"
@@ -222,7 +222,7 @@ $(function(){
     $('.goback').click(function (e) {
         e.stopPropagation();
         window.location.href = 'index.html';
-      //  window.location.href = '/s.do?requestid=orientationFreeFlowActivity';
+      // window.location.href = '/s.do?requestid=orientationFreeFlowActivity';
     });
 
 });
