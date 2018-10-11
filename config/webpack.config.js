@@ -74,6 +74,8 @@ const config = {
         'xiangqingye': './js/index.js',
         'weixinpay': './js/weixinpay.js',
         'weixincg': './js/weixinpay.js',
+        'zhifubaopay': './js/zhifubaopay.js',
+        'zhifubaocg': './js/zhifubaopay.js',
     },
     output: {
         filename: isDev ? '[name].js' : '[name].js',
@@ -196,16 +198,28 @@ const config = {
         }
         ),
         new HtmlWebpackPlugin({
+             chunks: ['zhifubaopay'],
+             template: './zhifubaopay.html',
+             filename: 'zhifubaopay.html'
+            }
+        ),
+        new HtmlWebpackPlugin({
             chunks: ['weixincg'],
             template: './weixincg.html',
             filename: 'weixincg.html'
         }
         ),
+        new HtmlWebpackPlugin({
+            chunks: ['zhifubaocg'],
+            template: './zhifubaocg.html',
+            filename: 'zhifubaocg.html'
+            }
+        ),
         new LodashModuleReplacementPlugin,
         new CopyWebpackPlugin([
             {
                 'context': '../src',
-                'to': '',
+                'to': '', // 打包后图片输出的目标路径
                 'from': {
                     'glob': 'assets/img/**/*',
                     'dot': true

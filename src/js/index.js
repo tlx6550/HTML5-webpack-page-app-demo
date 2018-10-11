@@ -650,7 +650,19 @@ $('div.pop-big').find('.comfirm').on('click', function(e) {
     e.stopPropagation();
     if($(this).hasClass('default'))return
     //window.location.href = '/s.do?requestid=weixinpay';
-    window.location.href = 'weixinpay.html';
+    let way = ''
+    $('div.pop-big').find('.pay-way').each(function () {
+        if($(this).hasClass('active')){
+            way = $(this).text();
+            return
+        }
+    })
+    if(way=='微信支付'){
+        window.location.href = 'weixinpay.html';
+    }else{
+        window.location.href = 'zhifubaopay.html';
+    }
+
 })
 
 // 取消
@@ -839,6 +851,7 @@ function hidePop(){
         //套餐传一个默认价格
         checkPayPriceState(18)
         checkPayBtnState()
+        //
     })
     //编辑收货地址
     $('div.pop-big').find('.edit').on('click', function(e) {
