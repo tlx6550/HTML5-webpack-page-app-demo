@@ -2,7 +2,7 @@
  * Created by issuser on 2018/9/28 0028.
  */
 import '../assets/styles/wxzf.scss';
-import $ from '../js/jquery.min.js';
+import $ from '../assets/js/jquery.min.js';
 import Cookie from '../assets/js/cookie.js';
 /**
  * ydui main

@@ -1,4 +1,4 @@
-import $ from '../js/jquery.min.js';
+import $ from '../assets/js/jquery.min.js';
 /*!
  * Author: linxiaojie 
  *  Version: 1.0.1

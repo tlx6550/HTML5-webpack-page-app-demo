@@ -71,11 +71,11 @@ const config = {
     // 左边是chuncks名称，右边是入口地址
     entry: {
         'index': './js/index.js',
-        'xiangqingye': './js/index.js',
-        'weixinpay': './js/weixinpay.js',
-        'weixincg': './js/weixinpay.js',
-        'zhifubaopay': './js/zhifubaopay.js',
-        'zhifubaocg': './js/zhifubaopay.js',
+/*        'xiangqingye': './js/index.js',
+         'weixinpay': './js/weixinpay.js',
+         'weixincg': './js/weixinpay.js',
+         'zhifubaopay': './js/zhifubaopay.js',
+         'zhifubaocg': './js/zhifubaopay.js',*/
     },
     output: {
         filename: isDev ? '[name].js' : '[name].js',
@@ -196,7 +196,7 @@ const config = {
             template: './index.html',
             filename: 'index.html'
         }),
-        new HtmlWebpackPlugin({
+/*        new HtmlWebpackPlugin({
             chunks: ['xiangqingye'],
             template: './xiangqingye.html',
             filename: 'xiangqingye.html'
@@ -225,7 +225,7 @@ const config = {
             template: './zhifubaocg.html',
             filename: 'zhifubaocg.html'
             }
-        ),
+        ),*/
         new LodashModuleReplacementPlugin,
         new CopyWebpackPlugin([
             {
@@ -233,7 +233,7 @@ const config = {
                 /*'to': '',*/ // 打包后图片输出的目标路径
                 // 以下图片loader和上面注释功能一样 但是更灵活指定现网后台地址
                 // 此外 打包后 还另外保存了 所有图片，目录结构为 assets/img, 未被转为为base64格式的图片则按要求存放在指定目录了
-                'to':'./defaultSite/images/a/320x480/activity/930/assets',
+                'to':'',
                 'from': {
                     'glob': 'assets/img/**/*',
                     'dot': true

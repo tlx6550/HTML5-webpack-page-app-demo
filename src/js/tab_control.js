@@ -1,4 +1,4 @@
-import $ from '../js/jquery.min.js';
+import $ from '../assets/js/jquery.min.js';
 
 //一键下载
 $(document).on("click", ".downloadAll", function() {
