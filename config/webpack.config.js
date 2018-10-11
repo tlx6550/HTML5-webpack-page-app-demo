@@ -143,9 +143,20 @@ const config = {
                     ],
                 })
             },
-            {
+/*            {
                 test: /\.(png|jpeg|jpg|gif|woff|woff2|eot|otf|ttf|svg)$/,
                 use: 'file-loader?name=assets/[name].[ext]',
+            },*/
+            // 以下图片loader和上面注释功能一样 但是更灵活指定现网后台地址
+            // 此外 打包后 还另外保存了 所有图片，目录结构为 assets/img, 未被转为为base64格式的图片则按要求存放在指定目录了
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 51200, //base64格式限制最大时候进行转换
+                   /* name: 'assets/[name].[ext]'*/
+                   name:'./defaultSite/images/a/320x480/activity/930/assets/[name].[ext]' //线上正式地址
+                }
             },
             {
                 test: /\.(html)$/,
@@ -219,7 +230,10 @@ const config = {
         new CopyWebpackPlugin([
             {
                 'context': '../src',
-                'to': '', // 打包后图片输出的目标路径
+                /*'to': '',*/ // 打包后图片输出的目标路径
+                // 以下图片loader和上面注释功能一样 但是更灵活指定现网后台地址
+                // 此外 打包后 还另外保存了 所有图片，目录结构为 assets/img, 未被转为为base64格式的图片则按要求存放在指定目录了
+                'to':'./defaultSite/images/a/320x480/activity/930/assets',
                 'from': {
                     'glob': 'assets/img/**/*',
                     'dot': true
