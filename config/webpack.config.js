@@ -148,7 +148,8 @@ const config = {
                 use: 'file-loader?name=assets/[name].[ext]',
             },*/
             // 以下图片loader和上面注释功能一样 但是更灵活指定现网后台地址
-            // 此外 打包后 还另外保存了 所有图片，目录结构为 assets/img, 未被转为为base64格式的图片则按要求存放在指定目录了
+            // 此外 打包后 还另外保存了 所有图片，目录结构为 assets/img, 未被转为为base64格式的图片则按要求存放在指定目录（物理真是存在目录）
+            // 开发环境也会按这个格式去打包进驻内存（可理解为虚拟的目录）
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
@@ -230,10 +231,9 @@ const config = {
         new CopyWebpackPlugin([
             {
                 'context': '../src',
-                /*'to': '',*/ // 打包后图片输出的目标路径
-                // 以下图片loader和上面注释功能一样 但是更灵活指定现网后台地址
-                // 此外 打包后 还另外保存了 所有图片，目录结构为 assets/img, 未被转为为base64格式的图片则按要求存放在指定目录了
-                'to':'./defaultSite/images/a/320x480/activity/930/assets',
+                /*'to': '',*/ // 开发环境复制图片资源，默认存在当前位置，这样通过js动态加载的图片路径可以正常显示
+                // （可以理解为动态加载的图片路径没有被检测到按webpack的规则进行编译// ）
+                'to':'',
                 'from': {
                     'glob': 'assets/img/**/*',
                     'dot': true
