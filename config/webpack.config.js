@@ -71,11 +71,11 @@ const config = {
     // 左边是chuncks名称，右边是入口地址
     entry: {
         'index': './js/index.js',
-/*        'xiangqingye': './js/index.js',
-         'weixinpay': './js/weixinpay.js',
-         'weixincg': './js/weixinpay.js',
-         'zhifubaopay': './js/zhifubaopay.js',
-         'zhifubaocg': './js/zhifubaopay.js',*/
+        'fankuiyijian': './js/fankui.js',
+        'fankuisearch': './js/fankui.js',
+        'monthRane': './js/monthRane.js',
+        'myTuCao': './js/myTuCao.js',
+        'ruleDeail': './js/ruleDeail.js',
     },
     output: {
         filename: isDev ? '[name].js' : '[name].js',
@@ -198,36 +198,36 @@ const config = {
             template: './index.html',
             filename: 'index.html'
         }),
-/*        new HtmlWebpackPlugin({
-            chunks: ['xiangqingye'],
-            template: './xiangqingye.html',
-            filename: 'xiangqingye.html'
+       new HtmlWebpackPlugin({
+            chunks: ['fankuiyijian'],
+            template: './fankuiyijian.html',
+            filename: 'fankuiyijian.html'
         }
         ),
         new HtmlWebpackPlugin({
-            chunks: ['weixinpay'],
-            template: './weixinpay.html',
-            filename: 'weixinpay.html'
+            chunks: ['fankuisearch'],
+            template: './fankuisearch.html',
+            filename: 'fankuisearch.html'
         }
         ),
-        new HtmlWebpackPlugin({
-             chunks: ['zhifubaopay'],
-             template: './zhifubaopay.html',
-             filename: 'zhifubaopay.html'
+               new HtmlWebpackPlugin({
+             chunks: ['monthRane'],
+             template: './monthRane.html',
+             filename: 'monthRane.html'
             }
         ),
-        new HtmlWebpackPlugin({
-            chunks: ['weixincg'],
-            template: './weixincg.html',
-            filename: 'weixincg.html'
+            new HtmlWebpackPlugin({
+            chunks: ['myTuCao'],
+            template: './myTuCao.html',
+            filename: 'myTuCao.html'
         }
         ),
-        new HtmlWebpackPlugin({
-            chunks: ['zhifubaocg'],
-            template: './zhifubaocg.html',
-            filename: 'zhifubaocg.html'
+             new HtmlWebpackPlugin({
+            chunks: ['ruleDeail'],
+            template: './ruleDeail.html',
+            filename: 'ruleDeail.html'
             }
-        ),*/
+        ),
         new LodashModuleReplacementPlugin,
         new CopyWebpackPlugin([
             {

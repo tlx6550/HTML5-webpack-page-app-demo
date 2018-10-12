@@ -1,9 +1,9 @@
 /**
  * Created by issuser on 2018/9/28 0028.
  */
-import '../assets/styles/wxzf.scss';
+import '../assets/styles/mmzhuochong.scss';
 import $ from '../assets/js/jquery.min.js';
-import Cookie from '../assets/js/cookie.js';
+import  '../assets/js/flexible.js';
 /**
  * ydui main
  */
@@ -149,91 +149,6 @@ import Cookie from '../assets/js/cookie.js';
 
 }(window);
 
-
-const appName = {
-    '001': 'aiqiyi',
-    '002': 'wangyi',
-    '003': 'toutiao',
-    '004': 'youku'
-}
-
 $(function(){
-    // money
-    // const appId =  YDUI.util.sessionStorage.get('selectAppId')
-    const appId =  Cookie.get('selectAppId')
-    let price = ''
-    console.log(appId)
-    if(appId=='001'){
-        price = Cookie.get('aiqiyi');
-        // price =  YDUI.util.sessionStorage.get('aiqiyi');
-    }else if(appId=='002'){
-        price = Cookie.get('wangyi');
-        // price =  YDUI.util.sessionStorage.get('wangyi');
-    }
-
-    $('.pay-money').text(price)
-    // 出现浮动层
-    $(".ljzf_but").click(function(){
-        $(".ftc_wzsf").show();
-    });
-    // 关闭浮动
-    $(".close").click(function(){
-        $(".ftc_wzsf").hide();
-    });
-    // 数字显示隐藏
-    $(".xiaq_tb").click(function(){
-        $(".numb_box").slideUp(500);
-    });
-    $(".mm_box").click(function(){
-        $(".numb_box").slideDown(500);
-    });
-    //----
-    var i = 0;
-    $(".nub_ggg li a").click(function(){
-        i++
-        if(i<6){
-            $(".mm_box li").eq(i-1).addClass("mmdd");
-        }else{
-            $(".mm_box li").eq(i-1).addClass("mmdd");
-            $('.pop-com').show()
-            setTimeout(function(){
-                $('.pop-com').hide()
-                /*  let tempId = YDUI.util.sessionStorage.get('tempId')
-                let temp = YDUI.util.sessionStorage.get('appId') */
-                let tempId = Cookie.get('tempId')
-                let temp = Cookie.get('appId')
-                if(temp==undefined || temp==null || temp==''){
-                    temp = [];
-                }else{
-                    temp= JSON.parse(temp);
-                }
-                temp.push(tempId);
-                temp =  JSON.stringify(temp)
-                /*  YDUI.util.sessionStorage.set('appId',temp)// app累加
-                YDUI.util.sessionStorage.set('suceess',true) //开通成功标识  */
-                Cookie.set('appId', temp)
-                Cookie.set('suceess',true)
-                 // location.href="/s.do?requestid=weixincg";
-                location.href="weixincg.html";
-            },300);
-        }
-    });
-
-    $(".nub_ggg li .del").click(function(){
-
-        if(i>0){
-            i--
-            $(".mm_box li").eq(i).removeClass("mmdd");
-            i==0;
-        }
-
-    });
-
-     //  返回商家
-    $('.goback').click(function (e) {
-        e.stopPropagation();
-        window.location.href = 'index.html';
-      // window.location.href = '/s.do?requestid=orientationFreeFlowActivity';
-    });
 
 });

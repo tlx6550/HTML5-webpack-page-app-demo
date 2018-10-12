@@ -16,7 +16,7 @@ $bgc:#cccccc;
 $fontWeight:550;
 $orange:#ff6c00;
 $line-blue:#f4f9ff;
-
+$f24:0.24rem;
 @function rem($args) {//iphone 678
   $remSize: $args / 34.7222;
   @return $remSize * 1rem;
@@ -75,6 +75,14 @@ ol, ul {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+.clearfix:after {
+  display: block;
+  content: ".";
+  height: 0;
+  line-height: 0;
+  clear: both;
+  visibility: hidden;
 }
 .banner{
   position: relative;
@@ -173,9 +181,7 @@ ol, ul {
     }
   }
 }
-.clearfix:after {
-  clear: both;
-}
+
 .app-list-wrap{
   background-color:#ff6099 ;
   padding:.2rem .2rem .68rem .2rem;
@@ -245,4 +251,79 @@ ol, ul {
       content: "";
     }
   }
+}
+.fankuiYiJian{
+ .app-list{
+   padding:.36rem .28rem;
+   border-bottom: 1px solid #e5e5e5;
+   .app-name{
+     float: left;
+     width: 25%;
+     text-align: center;
+     font-size: 0;
+     img{
+       display: inline-block;
+       @include wh(94,94);
+     }
+     .title{
+       margin-top: .12rem;
+       font-size: .24rem;
+       color:$text6;
+     }
+   }
+ }
+  .tag-wrap{
+    padding:0 .3rem;
+    h3{
+      font-size: .28rem;
+    }
+    .tag-list{
+      .title{
+        display: inline-block;
+        float: left;
+        border:1px solid #999999;
+        border-radius: .2rem;
+        padding:.1rem .2rem;
+        font-size: $f24;
+        color:#999999;
+        margin: .3rem 0  0 .3rem;
+      }
+    }
+
+  }
+ .btn-group{
+   text-align: center;
+   font-size: 0;
+   margin-top: .3rem;
+   .submit{
+     padding:.2rem .6rem;
+     display: inline-block;
+     border-radius: .1rem;
+     background-color: $blue;
+     color:#fff;
+     font-size: $f24;
+   }
+ }
+}
+.demo{
+  font-size: $f24;
+  .title{
+    color:orange;
+  }
+}
+ .tucao-text-wrap{
+   margin-top: .35rem;
+   border:1px solid #999;
+   textarea{
+     box-sizing: border-box;
+     width: 100%;
+     margin: 0 auto;
+     height: 2.2rem;
+     overflow: auto;
+     word-break: break-all;
+     font-size: $f24;
+     color:$text6;
+     border:none;
+   }
+
 }
