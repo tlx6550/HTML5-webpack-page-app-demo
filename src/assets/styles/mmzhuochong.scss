@@ -5,7 +5,7 @@
 @import '../../css/swiper.min.css';  //ww
 @import 'swiper.scss';//swiper
 @import 'btn.css';
-@import 'mmapp.css';
+/*@import 'mmapp.css';*/
 
 $line:#ececec;
 $blue:#139fef;
@@ -16,10 +16,20 @@ $bgc:#cccccc;
 $fontWeight:550;
 $orange:#ff6c00;
 $line-blue:#f4f9ff;
+
 @function rem($args) {//iphone 678
   $remSize: $args / 34.7222;
   @return $remSize * 1rem;
 }
+@mixin wh($w, $h){
+  width:  $w /100 * 1rem;
+  height: $h /100 * 1rem;
+}
+@mixin lh($w){
+  line-height:  $w /100 * 1rem;
+  height: $w /100 * 1rem;
+}
+
 ol, ul {
   list-style: none;
 }
@@ -54,6 +64,11 @@ ol, ul {
 .yjxz-btn{
   color:$blue;
 }
+.text-over{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
 .text-ellipsis{
   overflow: hidden;
   text-overflow: ellipsis;
@@ -62,9 +77,172 @@ ol, ul {
   -webkit-line-clamp: 2;
 }
 .banner{
+  position: relative;
+  font-size: 0;
   .bg{
     display: inline-block;
     width: 100%;
-    height: auto;
+    height: 4.27rem;
+  }
+  .rules-btn{
+    position: absolute;
+    top:0;
+    right: .4rem;
+    font-size: .28rem;
+    color:#fff;
+    text-align: center;
+    @include lh(68);
+    @include wh(149,78);
+    background: url("../img/guize-btn.png")no-repeat;
+    background-size: cover;
+  }
+  .btn-group{
+    position: absolute;
+    bottom: .28rem;
+    width: 100%;
+    height: .7rem;
+    img{
+      width: 2.2rem;
+      height: .7rem;
+    }
+    .wodetucao{
+      float: left;
+      margin-left: .53rem;
+    }
+    .tucaozhixin{
+      float: right;
+      margin-right: .53rem;
+    }
+  }
+}
+.sousuobudao{
+  background-color: #3762d1;
+  text-align: center;
+  .tucao-demo{
+    position: relative;
+    text-align: center;
+    .style-demo{
+      display: inline-block;
+      width:100% ;
+      height: auto;
+    }
+    .copy-btn{
+      position: absolute;
+      color:#fff;
+      background-color: #7badff;
+      border-radius: .1rem;
+      padding:.1rem .05rem;
+      bottom: .3rem;
+      right: .52rem;
+      font-size: .24rem;
+    }
+  }
+  .btn-group{
+    position: relative;
+    .liketucao{
+      display: inline-block;
+      @include wh(227,78)
+    }
+    .go{
+      display:inline-block;
+      position: absolute;
+      right: .52rem;
+      top:50%;
+      transform: translatey(-50%);
+      font-size: .24rem;
+      color:#fff;
+    }
+  }
+}
+.explex{
+  background-color: #ff6099;
+  .tucao-demo{
+    .copy-btn{
+      background-color: #ff6099;
+      bottom: .4rem;
+    }
+    .style-demo{
+      height: auto;
+    }
+  }
+  .btn-group{
+    margin-top: .1rem;
+    font-size: 0;
+    .buhaoyong{
+      @include wh(354,78);
+    }
+  }
+}
+.clearfix:after {
+  clear: both;
+}
+.app-list-wrap{
+  background-color:#ff6099 ;
+  padding:.2rem .2rem .68rem .2rem;
+  .contain{
+    margin: 0 0.15rem 0;
+    background-color: #ffffff;
+    .list{
+      position: relative;
+      padding: 0.3rem 0.2rem 0.3rem 0.35rem;
+      border-bottom: 1px solid #eee;
+      .btn-wrapper{
+        border-width: .03rem;
+      }
+      .pic-1 {
+        margin-right: 0.3rem;
+        float: left;
+        img {
+          width: 1.15rem;
+          height: 1.15rem;
+        }
+      }
+      .content {
+        float: left;
+        text-align: left;
+        .title-p {
+          font-size: 0.36rem;
+          color: #333;
+        }
+        .sub-title{
+          color:red;
+        }
+        p {
+          margin:.1rem 0;
+          font-size: 0.24rem;
+          color: #999;
+          span {
+            display: inline-block;
+            margin-right: 0.4rem;
+            font-size: 0.24rem;
+            color: #999;
+          }
+        }
+      }
+      .open {
+      }
+      .js-button {
+        position: absolute;
+        top: 0.65rem;
+        right: 0.22rem;
+        width: 1.58rem;
+        height: 0.59rem;
+        border: none;
+        border-radius: 0.2rem;
+      }
+      .js-label {
+        position: relative;
+        z-index: 9;
+        text-align: center;
+        font-size: 0.28rem;
+        color: #23beff;
+        @include lh(59)
+      }
+    }
+    .clearfix:before, .clearfix:after {
+      display: table;
+      line-height: 0;
+      content: "";
+    }
   }
 }
