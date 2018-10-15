@@ -5,6 +5,7 @@
 @import '../../css/swiper.min.css';  //ww
 @import 'swiper.scss';//swiper
 @import 'btn.css';
+@import 'component.scss';
 /*@import 'mmapp.css';*/
 
 $line:#ececec;
@@ -51,6 +52,9 @@ ol, ul {
   display: flex;
   flex-wrap: wrap;
   justify-content:space-between;
+}
+.no-wrap{
+  flex-wrap: nowrap
 }
 .flex-center{
   align-items:center;
@@ -294,7 +298,7 @@ ol, ul {
  .btn-group{
    text-align: center;
    font-size: 0;
-   margin-top: .3rem;
+   margin-top: .2rem;
    .submit{
      padding:.2rem .6rem;
      display: inline-block;
@@ -312,13 +316,13 @@ ol, ul {
   }
 }
  .tucao-text-wrap{
-   margin-top: .35rem;
+   margin-top: .1rem;
    border:1px solid #999;
    textarea{
      box-sizing: border-box;
      width: 100%;
      margin: 0 auto;
-     height: 2.2rem;
+     height: 1.2rem;
      overflow: auto;
      word-break: break-all;
      font-size: $f24;
@@ -327,3 +331,157 @@ ol, ul {
    }
 
 }
+.text-limit{
+  margin-top: .1rem;
+  font-size: .24rem;
+  color:$text6;
+  span{
+    float: right;
+  }
+}
+.check-my-submit{
+  text-align: center;
+  a{
+    font-size: .24rem;
+    color:#0066cc;
+  }
+}
+
+.month-rane-wrap{
+.banner{
+  position: relative;
+  font-size: 0;
+  background: url(../img/month-rane-banner.png)no-repeat;
+  width: 100%;
+  height: 5.6rem;
+  background-size: cover;
+  .no-data{
+    background-color: #ffddc2;
+    width: 94%;
+    height: 4.06rem;
+    margin:0 auto;
+    box-shadow:.05rem .03rem .2rem rgba(0, 0, 0, 0.34);
+    text-align: center;
+    vertical-align: middle;
+    font-size:.3rem;
+    color:$orange;
+    .text-wrap{
+      padding-top: 15%;
+    }
+    .title{
+      font-size: .36rem;
+    }
+  }
+  .header{
+    text-align: center;
+    .title{
+      width: 3.19rem;
+      height: auto;
+     display: inline-block;
+    }
+  }
+}
+  .swiper{
+    width: 94%;
+    margin:0 auto;
+    box-shadow:.05rem .03rem .2rem rgba(0, 0, 0, 0.34);
+    .month-rane{
+      font-size: .2rem;
+      text-align: center;
+      padding:.15rem 0;
+      background-color:#ffddc2;
+    }
+    .rane-list{
+      flex-wrap: nowrap;
+      box-sizing: border-box;
+      padding:.1rem .25rem;
+      height: 1.2rem;
+      .me-avart{
+        position: relative;
+        display: inline-block;
+        @include wh(103,81);
+       overflow: hidden;
+        background-size: cover;
+        .avart-img{
+          position: absolute;
+          left:50%;
+          top:50%;
+          transform: translate3d(-50%,-50%,0);
+          z-index: 0;
+        }
+        .avart-img-bg{
+          display: inline-block;
+          position: relative;
+          @include wh(103,81);
+          z-index: 99;
+          text-align: center;
+        }
+      }
+      .avart{
+        text-align: center;
+      }
+
+      .avart-img{
+        display: inline-block;
+        margin-bottom: .1rem;
+        width: .6rem;
+        height: auto;
+      }
+      .tel-num{
+        font-size: .2rem;
+        color:$text6;
+      }
+      .info{
+        font-weight: bold;
+        color:$text6;
+        text-align: center;
+        font-size: .24rem;
+        .total{
+          color:#ff6600;
+          font-size: .48rem;
+        }
+      }
+      .award{
+        padding-top: .2rem;
+        text-align: center;
+        .tag-img{
+          display: inline-block;
+          width: 1.09rem;
+          height: auto;
+        }
+        .award-num{
+          padding:.15rem 0;
+          font-weight: bold;
+          color:$text6;
+          font-size: .24rem;
+        }
+      }
+    }
+    .rane-list:nth-child(2n){
+      background-color: #fff;
+    }
+    .rane-list:nth-child(2n+1){
+      background: url(../img/month-rane-item-bg.png)no-repeat;
+      background-size: cover;
+    }
+  }
+  .tag-wrap-in-month-rane{
+    padding:0 .3rem;
+    h3{
+      font-size: .28rem;
+    }
+    .tag-list{
+      .title{
+        display: inline-block;
+        float: left;
+        border:1px solid #999999;
+        border-radius: .2rem;
+        padding:.1rem .2rem;
+        font-size: $f24;
+        color:#999999;
+        margin: .3rem 0  0 .3rem;
+      }
+    }
+  }
+}
+

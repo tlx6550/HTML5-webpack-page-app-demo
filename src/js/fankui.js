@@ -148,7 +148,127 @@ import  '../assets/js/flexible.js';
     }
 
 }(window);
+//弹窗图标
+const iconImg = {
+    checkComfrim:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAABNCAYAAADjCemwAAAHX0lEQVR4nO3ce4ycVRnH8U+HRZZkKxfFCtimLFWJTSPXIO1WTNRECSKJgDeCKOINFExMvKY7jRFjiRqVpNKLu4pQ3AVr6qVEUf/QVQzUaywUwStaaQUsthSKrf7xzMDsODPvzPu+884M+E3mj5n3vOc8+9tzec45zzlzVvz4RD3gKByL43ACXoBRHIlDcRiG8Sh2YQ8exL24G3fhL9iBvxZsu6ECyzoZp2MxTqt85iS8M4Jn13x/Wd3z3+InuAMzle9dp9uiHY4LcI4Q7eic819c+VyKP2MLvoGbRe3sCt0SbT4uxGU4RnKNyoMFlc85+DhW43rRjHOllHN+x2EFbsNVot8qQrBaDhLifRK3o4yFeRaQl2hz8A58CytF7eoH5mFc2HVpXpnmIdqL8T1cixflkF83WCzs24TnZ80sq2gX4rt4eVZDCmAOXoMf4g1ZMkor2jPxBXwFz8liQA84VgwQV+OQNBmkEe0obMDliu/k86KED+DLmJvm5U6Yj2mc1WlBfcrrcaPZDnQinYg2HxtxZicFDABnib9rXrsvtCvas3ADTklh1CAwhkkxbUukHdEOrWQ4ltqkweBVWI+DkxImiTaET+PsHIwaBC4QznDLAS5JtDfhkrwsGhCuEPPXprQSbQk+i2fkadEAMCJ80IXNEjQT7RAh2JH52zQQzMcqTZppM9Eu9r8Lfk83zsV5jR40Em1UeMsHddOiAeBgfFiDhdNGor0Ni7pt0YBwkhhRZ1Ev2gJPv9EyicvVTbPqRXsrnluYOcVwNz4n/M1fp3h/kbraViva4XhXatP6kwkxk7lS9NMvFe5Ep1yhZqZQK9p5Bm9trBVrxcbOzprfdonO/acd5jWqZmWnVrRz5b/R0ivWidqxt8GzPfh2h/kN4fzql6pIJ+LUNNb1IWvxHo0Fq3IgRb5LxW7bE6It1cF6Uh+zFu/F4y3SDOPVKfJeKCIElIQTe1KKTPqNtaLDfywh3cewPEX+c1R0GhILjKelyKSfqNawJMHG8dEM5ZyKuUNid2ZJhox6zTrhgO5LSLdS7P5n4WQcUxKd26COmpN4v2TBxmUXjPBl5w3hhTlk1gsmhR/2SEK6cRHPkReLSiKgLgv3iZnEqNj+XyX5P5+VNXinZMHK8hUMThgSf2xadgineEvNbx/Ez0Vf09buTodUHdci+rBGjJZwRIYMJswWrMrXxGpJ3oF164VgjyakK+uOYHDEkGy14a4Wz6bwHxHvMZyhjCprxCjZynElBBvPobxmjJSkiGWoYUHC82lcJHuNW4P3SRZspe4KBnNLUkbOVLhIZT7WgmmxGvyvlGWsF25FkuNa1r0mWctwSbIxrTge1wkHuRVTeLvWk+hGTGrfreh2Dauyt4SHM2ayTETeJEVuT4ldrnaFm8C7tTc1KreZZx48XJLPCDcmmmE7Ne4tkpvqhJhLJo2SRQsGu0viJEgeLBOuRlKNmxZNtVmTq84lk/6ZvRAMHirhnhwzXCZqU1J095TYxKmvSRPa68PKeiMY3FMSuzV5Mib6uKRdrSmz3ZFJ0STbmXwX1ek3YtsQtnUh4+XiqM35+FuLdNPC5XkJPiS5SZb1VjC4t4Q/SnYa07BUiJLUVL8q+rDdCel6XcPgH7i/JI7+/apLhSzVXlNNoqx3fVgtW7C9Onre3sWCqk31eSnfX6H3NazKHSouxwH8osuFLRVnDzo9ulgW88l+YD9+yZPL3DNad9h5MCZGzHaFK+ufGkacar6NJ0Xbip8VUHBVuKTBoR86/XpmxCr1rA2Vr0u389wpSVOuXnn6rXhcDGiYLdpGXTiF24SqO7JE+GklEd97tf4TjFhsvbX6pfY49h5cIwwvgjPEof3vixF8uf6NwPyMmlZYf4b9ejGVSVqRzYsRvLagstLyG3GZwBPUbxJvxxcLM2cwuAb/rP2h0c76dULd/xMj5k31PzYS7T58Snfmo4PEY/iEBuuNzWI4bsQt3bRoANiAzY0eNBNtv4j1Kvwenz7hd/hIs4etooV+L5ZsklZRn2o8JGJTtjdLkBRitQmfz9OiAeAq/KBVgiTRDohpzYa8LOpzrhWnD1vSTjDfPnElzneyWtTnTIvgmv1JCduNgNwtNnp/lN6mvmazuIuorWiDTsJGd4pYtE0pjOpnbhL3c+xq94VOY20fxBvFZshTgdXinH5HwTlpApQfEQF7ZYPrjuwREZuXSTHzSRvVvU+s3b9Ovjv0RbBVdDOrRNBhx2QNhb8FrxBL2FlCtopgL74kri27NSFtS/I4P/An0ZG+WWxx9SMz4s60S/D3rJnleejiZnFTzJW4M8d8s3CnOJF3thxH/bxPqtwvjj6fKQLytim+2e4T64EXV+xYrW4RMSvdurJ1p1gBXodXCjfldNkPerRiq+geNuKb2vDs09Lty4H/LbztzSKg+Qxx8eYp4kTbYRnyfkCItEXEoswoaCmryGuo/1D53CDEOloczF0kzmcdLw5sjYgw/WHhB+4WftUDwr3ZJna7d4jlm7RR46n5L9QXY6wk24F0AAAAAElFTkSuQmCC'
+}
+!function (window,ydui) {
+    "use strict";
+    let dialog = ydui.dialog = ydui.dialog || {},
+         $body = $(window.document.body);
+    /**
+     * 确认提示框
+     * @param title 标题String 【可选】
+     * @param mes   内容String 【必填】
+     * @param opts  按钮们Array 或 “确定按钮”回调函数Function 【必填】
+     * @constructor
+     */
+    dialog.confirm = function (title,mes,opts) {
+        const ID = 'ZHUOWANG_CONFRIM';
+        $('#' + ID).remove()
+        const args = arguments.length;
+        if(args < 2){
+            console.error('From UI\'s confirm: Please set two or three parameters!!!');
+            return;
+        }
+        if (typeof arguments[1] != 'function' && args == 2 && !arguments[1] instanceof Array) {
+            console.error('From UI\'s confirm: The second parameter must be a function or array!!!');
+            return;
+        }
+        if (args == 2) {
+            opts = mes;
+            mes = title;
+            title = '提示';
+        }
+        let btnArr = opts;
+        if(typeof opts === 'function'){
+            btnArr = [
+                {
+                    txt:'查看我的反馈',
+                    color:true,
+                    callback:function () {
+                        opts && opts();
+                    }
+                },
+                {
+                txt:'关闭',
+                color:'false'
+            }];
+        }
+        let html = '';
+        html+= '<div class="m-confirm  succees" id=" '+ ID +  '">' +
+        '<div class="pop">'+
+        '<div class="confirm-hd">'+title+'</div>'+
+        '<div class="confirm-bd">'+
+        '<img src='+iconImg.checkComfrim+ ' class="icon">'+
+        '<div class="text">'+ mes +'</div>'+
+        ' </div>'+
+        '</div>'+
+        '</div>';
+        const $dom = $(html)
+        // 遍历按钮数组
+        var $btnBox = $('<div class="confirm-ft"></div>');
+        $.each(btnArr,function (i,val) {
+            var $btn;
+            if(val.txt == '关闭'){
+                $btn = $(' <a href="javascript:;"  class="close-btn">'+val.txt+'</a>')
+            }else{
+                $btn = $(' <a href="javascript:;"  class="check-my-submit">'+val.txt+'</a>')
+            }
 
-$(function(){
+            // 给对应按钮添加点击事件
+            // 给对应按钮添加点击事件
+            (function (p) {
+                $btn.on('click', function (e) {
+                    e.stopPropagation();
 
-});
+                    // 是否保留弹窗(点击关闭 弹窗消失)
+                    if (!btnArr[p].stay) {
+                        // 释放页面滚动
+                        ydui.util.pageScroll.unlock();
+                        $dom.remove();
+                    }
+                    btnArr[p].callback && btnArr[p].callback();
+                });
+            })(i);
+            $btnBox.append($btn);
+        });
+        $dom.find('.pop').append($btnBox);
+        // 禁止滚动屏幕【移动端】
+        ydui.util.pageScroll.lock();
+
+        $body.append($dom);
+    }
+}(window,YDUI)
+
+// 反馈逻辑
+ $(function(){
+     var dialog = window.YDUI.dialog;
+     function checkMyFanKui() {
+         alert(1)
+     }
+     /* 普通确认框 */
+     $('#fanKui_Confirm').on('click', function () {
+         dialog.confirm('提交数据', '提交成功，感谢您的支持', function () {
+             checkMyFanKui()
+         });
+     });
+     $('.check-my-submit').click(function () {
+         checkMyFanKui()
+     })
+  //
+     $('#searchFanKui_Confirm').on('click', function () {
+         dialog.confirm('提交数据', '提交成功，感谢您的支持', function () {
+             checkMyFanKui()
+         });
+     });
+/*     $('.submit').click(function (e) {
+     e.stopPropagation();
+     $('.succees').show()
+     })
+     $('.close-btn').click(function (e) {
+     e.stopPropagation();
+     $('.succees').hide()
+ })*/
+
+ });

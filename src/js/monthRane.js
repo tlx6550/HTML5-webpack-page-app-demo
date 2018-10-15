@@ -3,7 +3,7 @@
  */
 import '../assets/styles/mmzhuochong.scss';
 import $ from '../assets/js/jquery.min.js';
-
+import  '../assets/js/flexible.js';
 $(function(){
 
 });
