@@ -55,7 +55,21 @@
   animation: zoomIn .15s ease forwards;
   transform: translate(-50%,-50%);
 }
-
+.toast{
+  position: fixed;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  animation: zoomIn .15s ease forwards;
+  transform-origin:left;
+  font-size: .48rem;
+  color:#fff;
+  padding:.4rem .8rem;
+  border-radius: .3rem;
+}
 .m-confirm .pop .confirm-ft {
   font-size: 0;
   text-align: center;
