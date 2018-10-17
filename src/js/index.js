@@ -523,6 +523,11 @@ $('.rules-btn').click(function () {
             setTimeout(function () {
                 var val = that.data("clipboard-text");
                 YDUI.util.setCookie('styleDemo',val)
+                // 假如浏览器不支持复制
+                var flag =  YDUI.util.sessionStorage.get('copyFlag')
+                if(!flag){
+                    showPop('复制成功')
+                }
             },150)
         })
     }

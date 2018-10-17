@@ -358,7 +358,9 @@ const iconImg = {
 // 反馈逻辑
  !function(){
     window.onload = function () {
+        // 初始化吐槽内容
       var val = YDUI.util.getCookie('styleDemo')
+        tagObj[appNameKey] = 'MM头条'
       $('.submit-content').val(val)
     }
      //toast 弹窗实例
