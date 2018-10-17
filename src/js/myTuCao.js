@@ -9,6 +9,16 @@ $(function(){
   $('.check-icon').click(function (e) {
       e.stopPropagation();
       $(this).toggleClass('active')
+      if($(this).hasClass('active')){
+          $('.rane-list').each(function () {
+              var dom = $(this).children('.award').find('.award-item').text()
+              if(dom==undefined||dom==''||dom==null){
+                  $(this).hide()
+              }
+          })
+      }else{
+          $('.rane-list').show()
+      }
   })
     // 筛选
    $('.btn-group').find('.button').click(function (e) {
