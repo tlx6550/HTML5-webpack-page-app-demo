@@ -154,7 +154,7 @@ const config = {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 51200, //base64格式限制最大时候进行转换
+                    limit: 10240, //base64格式限制最大时候进行转换
                    /* name: 'assets/[name].[ext]'*/
                    name:'./defaultSite/images/a/320x480/activity/930/assets/[name].[ext]' //线上正式地址
                 }

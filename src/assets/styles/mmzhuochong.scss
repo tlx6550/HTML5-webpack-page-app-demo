@@ -83,8 +83,14 @@ ol, ul {
 .navigation{
    a{
      text-decoration: none;
-     color:$blue;
+     color:#fff;
    }
+
+}
+.navigation-btn-wrapper{
+  background-color: #fe6fa8;
+  border:none;
+  border-radius: .4rem !important;
 }
 .clearfix:after {
   display: block;
@@ -366,142 +372,173 @@ ol, ul {
   }
 }
 
-.month-rane-wrap{
-.banner{
-  position: relative;
-  font-size: 0;
-  background: url(../img/month-rane-banner.png)no-repeat;
-  width: 100%;
-  height: 5.6rem;
-  background-size: cover;
-  .no-data{
-    background-color: #ffddc2;
-    width: 94%;
-    height: 4.06rem;
-    margin:0 auto;
-    box-shadow:.05rem .03rem .2rem rgba(0, 0, 0, 0.34);
-    text-align: center;
-    vertical-align: middle;
-    font-size:.3rem;
-    color:$orange;
-    .text-wrap{
-      padding-top: 15%;
-    }
-    .title{
-      font-size: .36rem;
-    }
-  }
-  .header{
-    text-align: center;
-    .title{
-      width: 3.19rem;
-      height: auto;
-     display: inline-block;
-    }
-  }
-}
-  .swiper{
-    width: 94%;
-    margin:0 auto;
-    box-shadow:.05rem .03rem .2rem rgba(0, 0, 0, 0.34);
-    .month-rane{
-      font-size: .2rem;
-      text-align: center;
-      padding:.15rem 0;
-      background-color:#ffddc2;
-    }
-    .rane-list{
-      flex-wrap: nowrap;
-      box-sizing: border-box;
-      padding:.1rem .25rem;
-      height: 1.2rem;
-      .me-avart{
+.month-rane-wrap {
+    .banner {
         position: relative;
-        display: inline-block;
-        @include wh(103,81);
-       overflow: hidden;
+        font-size: 0;
+        background: url(../img/month-rane-banner.png)no-repeat;
+        width: 100%;
+        height: 5.6rem;
         background-size: cover;
-        .avart-img{
-          position: absolute;
-          left:50%;
-          top:50%;
-          transform: translate3d(-50%,-50%,0);
-          z-index: 0;
+        .no-data {
+            background-color: #ffddc2;
+            width: 94%;
+            height: 4.06rem;
+            margin: 0 auto;
+            box-shadow: .05rem .03rem .2rem rgba(0, 0, 0, 0.34);
+            text-align: center;
+            vertical-align: middle;
+            font-size: .3rem;
+            color: $orange;
+            .text-wrap {
+                padding-top: 15%;
+            }
+            .title {
+                font-size: .36rem;
+            }
         }
-        .avart-img-bg{
-          display: inline-block;
-          position: relative;
-          @include wh(103,81);
-          z-index: 99;
-          text-align: center;
+        .header {
+            text-align: center;
+            .title {
+                width: 3.19rem;
+                height: auto;
+                display: inline-block;
+            }
         }
-      }
-      .avart{
-        text-align: center;
-      }
-
-      .avart-img{
-        display: inline-block;
-        margin-bottom: .1rem;
-        width: .6rem;
-        height: auto;
-      }
-      .tel-num{
-        font-size: .2rem;
-        color:$text6;
-      }
-      .info{
-        font-weight: bold;
-        color:$text6;
-        text-align: center;
-        font-size: .24rem;
-        .total{
-          color:#ff6600;
-          font-size: .48rem;
+    }
+    .swiper {
+        width: 94%;
+        margin: 0 auto;
+        box-shadow: .05rem .03rem .2rem rgba(0, 0, 0, 0.34);
+        .month-rane {
+            font-size: .2rem;
+            text-align: center;
+            padding: .15rem 0;
+            background-color: #ffddc2;
         }
-      }
-      .award{
-        padding-top: .2rem;
-        text-align: center;
-        .tag-img{
-          display: inline-block;
-          width: 1.09rem;
-          height: auto;
+        .rane-list {
+            flex-wrap: nowrap;
+            box-sizing: border-box;
+            padding: .1rem .25rem;
+            height: 1.2rem;
+            .me-avart {
+                position: relative;
+                display: inline-block;
+                @include wh(103,
+                81);
+                overflow: hidden;
+                background-size: cover;
+                .avart-img {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate3d(-50%, -50%, 0);
+                    z-index: 0;
+                }
+                .avart-img-bg {
+                    display: inline-block;
+                    position: relative;
+                    @include wh(103,
+                    81);
+                    z-index: 99;
+                    text-align: center;
+                }
+            }
+            .avart {
+                text-align: center;
+            }
+            .avart-img {
+                display: inline-block;
+                margin-bottom: .1rem;
+                width: .6rem;
+                height: auto;
+            }
+            .tel-num {
+                font-size: .2rem;
+                color: $text6;
+            }
+            .info {
+                font-weight: bold;
+                color: $text6;
+                text-align: center;
+                font-size: .24rem;
+                .total {
+                    color: #ff6600;
+                    font-size: .48rem;
+                }
+            }
+            .award {
+                padding-top: .2rem;
+                text-align: center;
+                .tag-img {
+                    display: inline-block;
+                    width: 1.09rem;
+                    height: auto;
+                }
+                .award-num {
+                    padding: .15rem 0;
+                    font-weight: bold;
+                    color: $text6;
+                    font-size: .24rem;
+                }
+            }
         }
-        .award-num{
-          padding:.15rem 0;
-          font-weight: bold;
-          color:$text6;
-          font-size: .24rem;
+        .rane-list:nth-child(2n) {
+            background-color: #fff;
         }
-      }
+        .rane-list:nth-child(2n+1) {
+            background: url(../img/month-rane-item-bg.png)no-repeat;
+            background-size: cover;
+        }
     }
-    .rane-list:nth-child(2n){
-      background-color: #fff;
+    .tag-wrap-in-month-rane {
+        padding: 0 .2rem;
+        overflow: hidden;
+        h3 {
+            font-size: .28rem;
+            margin-bottom: 0;
+        }
+        .tag-list {
+            white-space: nowrap;
+            width: 100%;
+            height: 0.6rem;
+            padding-top: 0.2rem;
+          overflow: hidden;
+            .swiper-wrapper {
+                -webkit-transition-timing-function: linear;
+                /*之前是ease-out*/
+                -moz-transition-timing-function: linear;
+                -ms-transition-timing-function: linear;
+                -o-transition-timing-function: linear;
+                transition-timing-function: linear;
+                margin: 0 auto;
+            }
+            .swiper-container2 {
+                margin-right: 120px;
+            }
+            .swiper-container3 {
+                margin-right: 100px;
+            }
+            .swiper-container4 {
+                margin-left: 60px;
+            }
+            .swiper-container5 {
+                margin-right: 80px;
+            }
+            .tag-item {
+                display: inline-block;
+                border: 1px solid #999999;
+                border-radius: .2rem;
+                padding: .1rem .2rem;
+                font-size: $f24;
+                color: #999999;
+                vertical-align: top;
+                margin-right: 0.2rem;
+                flex-shrink: 1;
+                flex-grow: 1;
+            }
+        }
     }
-    .rane-list:nth-child(2n+1){
-      background: url(../img/month-rane-item-bg.png)no-repeat;
-      background-size: cover;
-    }
-  }
-  .tag-wrap-in-month-rane{
-    padding:0 .2rem;
-    h3{
-      font-size: .28rem;
-    }
-    .tag-list{
-      .title{
-        display: inline-block;
-        float: left;
-        border:1px solid #999999;
-        border-radius: .2rem;
-        padding:.1rem .2rem;
-        font-size: $f24;
-        color:#999999;
-        margin: .3rem 0  0 .3rem;
-      }
-    }
-  }
 }
 .my-tucao-wrap{
   .header{

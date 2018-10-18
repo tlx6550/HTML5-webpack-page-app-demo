@@ -366,7 +366,7 @@ const iconImg = {
      //toast 弹窗实例
      var dialog = window.YDUI.dialog;
      function checkMyFanKui() {
-         alert('查看我的反馈')
+        location.href='myTuCao.html'
      }
      /* 应用吐槽确认框 */
      $('#fanKui_Confirm').on('click', function () {
