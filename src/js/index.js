@@ -4,14 +4,14 @@
 import '../assets/styles/mmzhuochong.scss';
 import $ from '../assets/js/jquery.min.js';
 import ClipboardJS from '../assets/js/clipboard.min';
-import '../assets/js/swiper.min.js';
+
 
 import  '../assets/js/flexible.js';
 
 // app download
 
-import '../js/mmdl.js';
-import '../js/mmapp.js';
+/*import '../js/mmdl.js';
+import '../js/mmapp.js';*/
 /**
  * ydui main
  */
