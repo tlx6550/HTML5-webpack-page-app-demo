@@ -71,11 +71,11 @@ const config = {
     // 左边是chuncks名称，右边是入口地址
     entry: {
         'index': './js/index.js',
-        'fankuiyijian': './js/fankui.js',
+/*        'fankuiyijian': './js/fankui.js',
         'fankuisearch': './js/fankui.js',
         'monthRane': './js/monthRane.js',
         'myTuCao': './js/myTuCao.js',
-        'ruleDeail': './js/ruleDeail.js',
+        'ruleDeail': './js/ruleDeail.js',*/
     },
     output: {
         filename: isDev ? '[name].js' : '[name].js',
@@ -198,7 +198,7 @@ const config = {
             template: './index.html',
             filename: 'index.html'
         }),
-       new HtmlWebpackPlugin({
+/*       new HtmlWebpackPlugin({
             chunks: ['fankuiyijian'],
             template: './fankuiyijian.html',
             filename: 'fankuiyijian.html'
@@ -227,7 +227,7 @@ const config = {
             template: './ruleDeail.html',
             filename: 'ruleDeail.html'
             }
-        ),
+        ),*/
         new LodashModuleReplacementPlugin,
         new CopyWebpackPlugin([
             {
