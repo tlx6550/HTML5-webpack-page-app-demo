@@ -111,9 +111,9 @@ $('.down-app-total').rollNum({
         initFonSize()
 
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init($('.fensheng-down')[0]);
+        var myChart     = echarts.init($('.fensheng-down')[0]);
         var myChartUser = echarts.init($('.down-user')[0]);
-        var myChartLiu = echarts.init($('.down-liuliang')[0]);
+        var myChartLiu  = echarts.init($('.down-liuliang')[0]);
 
         var myChart2 = echarts.init($('.fensheng-down2')[0]);
         var myChartUser2 = echarts.init($('.down-user2')[0]);
@@ -427,4 +427,24 @@ $('.down-app-total').rollNum({
        /* temp++;
          randShow()*/
     },2000)
+}()
+//数据获取
+!function () {
+     var baseUrl = 'https://easy-mock.com/mock/5bfd0066e14e0125f051fe18/dapi'
+    //top10
+    function getDownLoadTop10() {
+        $.ajax({
+
+            url: baseUrl + '/screenData/top10',
+            dataType: 'json',
+            method: 'post',
+            success: function(res) {
+              console.log(res)
+            },
+            error: function(e) {
+                console.log(e)
+            }
+        });
+    }
+    getDownLoadTop10()
 }()
