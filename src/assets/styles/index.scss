@@ -2,8 +2,6 @@
 @import 'normalize';
 
 /*@import 'ydui.css';*/
-@import '../../css/swiper.min.css';  //ww
-@import 'swiper.scss';//swiper
 @import 'btn.css';
 @import 'component.scss';
 /*@import 'mmapp.css';*/
@@ -15,7 +13,7 @@ $text3:#333333;
 $blue-text:#003333;
 $bgc:#cccccc;
 $fontWeight:550;
-$orange:#ff6c00;
+$orange:#ff5100;
 $line-blue:#f4f9ff;
 $f24:0.24rem;
 @function rem($args) {//iphone 678
@@ -34,7 +32,10 @@ $f24:0.24rem;
 ol, ul {
   list-style: none;
 }
-
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
 @keyframes zoomIn {
   from {
     opacity: 0;
@@ -87,11 +88,7 @@ ol, ul {
    }
 
 }
-.navigation-btn-wrapper{
-  background-color: #fe6fa8;
-  border:none;
-  border-radius: .4rem !important;
-}
+
 .clearfix:after {
   display: block;
   content: ".";
@@ -99,6 +96,9 @@ ol, ul {
   line-height: 0;
   clear: both;
   visibility: hidden;
+}
+.home-bg{
+  background: $orange;
 }
 .banner{
   position: relative;
@@ -120,90 +120,143 @@ ol, ul {
     background: url("../img/guize-btn.png")no-repeat;
     background-size: cover;
   }
-  .btn-group{
-    position: absolute;
-    bottom: .28rem;
-    width: 100%;
-    height: .7rem;
-    img{
-      width: 2.2rem;
-      height: .7rem;
-    }
-    .wodetucao{
-      float: left;
-      margin-left: .53rem;
-    }
-    .tucaozhixin{
-      float: right;
-      margin-right: .53rem;
-    }
-  }
+
 }
-.sousuobudao{
-  background-color: #3762d1;
+.gua-jiang{
   text-align: center;
-  .tucao-demo{
+  .gua-jiang-img{
     position: relative;
-    text-align: center;
-    .style-demo{
-      display: inline-block;
-      width:100% ;
-      height: auto;
-    }
-    .copy-btn{
-      position: absolute;
-      color:#fff;
-      background-color: #7badff;
-      border-radius: .1rem;
-      padding:.1rem .05rem;
-      bottom: .3rem;
-      right: .52rem;
-      font-size: .24rem;
-    }
+    display: inline-block;
+    @include wh(690,240);
+    background: url("../img/guajiang.png")no-repeat;
+    background-size: cover;
   }
-  .btn-group{
-    position: relative;
-    .liketucao{
-      display: inline-block;
-      @include wh(227,78)
-    }
-    .go{
-      display:inline-block;
-      position: absolute;
-      right: .52rem;
-      top:50%;
-      transform: translatey(-50%);
-      font-size: .24rem;
-      color:#fff;
-    }
+  button{
+    position: absolute;
+    @include wh(370,80);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ca322e;
+    font-weight: bold;
+    color:#fff;
+    margin:0;
   }
 }
-.explex{
-  background-color: #ff6099;
-  .tucao-demo{
-    .copy-btn{
-      background-color: #ff6099;
-      bottom: .4rem;
-    }
-    .style-demo{
-      height: auto;
+.rotary-box{
+  margin-top: .35rem;
+  background-color: #ff5100;
+  .title{
+    background: url("../img/zp-titlepng.png")no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 1.42rem;
+    color:#fff;
+    font-size: .42rem;
+    text-align: center;
+  }
+  .info{
+    padding-top: 0.576rem;
+  }
+  .zw-rotary {
+    top:-0.3rem;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 5.63rem;
+    height: 5.63rem;
+  }
+
+  .zw-rotary-dial {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    -webkit-transition-delay: .2s;
+    transition-delay: .2s;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    transition-property: transform, -webkit-transform;
+    -webkit-transition-timing-function: cubic-besizer(0.43, 1.18, 0.53, 0.36);
+    transition-timing-function: cubic-besizer(0.43, 1.18, 0.53, 0.36);
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
+    img{
+      width: 100%;
     }
   }
-  .btn-group{
-    margin-top: .1rem;
-    font-size: 0;
-    .buhaoyong{
-      @include wh(354,78);
+
+  .zw-rotary-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.78rem;
+    height: 1.98rem;
+    -webkit-transform: translate3d(-50%, -60%, 0);
+    transform: translate3d(-50%, -60%, 0);
+    img{
+      width: 100%;
+    }
+  }
+  .content {
+    position: relative;
+    top: -0.3rem;
+    text-align: center;
+    line-height: 0;
+    a {
+      display: inline-block;
+      background: url(../img/icon-btn.png) no-repeat;
+      background-size: 100% 100%;
+      width: 1.98rem;
+      height: 0.6rem;
+      line-height: 0.6rem;
+      font-size: 0.3rem;
+      font-weight: bold;
+      color: #f74e09;
+      text-align: center;
+    }
+    p {
+      font-size: 0.28rem;
+      color: #fff;
+      text-align: center;
+      display: inline-block;
+      span {
+        font-size: 0.28rem;
+        color: #ffea00;
+      }
+    }
+    .prize-btn {
+      right: 0.25rem;
+    }
+    .activity-btn {
+      left: 0.25rem;
     }
   }
 }
 
 .app-list-wrap{
-  background-color:#ff6099 ;
   padding:.2rem .2rem .68rem .2rem;
   .contain{
     margin: 0 0.05rem 0;
     background-color: #ffffff;
+    .list-title{
+      background: url(../img/app-list-bg.png) no-repeat;
+      background-size: 100% 100%;
+      width: 100%;
+      height: 1.2rem;
+      .title-box{
+        padding: 0 .2rem;
+        color:#fff;
+        height: 100%;
+        font-size: .3rem;
+      }
+      .sub-title{
+        color:#fad44e;
+        font-size: .24rem;
+      }
+    }
     .list{
       position: relative;
       padding: 0.3rem 0.2rem 0.3rem 0.35rem;
@@ -613,49 +666,4 @@ ol, ul {
        font-size: .12rem;
      }
    }
-}
-.rule-detail-wrap{
-  .banner{
-    img{
-      display: inline-block;
-      height: 4.26rem;
-      width: 100%;
-    }
-  }
-  .container{
-    padding: 0 .2rem .4rem .2rem;
-    background-color: #3250d3;
-    font-size: .8rem;
-    .content{
-      padding:.1rem .2rem;
-      background-color: #fff;
-      .item{
-       box-sizing: border-box;
-        height: 100%;
-        .button{
-          background-color: #8298f7;
-          padding:.1rem .3rem;
-          border-radius: .1rem;
-          color:#fff;
-          font-size: .28rem;
-        }
-        .text{
-          margin-top: .1rem;
-          font-size: .24rem;
-          color:$text6;
-          .p-item{
-            margin:.2rem 0;
-            line-height: .36rem;
-          }
-          .title{
-            margin:.2rem 0;
-          }
-          .info{
-            line-height: .36rem;
-          }
-        }
-      }
-    }
-
-  }
 }

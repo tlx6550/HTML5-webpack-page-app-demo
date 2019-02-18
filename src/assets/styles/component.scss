@@ -186,3 +186,30 @@ $base-zindex:1;
     color:#202020;
   }
 }
+
+.yd-btn-primary {
+  background-color: #04be02;
+}
+.yd-btn-block {
+  border: none;
+  width: 100%;
+  display: block;
+  font-size: .3rem;
+  height: .9rem;
+  margin-top: .5rem;
+  border-radius: 3px;
+}
+.yd-btn-circle {
+  border-radius: 2rem;
+}
+.yd-btn-primary {
+  color: #fff;
+}
+.yd-btn-block, .yd-btn-mini {
+  text-align: center;
+  position: relative;
+  pointer-events: auto;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

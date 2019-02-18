@@ -1,10 +1,8 @@
 /**
  * Created by issuser on 2018/9/28 0028.
  */
-import '../assets/styles/mmzhuochong.scss';
+import '../assets/styles/index.scss';
 import $ from '../assets/js/jquery.min.js';
-import ClipboardJS from '../assets/js/clipboard.min';
-
 
 import  '../assets/js/flexible.js';
 
@@ -340,57 +338,7 @@ $('.rules-btn').click(function () {
         location.href = './fankuiyijian.html'
     })
 }(window)
-!function (window) {
-    //检查是否支持复制
-    function checkSerportCopy(){
-        $('.copy-btn').click(function (e) {
-            var that = $(this)
-            setTimeout(function () {
-                var val = that.data("clipboard-text");
-                YDUI.util.setCookie('styleDemo',val)
-                // 假如浏览器不支持复制
-                var flag =  YDUI.util.sessionStorage.get('copyFlag')
-                if(!flag){
-                    showPop('复制失败')
-                }
-            },150)
-        })
-    }
-    checkSerportCopy();
-    function showPop(txt){
-        var dfd = $.Deferred();
-        YDUI.dialog.toast(txt, 'none',1000, function(){
-            dfd.resolve();
-        });
-        return dfd;
-    }
-// 搜索反馈样式拷贝
-  var searchClipboard =   new ClipboardJS('#search-copy-btn');
-    searchClipboard.on('success', function(e) {
-        YDUI.util.sessionStorage.set('copyFlag',true)
-        showPop('复制成功').then(function () {
-            e.clearSelection();
-            location.href= './fankuisearch.html'
-        })
-    });
-   searchClipboard.on('error', function(e) {
-       showPop('复制失败')
-    });
-    // 搜索应用样式拷贝
-    var appClip = new ClipboardJS('#app-copy-btn');
-    appClip.on('success', function(e) {
-        YDUI.util.sessionStorage.set('copyFlag',true)
-        showPop('复制成功').then(function () {
-            e.clearSelection();
-            location.href= './fankuiyijian.html'
-        })
 
-    });
-    appClip.on('error', function(e) {
-        showPop('复制失败')
-    });
-
-}(window)
 
 
 

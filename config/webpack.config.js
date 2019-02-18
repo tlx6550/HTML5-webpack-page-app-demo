@@ -72,10 +72,6 @@ const config = {
     entry: {
         'index': './js/index.js',
         'fankuiyijian': './js/fankui.js',
-        'fankuisearch': './js/fankui.js',
-        'monthRane': './js/monthRane.js',
-        'myTuCao': './js/myTuCao.js',
-        'ruleDeail': './js/ruleDeail.js',
     },
     output: {
         filename: isDev ? '[name].js' : '[name].js',
@@ -203,30 +199,6 @@ const config = {
             template: './fankuiyijian.html',
             filename: 'fankuiyijian.html'
         }
-        ),
-        new HtmlWebpackPlugin({
-            chunks: ['fankuisearch'],
-            template: './fankuisearch.html',
-            filename: 'fankuisearch.html'
-        }
-        ),
-               new HtmlWebpackPlugin({
-             chunks: ['monthRane'],
-             template: './monthRane.html',
-             filename: 'monthRane.html'
-            }
-        ),
-            new HtmlWebpackPlugin({
-            chunks: ['myTuCao'],
-            template: './myTuCao.html',
-            filename: 'myTuCao.html'
-        }
-        ),
-             new HtmlWebpackPlugin({
-            chunks: ['ruleDeail'],
-            template: './ruleDeail.html',
-            filename: 'ruleDeail.html'
-            }
         ),
         new LodashModuleReplacementPlugin,
         new CopyWebpackPlugin([
