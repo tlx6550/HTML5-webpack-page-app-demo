@@ -18,12 +18,14 @@ $base-zindex:1;
   height:auto;
   text-align: center;
   .confirm-hd{
+    margin-top: 1.4rem;
     padding:.2rem;
     font-size: .36rem;
-    color:#202020;
-    border-bottom: 1px solid $line;
+    color:#fff;
+    font-weight: bold;
   }
   .confirm-bd{
+    height: 2.5rem;
     text-align: center;
     .icon{
       display: inline-block;
@@ -32,8 +34,13 @@ $base-zindex:1;
     }
 
     .text{
-      color:#5b5b5b;
-      font-size: .28rem;
+      display: inline-block;
+      padding-top: 0.5rem;
+      font-size: .3rem;
+      color:#fff;
+    }
+    .my-prize{
+      color:#fce170;
     }
   }
   .confirm-ft{
@@ -55,7 +62,12 @@ $base-zindex:1;
   position: absolute;
   top:50%;
   left: 50%;
-  background-color: #fff;
+  width: 6.85rem;
+  height: 5.83rem;
+  background: url(../img/prize-pop-bg.png) no-repeat;
+  background-size: 100% 100%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
   animation: zoomIn .15s ease forwards;
   transform: translate(-50%,-50%);
 }
@@ -168,22 +180,31 @@ $base-zindex:1;
 .m-confirm .pop .confirm-ft {
   font-size: 0;
   text-align: center;
-  .check-my-submit{
+  display: flex;
+  margin-top: .1rem;
+  padding: 0 .5rem;
+  a{
+    position: relative;
+    text-align: center;
     display: block;
-    margin-top: .25rem;
-    margin-bottom: .35rem;
-    color:#0066ff;
+    flex: 1;
+  }
+  .check-my-submit{
     text-decoration: none;
-    font-size: .28rem;
+    background: url(../img/prize-confirm-btn.png) no-repeat;
+  }
+  .cancel-btn{
+    background: url(../img/prize-cancel-btn.png) no-repeat;
+    margin-right: .3rem;
   }
   .close-btn{
-    display: inline-block;
-    padding:.2rem 1.4rem;
-    margin-bottom: .35rem;
-    border-radius: .1rem;
-    border:1px solid #cbcbcb;
+    background-size: 100% 100%;
+    width: 2.66rem;
+    height: .87rem;
+    line-height: .87rem;
     font-size: .36rem;
-    color:#202020;
+    color:#fd6113;
+    font-weight: bold;
   }
 }
 

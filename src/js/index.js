@@ -2,6 +2,7 @@
  * Created by issuser on 2018/9/28 0028.
  */
 import '../assets/styles/index.scss';
+import LotteryCard from '../assets/js/card.js';
 import $ from '../assets/js/jquery.min.js';
 
 import  '../assets/js/flexible.js';
@@ -191,7 +192,7 @@ var iconImg = {
     var dialog = ydui.dialog = ydui.dialog || {},
         $body = $(window.document.body);
 
-    dialog.confirm = function (title,mes,opts) {
+    dialog.confirm = function (title,mes,prizeMesage,opts) {
         const ID = 'ZHUOWANG_CONFRIM';
         $('#' + ID).remove()
         const args = arguments.length;
@@ -203,7 +204,7 @@ var iconImg = {
             console.error('From UI\'s confirm: The second parameter must be a function or array!!!');
             return;
         }
-        if (args == 2) {
+        if (args == 3) {
             opts = mes;
             mes = title;
             title = '提示';
@@ -212,36 +213,50 @@ var iconImg = {
         if(typeof opts === 'function'){
             btnArr = [
                 {
-                    txt:'查看我的反馈',
-                    color:true,
-                    callback:function () {
-                        opts && opts();
-                    }
+                    txt:'取消',
+                    color:true
                 },
                 {
                     txt:'关闭',
-                    color:'false'
+                    color:'false',
+                    callback:function () {
+                        opts && opts();
+                    }
                 }];
         }
         let html = '';
-        html+= '<div class="m-confirm  succees" id=" '+ ID +  '">' +
-            '<div class="pop">'+
-            '<div class="confirm-hd">'+title+'</div>'+
-            '<div class="confirm-bd">'+
-            '<img src='+iconImg.checkComfrim+ ' class="icon">'+
-            '<div class="text">'+ mes +'</div>'+
-            ' </div>'+
-            '</div>'+
-            '</div>';
+        let prizeHtml = '';
+        if (prizeMesage && prizeMesage.length > 0) {
+            html+= '<div class="m-confirm  succees" id=" '+ ID +  '">' +
+                '<div class="pop">'+
+                '<div class="confirm-hd">'+title+'</div>'+
+                '<div class="confirm-bd">'+
+                '<div class="text">'+ mes +'</div>'+
+                '<div class="text my-prize">'+ prizeMesage +'</div>'+
+                '<div class="text">'+ "!" +'</div>'+
+                ' </div>'+
+                '</div>'+
+                '</div>';
+        }else{
+            html+= '<div class="m-confirm  succees" id=" '+ ID +  '">' +
+                '<div class="pop">'+
+                '<div class="confirm-hd">'+title+'</div>'+
+                '<div class="confirm-bd">'+
+                '<div class="text">'+ mes +'</div>'+
+                ' </div>'+
+                '</div>'+
+                '</div>';
+        }
+
         const $dom = $(html)
         // 遍历按钮数组
         var $btnBox = $('<div class="confirm-ft"></div>');
         $.each(btnArr,function (i,val) {
             var $btn;
-            if(val.txt == '关闭'){
-                $btn = $(' <a href="javascript:;"  class="close-btn">'+val.txt+'</a>')
+            if(val.txt == '取消'){
+                $btn = $(' <a href="javascript:;"  class="close-btn cancel-btn">'+val.txt+'</a>')
             }else{
-                $btn = $(' <a href="javascript:;"  class="check-my-submit">'+val.txt+'</a>')
+                $btn = $(' <a href="javascript:;"  class="close-btn check-my-submit">'+val.txt+'</a>')
             }
 
             // 给对应按钮添加点击事件
@@ -316,27 +331,47 @@ var iconImg = {
     }();
 }(window,YDUI)
 !function (window) {
-// 跳转活动规则
-$('.rules-btn').click(function () {
-    location.href = './ruleDeail.html'
-})
+    !function init(){
+        var fixedP = $('.app-list-wrap').next()
+        var flag = fixedP.hasClass("fixed-pop")
+        if(flag){
+            $('.app-list-wrap').css('margin-bottom',1 + 'rem')
+        }
+    }()
+//弹窗实例
+   /* var dialog = window.YDUI.dialog;
+    dialog.confirm('MM铁杆粉丝福利', '恭喜您，获得','爱奇艺VIP', [
+        {
+            txt: '取消',
+            callback: function () {
+                dialog.toast('你点了取消', 'none', 1000);
+            }
+        },
+        {
+            txt: '确定',
+            callback: function () {
+                dialog.toast('你点了确定', 'none', 1000);
+            }
+        }
+    ]);*/
+//刮刮乐
+    var img = new Image()
+    img.src = 'defaultSite/images/a/320x480/activity/930/assets/guajiang.png'
+    img.onload = function () {
+        var lottery = new LotteryCard(document.getElementById('js_lottery'), { // eslint-disable-line
+            size: 20, //滑动区域大小
+            percent: 50, //激活百分比到谋个值 就全显示
+            resize: true, //canvas的大小是否是可变的
+            cover:img
+        })
+        lottery.on('start', function () {
+            lottery.setResult('defaultSite/images/a/320x480/activity/930/assets/zp-titlepng.png')
+        })
+        lottery.on('end', function () {
 
-// 跳转活动规则
-    $('.wodetucao').click(function () {
-        location.href = './myTuCao.html'
-    })
-// 跳转活动规则
-    $('.tucaozhixin').click(function () {
-        location.href = './monthRane.html'
- })
-// 跳转活动规则
-    $('.liketucao').click(function () {
-        location.href = './fankuisearch.html'
-    })
-// 跳转活动规则
-    $('.buhaoyong').click(function () {
-        location.href = './fankuiyijian.html'
-    })
+        })
+        window.lottery = lottery
+    }
 }(window)
 
 
