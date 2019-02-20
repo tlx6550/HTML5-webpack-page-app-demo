@@ -3,8 +3,9 @@
  */
 import '../assets/styles/index.scss';
 import LotteryCard from '../assets/js/card.js';
-import $ from '../assets/js/jquery.min.js';
 
+import $ from '../assets/js/jquery.min.js';
+import Rotary from '../assets/js/ui.rotary.js';
 import  '../assets/js/flexible.js';
 
 // app download
@@ -233,7 +234,6 @@ var iconImg = {
                 '<div class="confirm-bd">'+
                 '<div class="text">'+ mes +'</div>'+
                 '<div class="text my-prize">'+ prizeMesage +'</div>'+
-                '<div class="text">'+ "!" +'</div>'+
                 ' </div>'+
                 '</div>'+
                 '</div>';
@@ -337,10 +337,20 @@ var iconImg = {
         if(flag){
             $('.app-list-wrap').css('margin-bottom',1 + 'rem')
         }
+
+
+    }()
+    !function initCanvas(){
+        //获取屏幕的宽度
+        var  clientWidth = document.documentElement.clientWidth;
+        //根据设计图中的canvas画布的占比进行设置
+        var canvasWidth = Math.floor(clientWidth*690/720)+6;
+        var canvasHeight = Math.floor((240/690) * canvasWidth)
+        $('.canvas_lottery').css({'width':canvasWidth + 'px','height':canvasHeight+'px'})
     }()
 //弹窗实例
-   /* var dialog = window.YDUI.dialog;
-    dialog.confirm('MM铁杆粉丝福利', '恭喜您，获得','爱奇艺VIP', [
+    var dialog = window.YDUI.dialog;
+    dialog.confirm('MM铁杆粉丝福利', '恭喜您，获得','爱奇艺VIP!', [
         {
             txt: '取消',
             callback: function () {
@@ -353,27 +363,132 @@ var iconImg = {
                 dialog.toast('你点了确定', 'none', 1000);
             }
         }
-    ]);*/
-//刮刮乐
-    var img = new Image()
-    img.src = 'defaultSite/images/a/320x480/activity/930/assets/guajiang.png'
-    img.onload = function () {
-        var lottery = new LotteryCard(document.getElementById('js_lottery'), { // eslint-disable-line
-            size: 20, //滑动区域大小
-            percent: 50, //激活百分比到谋个值 就全显示
-            resize: true, //canvas的大小是否是可变的
-            cover:img
-        })
-        lottery.on('start', function () {
-            lottery.setResult('defaultSite/images/a/320x480/activity/930/assets/zp-titlepng.png')
-        })
-        lottery.on('end', function () {
-
-        })
-        window.lottery = lottery
-    }
+    ]);
 }(window)
 
+!function (window) {
+    //刮刮乐
+    $('.show-guagua-le').click(function(){
+        $('.result-text').find('.title').text("").text("恭喜了")
+        $('.result-text').find('.info-detail').text("").text("刮中了爱奇艺会员周卡！")
+        $('.guagua-pop').css('visibility','visible')
+    })
+    $('.guagua-colse-btn').click(function(){
+        $('.guagua-pop').css('visibility','hidden')
+    })
+
+    function initGuaGuaLe() {
+        var canvas = $(".canvas_lottery")[0]
+        var ctx = canvas.getContext("2d")
+        var img = new Image()
+        var urlImg = $('.guauga-bg-img').attr("src")
+        img.src = urlImg
+
+        img.onload = function () {
+            var baseSize = window.FONTSIZE
+            var bgImgW = Math.floor(7.04 * baseSize)
+            var bgImgH = Math.floor(2.54 * baseSize)
+            var lottery = new LotteryCard(document.getElementById('js_lottery'), { // eslint-disable-line
+                size: 20, //滑动区域大小
+                percent: 90, //激活百分比到谋个值 就全显示
+                resize: true, //canvas的大小是否是可变的
+                cover:img,
+                bgImgH:bgImgH,
+                bgImgW:bgImgW
+            })
+            lottery.on('start', function () {
+                lottery.setResult('')
+            })
+            lottery.on('end', function () {
+
+            })
+            window.lottery = lottery
+        }
+    }
+    initGuaGuaLe()
+}(window)
+!function (window) {
+    // 转盘js
+    $(function(){
+        /*
+         * 初始化大转盘，设置各奖项对应的转盘角度
+         * 奖项对应关系：1-KFC美食体验资格 2-流量大赠送70M 3-再接再厉～ 4-友宝免费畅饮体验 5-我勒个去～ 6-流量大赠送150M
+         * */
+        var $count = $('.rotary-count span'), count = 0;
+        function setCount(count){
+            var text = repeat(count, 2);
+            $count.text(text);
+        }
+        function repeat(s, l) {
+            return (new Array(l - (new String(s)).length + 1)).join('0') + s;
+        }
+        setCount(count);
+        var rotary = new Rotary('.zw-rotary',{
+            fixAngle: 0,
+            awards:{
+                1:{min_angle:5 ,max_angle:55},/*优酷VIP会员周卡*/
+                2:{min_angle:65 ,max_angle:115 },/*别气馁你是最棒的*/
+                3:{min_angle:125 ,max_angle:175 },/*优酷VIP会员月卡*/
+                4:{min_angle:185 ,max_angle:175 +60 },/*爱奇艺VIP会员月卡*/
+                5:{min_angle:185 + 60 ,max_angle:175 +60*2 },/*再接再厉～*/
+                6:{min_angle:185 + 60 * 2 ,max_angle:175 +60*3},/*爱奇艺VIP会员周卡*/
+            }
+        });
+        /*
+         * 抽奖请求逻辑再此方法写,setAward传入awards对应的奖项
+         * */
+
+        //rotary.disable(false);
+        rotary.on('gamestart', function(e){
+            /*if(count <= 0){
+             alert("ff");
+             return;
+             }*/
 
 
+            setCount(count);
+            /*
+             * 此处为ajax发送请求抽奖逻辑
+             * */
+            /*$.ajax({
+             url: 'cj.json',
+             cache: false,
+             dataType: 'json',
+             method: 'GET'
+             }).done(function(res){
+             /!*
+             * 按照奖项开始抽奖
+             * *!/
+             rotary.setAward(1);
+             });*/
+            /*
+             * 按照奖项开始抽奖
+             * */
+            rotary.setAward(1);
+        });
+        /*
+         * 重新抽奖
+         * */
+        $('.zw-rotary-again').on('click', function(e){
+            e.preventDefault();
+            rotary.gamestart();
+        });
+        /*
+         * 抽奖结束触发
+         * */
+        rotary.on('gameover', function(e){
+        });
+
+
+        $('.js-btn').click(function(){
+            if(count<=0){
+                //winSlideDown(1);
+                //$("#cjcs").html(0);
+            }
+        });
+
+    });
+
+
+}(window)
 

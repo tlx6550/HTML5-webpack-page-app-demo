@@ -33,7 +33,6 @@
 			clientW=320;
 		}
 		docEle.style.fontSize = clientW / ratio + "px";
-		console.log('clientW='+clientW)
-        console.log('根大小=' + docEle.style.fontSize)
+        window.FONTSIZE =  clientW / ratio
 	};
 })(window, 720);//750为设计稿宽度px值,根据实际设计稿大小对应设置

@@ -166,9 +166,16 @@ a {
     top:-0.3rem;
     position: relative;
     margin: 0 auto;
-    overflow: hidden;
     width: 5.63rem;
     height: 5.63rem;
+    .zp-shadow{
+      display: inline-block;
+      position: absolute;
+      left:50%;
+      bottom: -0.2rem;
+      transform: translate(-50%,0);
+      width: 100%;
+    }
   }
 
   .zw-rotary-dial {
@@ -198,15 +205,15 @@ a {
     left: 50%;
     width: 1.78rem;
     height: 1.98rem;
-    -webkit-transform: translate3d(-50%, -60%, 0);
-    transform: translate3d(-50%, -60%, 0);
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
     img{
       width: 100%;
     }
   }
   .content {
     position: relative;
-    top: -0.3rem;
+    top: -0.2rem;
     text-align: center;
     line-height: 0;
     a {
@@ -244,7 +251,6 @@ a {
   padding:.2rem .2rem .68rem .2rem;
   .contain{
     margin: 0 0.05rem 0;
-    background-color: #ffffff;
     .list-title{
       background: url(../img/app-list-bg.png) no-repeat;
       background-size: 100% 100%;
@@ -265,6 +271,7 @@ a {
       position: relative;
       padding: 0.3rem 0.2rem 0.3rem 0.35rem;
       border-bottom: 1px solid #eee;
+      background-color: #ffffff;
       .btn-wrapper{
         border-width: .03rem;
       }

@@ -22,7 +22,7 @@
 			</div>
 			<div class="gua-jiang">
 				<div class="gua-jiang-img">
-					<button type="button" class="yd-btn-block yd-btn-primary yd-btn-circle"> <span>刮刮赢壕礼</span></button>
+					<button type="button" class="yd-btn-block yd-btn-primary yd-btn-circle show-guagua-le"> <span>刮刮赢壕礼</span></button>
 				</div>
 			</div>
 			<div class="rotary-box">
@@ -38,6 +38,7 @@
 					<div class="zw-rotary-indicator js-btn">
 						<img src="./assets/img/i.png" alt="">
 					</div>
+					<img class="zp-shadow" src="./assets/img/zp-shadow.png" alt="">
 				</div>
                 <div class="content">
                     <a href="#" class="activity-btn">活动攻略</a>
@@ -147,10 +148,26 @@
 <!--			<div class="fixed-pop">
 				<a href="#">去刮刮赢壕礼</a>
 			</div>-->
-			<div class="guagua-pop">
-				<canvas class="m-ui-scratch" id="js_lottery"></canvas>
-				<button class="m-ui-button" onclick="lottery.reset()">再来一次</button>
+			<div class="guagua-pop" style="visibility: hidden">
+				<div class="guagua-wrap">
+					<img  src="./assets/img/guajiang.png" style="display: none;" class="guauga-bg-img">
+					<div class="canvas-wrap">
+						<canvas  class="m-ui-scratch canvas_lottery" id="js_lottery"></canvas>
+					</div>
+					<div class="result-text">
+						<div class="info">
+							<div class="title"></div>
+							<div class="info-detail">
+
+							</div>
+						</div>
+					</div>
+					<div class="close-btn guagua-colse-btn">
+						<img src="./assets/img/guagua-close.png" alt="">
+					</div>
+				</div>
 			</div>
+
 		</div>
 		<script>
 			/*    new AppManager({
