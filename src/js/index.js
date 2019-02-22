@@ -232,7 +232,7 @@ var iconImg = {
                 '<div class="pop">'+
                 '<div class="confirm-hd">'+title+'</div>'+
                 '<div class="confirm-bd">'+
-                '<div class="text">'+ mes +'</div>'+
+                '<div class="text sub-title">'+ mes +'</div>'+
                 '<div class="text my-prize">'+ prizeMesage +'</div>'+
                 ' </div>'+
                 '</div>'+
@@ -251,6 +251,9 @@ var iconImg = {
         const $dom = $(html)
         // 遍历按钮数组
         var $btnBox = $('<div class="confirm-ft"></div>');
+        if(btnArr.length==1){
+            $btnBox = $('<div class="confirm-ft only-one"></div>');
+        }
         $.each(btnArr,function (i,val) {
             var $btn;
             if(val.txt == '取消'){
@@ -350,20 +353,14 @@ var iconImg = {
     }()
 //弹窗实例
     var dialog = window.YDUI.dialog;
-    dialog.confirm('MM铁杆粉丝福利', '恭喜您，获得','爱奇艺VIP!', [
+/*    dialog.confirm('MM铁杆粉丝福利', '很抱歉！您非本次活动对象,<br/>感谢你的关注~','去首页看看更多精彩内容吧~', [
         {
-            txt: '取消',
+            txt: '去逛逛',
             callback: function () {
-                dialog.toast('你点了取消', 'none', 1000);
-            }
-        },
-        {
-            txt: '确定',
-            callback: function () {
-                dialog.toast('你点了确定', 'none', 1000);
+                window.location.href='www.hao123.com';
             }
         }
-    ]);
+    ]);*/
 }(window)
 
 !function (window) {
@@ -423,16 +420,19 @@ var iconImg = {
             return (new Array(l - (new String(s)).length + 1)).join('0') + s;
         }
         setCount(count);
+        var rCounts = 6;  //奖品个数
+        var rOffset = -30;  //初始化角度
+        var angle = 360/rCounts
+        var awards = {};
+        for(var i=0;i<rCounts;i++){
+            awards[i] = {
+                min_angle:-(i*angle + 5 + rOffset),
+                max_angle:-((i+1)*angle - 5 + rOffset),
+            }
+        }
         var rotary = new Rotary('.zw-rotary',{
             fixAngle: 0,
-            awards:{
-                1:{min_angle:5 ,max_angle:55},/*优酷VIP会员周卡*/
-                2:{min_angle:65 ,max_angle:115 },/*别气馁你是最棒的*/
-                3:{min_angle:125 ,max_angle:175 },/*优酷VIP会员月卡*/
-                4:{min_angle:185 ,max_angle:175 +60 },/*爱奇艺VIP会员月卡*/
-                5:{min_angle:185 + 60 ,max_angle:175 +60*2 },/*再接再厉～*/
-                6:{min_angle:185 + 60 * 2 ,max_angle:175 +60*3},/*爱奇艺VIP会员周卡*/
-            }
+            awards:awards
         });
         /*
          * 抽奖请求逻辑再此方法写,setAward传入awards对应的奖项
@@ -464,7 +464,7 @@ var iconImg = {
             /*
              * 按照奖项开始抽奖
              * */
-            rotary.setAward(1);
+            rotary.setAward(0);
         });
         /*
          * 重新抽奖

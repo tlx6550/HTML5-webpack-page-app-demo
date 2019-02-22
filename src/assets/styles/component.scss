@@ -25,6 +25,7 @@ $base-zindex:1;
     font-weight: bold;
   }
   .confirm-bd{
+    position: relative;
     height: 2.5rem;
     text-align: center;
     .icon{
@@ -34,12 +35,20 @@ $base-zindex:1;
     }
 
     .text{
+      position: absolute;
       display: inline-block;
-      padding-top: 0.5rem;
+      white-space: nowrap;
+      left: 50%;
+      transform: translate(-50%, 0);
+      line-height: .5rem;
       font-size: .3rem;
       color:#fff;
     }
+    .sub-title{
+      top:.6rem;
+    }
     .my-prize{
+      bottom: .4rem;
       color:#fce170;
     }
   }
@@ -47,7 +56,11 @@ $base-zindex:1;
     .close-btn{
       text-decoration: none;
     }
+    &.only-one{
+    padding:0 2rem;
   }
+  }
+
 }
 @keyframes zoomIn {
   from {
@@ -255,11 +268,13 @@ $base-zindex:1;
   .result-text{
     position: absolute;
     background-color: #ccc;
+    background: url("../img/guajiang-gray-bg.png")no-repeat;
+    background-size: cover;
     z-index: 99;
-    top:.2rem;
-    left:.4rem;
-    width:6.24rem;
-    height: 2rem;
+    top:0rem;
+    left:.08rem;
+    width:7.04rem;
+    height: 2.54rem;
     font-size: .26rem;
     color: #cc3300;
     .info{
