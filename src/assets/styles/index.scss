@@ -141,8 +141,13 @@ a {
     font-weight: bold;
     color:#fff;
     margin:0;
+    &.disable-type{
+      background-color: #a5a5a5;
+      color:#ececec;
+    }
   }
 }
+
 .rotary-box-b{
   margin-top: 0;
   position: relative;
@@ -246,7 +251,12 @@ a {
     }
   }
 }
-
+.dowlow-app-tag{
+  width: 5px;
+  height: 5px;
+  display: block; 
+  position: absolute
+}
 .app-list-wrap{
   padding:.2rem .2rem .68rem .2rem;
   .contain{
@@ -284,16 +294,29 @@ a {
         }
       }
       .content {
-        float: left;
+        font-size: 0;
         text-align: left;
         .title-p {
+          display: block;
+          width: 3rem;
+          overflow: hidden;
+         -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           font-size: 0.36rem;
           color: #333;
+          overflow: hidden;
         }
         .sub-title{
           color:red;
         }
         p {
+           display: block;
+          width: 4rem;
+          overflow: hidden;
+         -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           margin:.1rem 0;
           font-size: 0.24rem;
           color: #999;
@@ -315,6 +338,16 @@ a {
         height: 0.59rem;
         border: none;
         border-radius: 0.2rem;
+        &.low-verstion{
+            input{
+                background-color: rgba(255, 255, 255, 0);
+                position: absolute;
+                right: 0.22rem;
+                width: 1.58rem;
+                height: 0.59rem;
+                border: none;
+            }
+        }
       }
       .js-label {
         position: relative;
@@ -324,6 +357,9 @@ a {
         color: #23beff;
         @include lh(59)
       }
+      .btn-wrapper{
+        border-radius: .2rem;
+      }
     }
     .clearfix:before, .clearfix:after {
       display: table;
@@ -332,10 +368,7 @@ a {
     }
   }
 }
-.content-wrap-b{
-  position: relative;
-  top: -.5rem;
-}
+
 .content-wrap{
   margin-top: 0;
   text-align: center;
@@ -424,6 +457,15 @@ a {
     }
   }
 
+}
+.content-wrap-b{
+  position: relative;
+  margin-top: -0.5rem;
+}
+.rule-detail-wrap-b{
+  position: relative;
+  z-index: 1;
+  margin-top: -.2rem;
 }
 .rule-detail-wrap .container {
   padding: 0 .2rem .4rem;

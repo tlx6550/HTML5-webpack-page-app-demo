@@ -1,1 +1,108 @@
-.btn-percent,.btn-text,.btn-wrapper{position:absolute;left:0;top:0;right:0;bottom:0}.downloaded .btn-percent,.handling .btn-percent,.installed .btn-percent,.installing .btn-percent,.retry .btn-percent,.update .btn-percent{opacity:0}.btn-text{z-index:4;font-size:.24rem;color:#22beff;text-align:center;line-height:.5rem;border-radius:.1rem}.btn-wrapper{z-index:2;display:block;background-color:#fff;border:.04rem solid #22beff;border-radius:.1rem}.btn-percent{width:0;z-index:3;background-color:#def5ff}.download .btn-wrapper,.init .btn-wrapper,.pause .btn-wrapper{background-color:#fff;border-color:#22beff}.download-btn{width:1.04rem;position:relative;height:.5rem;overflow:hidden}.speed em{font-style:normal;margin-right: 0.05rem;font-weight:400;color:#7ad526}.download .btn-text,.init .btn-text,.pause .btn-text{color:#22beff}.downloaded .btn-text,.installed .btn-text,.installing .btn-text{color:#ffae00}.downloaded .btn-wrapper,.installed .btn-wrapper,.installing .btn-wrapper{border-color:#ffae00;background-color:#fff}.handling .btn-text{color:#bbb}.handling .btn-wrapper{background-color:#fff;border-color:#bbb}.retry .btn-text{color:#fd5300}.retry .btn-wrapper{background-color:#fff;border-color:#fd5300}.update .btn-text{color:#22beff}.update .btn-wrapper{background-color:#fff;border-color:#22beff}
+.btn-percent,
+.btn-text,
+.btn-wrapper {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0
+}
+
+.downloaded .btn-percent,
+.handling .btn-percent,
+.installed .btn-percent,
+.installing .btn-percent,
+.retry .btn-percent,
+.update .btn-percent {
+	opacity: 0
+}
+
+.btn-text {
+	z-index: 4;
+	font-size: .24rem;
+	color: #22beff;
+	text-align: center;
+	line-height: .5rem;
+	border-radius: .2rem
+}
+
+.btn-wrapper {
+	z-index: 2;
+	display: block;
+	background-color: #fff;
+	border: .04rem solid #22beff;
+	border-radius: .2rem
+}
+
+.btn-percent {
+	width: 0;
+	z-index: 3;
+	background-color: #def5ff
+}
+
+.download .btn-wrapper,
+.init .btn-wrapper,
+.pause .btn-wrapper {
+	background-color: #fff;
+	border-color: #22beff
+}
+
+.download-btn {
+	width: 1.04rem;
+	position: relative;
+	height: .5rem;
+	overflow: hidden
+}
+
+.speed em {
+	font-style: normal;
+	margin-right: 0.05rem;
+	font-weight: 400;
+	color: #7ad526
+}
+
+.download .btn-text,
+.init .btn-text,
+.pause .btn-text {
+	color: #22beff
+}
+
+.downloaded .btn-text,
+.installed .btn-text,
+.installing .btn-text {
+	color: #ffae00
+}
+
+.downloaded .btn-wrapper,
+.installed .btn-wrapper,
+.installing .btn-wrapper {
+	border-color: #ffae00;
+	background-color: #fff
+}
+
+.handling .btn-text {
+	color: #bbb
+}
+
+.handling .btn-wrapper {
+	background-color: #fff;
+	border-color: #bbb
+}
+
+.retry .btn-text {
+	color: #fd5300
+}
+
+.retry .btn-wrapper {
+	background-color: #fff;
+	border-color: #fd5300
+}
+
+.update .btn-text {
+	color: #22beff
+}
+
+.update .btn-wrapper {
+	background-color: #fff;
+	border-color: #22beff
+}

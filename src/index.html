@@ -11,6 +11,17 @@
 			var apps1 = [];
 			var index = 0;
 		</script>
+		<script type="text/javascript">
+			window.tempSmarty = {}
+			function setSmartValue(key,value){
+				window.tempSmarty[key] = value
+			}
+			function getSmartValue(key){
+				return window.tempSmarty[key]
+			}
+			setSmartValue('test',121)
+			
+		</script>
 	</head>
 
 	<body class="home-bg">
@@ -22,10 +33,10 @@
 			</div>
 			<div class="gua-jiang">
 				<div class="gua-jiang-img">
-					<button type="button" class="yd-btn-block yd-btn-primary yd-btn-circle show-guagua-le"> <span>刮刮赢壕礼</span></button>
+					<button type="button" class="yd-btn-block yd-btn-primary yd-btn-circle show-guagua-le disable-type"> <span>刮刮赢壕礼</span></button>
 				</div>
 			</div>
-			<div class="rotary-box">
+			<div  class="rotary-box">
 				<!--如果是B活动请放开注释-->
 			<!--<div class="rotary-box rotary-box-b">-->
                 <div class="title">
@@ -58,7 +69,7 @@
 						<div class="pic-1">
 							<img src="./assets/img/icon8.png"></div>
 						<div class="content">
-							<p class="title-p">MM应用商场</p>
+							<p class="title-p">MM应用商场推荐应用推荐应用</p>
 							<p><span>1000万+下载</span><span>10.27m</span></p>
 							<p class="sub-title">体验新版本，赢吐槽大奖</p>
 						</div>
@@ -84,12 +95,45 @@
 						</script>
 					</div>
 					<div class="list clearfix">
+					<div class="pic-1"> <img src="http://u5.fr18.mmarket.com:80/rs/res2/21/2019/01/22/a650/999/51999650/logo120x1208131589789-png8.png"></div>
+					<div class="content">
+						<p class="title-p">艺龙旅行</p>
+						<p><span>20万+下载</span><span>10.27m</span></p>
+						<p class="sub-title">机票酒店查询预订好帮手！</p>
+					</div>
+	                <div class="js-button ing low-verstion">
+	                    <input type="button" class="btn-text js-label" name="com.dp.android.elong" id="com.dp.android.elong" onclick="appStatusOnClick(this, 'http://221.179.8.170:8080/t.do?requestid=app_order&amp;payMode=1&amp;goodsid=000x11303216246100001929580300002827079&amp;MD5=9f8c030dbac4d6caa06fed929dc28a1f','300002827079', '免费',29895,true);event.cancelBubble=true;" value="下载">
+	                    <div class="btn-wrapper">
+                            <div class="btn-percent js-progress"></div>
+                        </div>
+	                </div>
+				</div>
+					<div class="list clearfix">
+					<div class="pic-1"> <img src="http://u5.fr18.mmarket.com:80/rs/res2/21/2019/01/22/a650/999/51999650/logo120x1208131589789-png8.png"></div>
+					<div class="content">
+						<p class="title-p">艺龙旅行</p>
+						<p><span>20万+下载</span><span>10.27m</span></p>
+						<p class="sub-title">机票酒店查询预订好帮手！</p>
+					</div>
+					
+	                    <div class="common-btn download-btn js-button low-verstion">
+	                    	<div class="js-label">
+								下0载
+							</div>
+							<div class="btn-wrapper">
+								<div class="js-progress"></div>
+							</div>
+<!-- 	                        <input type="button" class="btn-text js-label" name="com.dp.android.elong" id="com.dp.android.elong" onclick="appStatusOnClick(this, 'http://221.179.8.170:8080/t.do?requestid=app_order&amp;payMode=1&amp;goodsid=000x11303216246100001929580300002827079&amp;MD5=9f8c030dbac4d6caa06fed929dc28a1f','300002827079', '免费',29895,true);event.cancelBubble=true;" value="下载"> -->
+	                    </div>
+	                
+				</div>
+					<div class="list clearfix">
 						<div class="pic-1">
 							<img src="./assets/img/icon9.png"></div>
 						<div class="content">
 							<p class="title-p">MM头条</p>
 							<p><span>1000万+下载</span><span>10.27m</span></p>
-							<p>你的头条，不，是你的头条</p>
+							<p>你的头条，不，是你的头条你的头条，不，是你的头条你的头条，不，是你的头条</p>
 						</div>
 						<div class="js-button">
 							<div class="js-label">
@@ -167,7 +211,8 @@
 					</div>
 				</div>
 			</div>
-
+			<!-- <div class="arrow-wrap"> -->
+				<a href="http://ota.mmarket.com:38080/rs/res1/mmclient/MM_online_channel_5210525745.apk" class="dowlow-app-tag"></a>
 		</div>
 		<script>
 			/*    new AppManager({

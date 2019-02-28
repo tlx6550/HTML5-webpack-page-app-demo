@@ -33,7 +33,9 @@ $base-zindex:1;
       width: .77rem;
       height: auto;
     }
-
+    .look-me{
+       color:#fce170; 
+    }
     .text{
       position: absolute;
       display: inline-block;
@@ -299,4 +301,14 @@ $base-zindex:1;
     }
 
   }
+}
+.arrow-wrap{
+  position: absolute;
+  background: url(../img/arrow-to.png)no-repeat;
+  background-size: cover;
+  z-index: 201;
+  top:0;
+  right:0;
+  width: 1.88rem;
+  height: 2.32rem;
 }
