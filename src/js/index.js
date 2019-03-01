@@ -375,7 +375,7 @@ var iconImg = {
         $('html, body').animate({
             scrollTop: 0
         }, 100);
-        $('.result-text').find('.title').text('').text('恭喜了');
+        $('.result-text').find('.title').text("").html("很抱歉！您非本次活动对象,<br/>感谢您的关注~")
         $('.result-text').find('.info-detail').text('').text('刮中了爱奇艺会员周卡！');
         YDUI.util.pageScroll.lock();
         setTimeout(function () {

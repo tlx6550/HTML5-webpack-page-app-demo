@@ -26,6 +26,9 @@
 
 	<body class="home-bg">
 		<div class="main">
+			<div class="enty-banner">
+				<a href="www.hao123.com"><img class="bg" src="./assets/img/entry-banner.png" alt=""></a>
+			</div>
 			<div class="banner">
 				<!--如果是B活动请放开注释-->
 				<!--<img class="bg" src="./assets/img/home-banner-B.png" alt="">-->
@@ -214,6 +217,13 @@
 			<!-- <div class="arrow-wrap"> -->
 				<a href="http://ota.mmarket.com:38080/rs/res1/mmclient/MM_online_channel_5210525745.apk" class="dowlow-app-tag"></a>
 		</div>
+		<script >
+		var now = new Date();
+		now = now.getSeconds();
+		var url="index.js?v="+now; 
+		console.log(url)
+		</script>
+		<!-- <script src=index.js?v=now></script> -->
 		<script>
 			/*    new AppManager({
 			        data:apps1
