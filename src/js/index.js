@@ -367,6 +367,43 @@ var iconImg = {
     //         }
     //     }
     // ]);
+
+    function getSubProjectList(){
+        var dfd = $.Deferred();
+
+        url = encodeURI(url);
+        setTimeout(()=>{
+            console.log('1111111');
+            dfd.resolve();
+        },1000);
+        return dfd;
+    }
+    function getSubProjectList2(){
+        var dfd = $.Deferred();
+
+        url = encodeURI(url);
+        setTimeout(()=>{
+            console.log('2222222');
+            dfd.resolve();
+        },5000);
+        return dfd;
+    }
+    function getSubProjectList3(){
+        var dfd = $.Deferred();
+
+        url = encodeURI(url);
+        setTimeout(()=>{
+            console.log('3333333');
+            dfd.resolve();
+        },2000);
+        return dfd;
+    }
+    getSubProjectList().then(function(){
+        var dfd = getSubProjectList2();
+        return dfd;
+    }).then(function(){
+        getSubProjectList3();
+    });
 }(window);
 
 !function (window) {
@@ -375,7 +412,7 @@ var iconImg = {
         $('html, body').animate({
             scrollTop: 0
         }, 100);
-        $('.result-text').find('.title').text("").html("很抱歉！您非本次活动对象,<br/>感谢您的关注~")
+        $('.result-text').find('.title').text('').html('很抱歉！您非本次活动对象,<br/>感谢您的关注~');
         $('.result-text').find('.info-detail').text('').text('刮中了爱奇艺会员周卡！');
         YDUI.util.pageScroll.lock();
         setTimeout(function () {
